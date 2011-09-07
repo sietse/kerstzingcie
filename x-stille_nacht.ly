@@ -1,3 +1,5 @@
+% Version from http://members.impulse.net/~uhl/music/hymns.html
+
 \header {
   title = "Stille  Nacht"
   composer = "Franz Gruber (1787-1863)"
