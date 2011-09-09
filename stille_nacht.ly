@@ -16,7 +16,7 @@ soprano = {
   f'8.( g'16) f'8 d'4. |
   f'8. g'16 f'8 d'4. |
   c''4 c''8 a'4. |
-  bes'4 bes'8 f'4. | \break
+  bes'4 bes'8 f'4. |
 
   % Abuse phrasing slur: it doesn't affect lyrics
   \phrasingSlurDashed
