@@ -1,17 +1,24 @@
 \version "2.12.3"
 
-\header {
-  title = "Stille  Nacht"
-  composer = "Franz Gruber (1787-1863)"
-  arranger = "Arr. Jo Ivens"
-}
+% Enter the notes for each voice. Normally I'd do that in \relative
+% mode, but in this case I was adapting someone else's version of Stille
+% Nacht.
+%
+% (Relative mode is basically this: instead of specifying the absolute
+% octave for each note, assume that each new note is the one at most a
+% fourth removed from the preceding one. If you're jumping a quint or
+% more, use ' or , to adjust the note's octave upwards/downwards.)
 
 soprano = { 
   \time 6/8 
   \key bes \major 
+
   f'8.( g'16) f'8 d'4. | 
   f'8. g'16 f'8 d'4. |   
   c''4 c''8 a'4. |       
+  % Structurally neatest to have a system linebreak after 'einsam
+  % wacht', although it makes the note spacing of the last line a bit
+  % stretched.
   bes'4 bes'8 f'4. |     \break
 
   % Abuse phrasing slur: it doesn't affect lyrics
@@ -49,6 +56,10 @@ alto = {
   \bar "|."
 }
 
+% Normally, enter the dynamics (\p, \pp, \<\! etc) inside a voice
+% (either all of them, or just the soprano); in this case, though, I've
+% entered them separately to be able to put them on their own line
+% between the staves
 dynamics = {
   s8.\p s16 s2 
   s8.\pp s16 s2 
@@ -105,16 +116,24 @@ bass = {
 
   f4 f8 f8. f16 f8 |
   bes,4. ( bes,4. ) |
-  bes,8( bes,8 bes,8) f,8 f,8 f,8 |
+  bes,8( bes,8) bes,8 f,8 f,8 f,8 |
   bes,2. |
   \bar "|."
 }
+
+% Done entering the notes.
+% Enter the verses in \lyricmode. `--` to separate syllables (syllable
+% line is drawn automatically iff there is space); `__` to request an
+% extender line; _ to make a syllable last an extra note. (Normally a
+% syllable lasts for one note, or one melismata.)
 
 verseOne = \lyricmode {
   % Skip 7 notes
   \repeat unfold 7 { \skip 1 }
   Al -- les schläft,
   ein -- sam 
+    % 'wacht' should line up to its note with its left edge, instead of
+    % with its middle.
     \once \override LyricText #'self-alignment-X = #-1
     wacht
   nur das trau -- te hoch --
@@ -167,6 +186,8 @@ verseThree = \lyricmode {
   burt.
 }
 
+% The basses briefly do their own thing at the start. Let's give them
+% their own line of lyrics.
 verseOneBass = \lyricmode {
   Stil -- le Nacht,
   Hei -- li -- ge Nacht.

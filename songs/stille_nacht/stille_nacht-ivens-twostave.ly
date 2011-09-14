@@ -2,7 +2,9 @@
 \include "stille_nacht-ivens-source.ly"
 
 \header {
-  title = "Stille- Nacht"
+  title = "Stille Nacht"
+  composer = "Franz Gruber (1787-1863)"
+  arranger = "Arr. Jo Ivens"
   tagline =  \markup { \center-column {
     "Versie 2011-09-07"
     "Collegium Musicum Kerstzingcie 2011"
