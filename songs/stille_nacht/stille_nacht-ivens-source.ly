@@ -81,7 +81,7 @@ tenor = {
   bes4 bes8 bes8. bes16 bes8 |
   bes8. bes16 a8 f8.( g16 a16 bes16) |
 
-  a4 c'8 a'8. c'16 ees'8 |
+  a4 c'8 a8. c'16 ees'8 |
   d'4.( bes4.) |
   d'8( c'8) bes8 a8 g8 f8 |
   f2. |
@@ -111,8 +111,8 @@ bass = {
 }
 
 verseOne = \lyricmode {
-  Stil -- le Nacht,
-  Hei -- li -- ge Nacht.
+  % Skip 7 notes
+  \repeat unfold 7 { \skip 1 }
   Al -- les schläft,
   ein -- sam 
     \once \override LyricText #'self-alignment-X = #-1
@@ -128,9 +128,10 @@ verseOne = \lyricmode {
   schlaf __ in himm -- li -- scher
   Ruh.
 }
+
 verseTwo = \lyricmode {
-  % Skip 7 notes
-  \repeat unfold 7 { \skip 1 }
+  Stil -- le Nacht,
+  Hei -- li -- ge Nacht.
   Hir -- ten erst 
   Kund ge -- 
     \once \override LyricText #'self-alignment-X = #-1
@@ -143,7 +144,7 @@ verseTwo = \lyricmode {
     nah,
   Christ der Ret -- ter ist
   da, __
-  Christ der Ret -- ter ist
+  Christ __ der Ret -- ter ist
   da.
 }
 
