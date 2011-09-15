@@ -1,3 +1,4 @@
+% vim: set fileformat=dos":
 \version "2.12.3"
 
 \header {
@@ -46,7 +47,7 @@ verseOne = \lyricmode {
   >>
   \midi {
     \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 100 4 )
+      \Score tempWholesPerMinute = #(ly:make-moment 120 4 )
     }
   }
   \layout { 
