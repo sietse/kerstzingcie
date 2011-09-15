@@ -50,6 +50,16 @@ verseOne = \lyricmode {
       \new Voice = "vBass" { \bass }
     >>
     \new Lyrics \lyricsto "vBass" \verseOne
-
   >>
+  \midi {
+    \context {
+      \Score tempWholesPerMinute = #(ly:make-moment 100 4 )
+    }
+  }
+  \layout { 
+    % We can haz ambitus to display pitch range?
+    \context { \Staff 
+      \consists "Ambitus_engraver"
+    }
+  }
 }
