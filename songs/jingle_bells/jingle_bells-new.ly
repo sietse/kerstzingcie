@@ -1,4 +1,4 @@
-% vim: set fileformat=dos":
+% vim: set fileformat=dos:
 
 % De noten zijn op vier aparte balken gezet. Om het overtypen/nakijken te
 % vergemakkelijken hebben de alten en bassen wel alle stokken naar
