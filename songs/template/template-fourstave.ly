@@ -1,4 +1,4 @@
-% vim: set fileformat=dos":
+% vim: set fileformat=dos:
 \version "2.12.3"
 
 \header {

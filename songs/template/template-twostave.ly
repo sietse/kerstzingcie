@@ -1,4 +1,4 @@
-% vim: set fileformat=dos":
+% vim: set fileformat=dos:
 \version "2.12.3"
 
 \header {
@@ -32,7 +32,10 @@ verseOne = \lyricmode {
     \new Staff = "upper" <<
       \clef "treble"
       \timeAndKey
-      \new Voice = "vSoprano" { \voiceOne \soprano }
+      \new Voice = "vSoprano" { 
+        \override Ambitus #'X-offset = #2.0
+        \voiceOne \soprano 
+      }
       \new Voice = "vAlto" { \voiceTwo \alto }
     >>
 
@@ -41,7 +44,10 @@ verseOne = \lyricmode {
     \new Staff = "upper" <<
       \clef "treble"
       \timeAndKey
-      \new Voice = "vTenor" { \voiceOne \tenor }
+      \new Voice = "vTenor" { 
+        \override Ambitus #'X-offset = #2.0
+        \voiceOne \tenor 
+      }
       \new Voice = "vBass" { \voiceTwo \bass }
     >>
   >>
@@ -52,7 +58,7 @@ verseOne = \lyricmode {
   }
   \layout { 
     % We can haz ambitus to display pitch range?
-    \context { \Staff 
+    \context { \Voice 
       \consists "Ambitus_engraver"
     }
   }
