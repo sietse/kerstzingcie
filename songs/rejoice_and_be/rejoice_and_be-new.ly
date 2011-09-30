@@ -108,7 +108,7 @@ verseOne = \lyricmode {
   % Produce midi output
   \midi {
     \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 100 4 )
+      \Score tempWholesPerMinute = #(ly:make-moment 240 4 )
     }
   }
   % Produce PDF output

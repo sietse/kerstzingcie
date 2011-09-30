@@ -1,0 +1,632 @@
+Reading MusicXML from a_little_child-ep.xml ...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=17>
+  In: <measure width=138 number=1>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=57>
+  In: <measure width=138 number=1>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=11>
+  In: <measure width=135 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=52>
+  In: <measure width=135 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=below type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=17>
+  In: <measure width=138 number=1>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=57>
+  In: <measure width=138 number=1>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=below type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=11>
+  In: <measure width=135 number=3>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=52>
+  In: <measure width=135 number=3>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=22>
+  In: <measure width=149 number=15>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=67>
+  In: <measure width=149 number=15>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=13>
+  In: <measure width=215 number=21>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=80>
+  In: <measure width=215 number=21>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=224 number=22>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=83>
+  In: <measure width=224 number=22>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Output to `a_little_child-ep.ly'
+
+Reading MusicXML from a_merry_christmas-anon1.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `a_merry_christmas-anon1.ly'
+
+Reading MusicXML from away_in_a-willcocks.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `away_in_a-willcocks.ly'
+
+Reading MusicXML from coventry_carol-shaw.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `coventry_carol-shaw.ly'
+
+Reading MusicXML from deck_the_halls-anon1.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=13>
+  In: <measure width=284 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=57>
+  In: <measure width=284 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=148>
+  In: <measure width=284 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=184>
+  In: <measure width=284 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Output to `deck_the_halls-anon1.ly'
+
+Reading MusicXML from ding_dong_merrily-wood.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `ding_dong_merrily-wood.ly'
+
+Reading MusicXML from entre_le_boef-wakelkamp.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `entre_le_boef-wakelkamp.ly'
+
+Reading MusicXML from er_is_een-anon.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `er_is_een-anon.ly'
+
+Reading MusicXML from god_rest_you-ep.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `god_rest_you-ep.ly'
+
+Reading MusicXML from hoor_de_englen-anon1.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `hoor_de_englen-anon1.ly'
+
+Reading MusicXML from ich_steh_an-bach.xml ...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=120>
+  In: <measure width=238 number=1>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=181>
+  In: <measure width=238 number=1>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=26>
+  In: <measure width=203 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=49>
+  In: <measure width=203 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=69>
+  In: <measure width=203 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=89>
+  In: <measure width=203 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=51>
+  In: <measure width=219 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=69>
+  In: <measure width=219 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=105>
+  In: <measure width=219 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=126>
+  In: <measure width=219 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=146 number=4>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=76>
+  In: <measure width=146 number=4>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=230 number=11>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=124>
+  In: <measure width=230 number=11>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=146 number=4>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=54>
+  In: <measure width=146 number=4>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=230 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=88>
+  In: <measure width=230 number=11>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Output to `ich_steh_an-bach.ly'
+
+Reading MusicXML from joy_to_the-haendel.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Negative skip -3/8 (from position 43/8 to 5)
+Negative skip -3/8 (from position 43/8 to 5)
+Negative skip -3/8 (from position 23/4 to 43/8)
+Negative skip -1/4 (from position 23/4 to 11/2)
+Negative skip -1/4 (from position 23/4 to 11/2)
+Negative skip -1/4 (from position 6 to 23/4)
+Negative skip -1/8 (from position 6 to 47/8)
+Negative skip -1/8 (from position 6 to 47/8)
+Negative skip -1/8 (from position 49/8 to 6)
+Negative skip -1/8 (from position 49/8 to 6)
+Negative skip -1/8 (from position 25/4 to 49/8)
+Negative skip -3/8 (from position 63/8 to 15/2)
+Negative skip -3/8 (from position 63/8 to 15/2)
+Negative skip -3/8 (from position 33/4 to 63/8)
+Negative skip -1/4 (from position 33/4 to 8)
+Negative skip -1/4 (from position 33/4 to 8)
+Negative skip -1/4 (from position 69/8 to 67/8)
+Negative skip -1/4 (from position 69/8 to 67/8)
+Negative skip -1/4 (from position 35/4 to 17/2)
+Negative skip -1/4 (from position 35/4 to 17/2)
+Negative skip -1/4 (from position 9 to 35/4)
+Converting to LilyPond expressions...
+Encountered closing slur, but no slur is open
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=133>
+  In: <measure width=230 number=10>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=23>
+  In: <measure width=193 number=16>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=89>
+  In: <measure width=193 number=16>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Encountered closing slur, but no slur is open
+  In: <slur number=1 bezier-x=-9 bezier-y=24 default-y=16 default-x=12 type=stop>
+  In: <notations >
+  In: <note default-x=128>
+  In: <measure width=247 number=17>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Negative skip -3/8 (from position 43/8 to 5)
+Negative skip -3/8 (from position 43/8 to 5)
+Negative skip -3/8 (from position 89/16 to 83/16)
+Negative skip -3/8 (from position 89/16 to 83/16)
+Negative skip -3/8 (from position 45/8 to 21/4)
+Negative skip -3/8 (from position 45/8 to 21/4)
+Negative skip -3/8 (from position 23/4 to 43/8)
+Negative skip -3/8 (from position 23/4 to 43/8)
+Negative skip -3/8 (from position 47/8 to 11/2)
+Negative skip -3/8 (from position 47/8 to 11/2)
+Negative skip -3/8 (from position 6 to 45/8)
+Negative skip -3/8 (from position 6 to 45/8)
+Negative skip -3/8 (from position 49/8 to 23/4)
+Negative skip -3/8 (from position 49/8 to 23/4)
+Negative skip -3/8 (from position 25/4 to 47/8)
+Negative skip -3/8 (from position 25/4 to 47/8)
+Negative skip -3/8 (from position 101/16 to 95/16)
+Negative skip -3/8 (from position 101/16 to 95/16)
+Negative skip -3/8 (from position 51/8 to 6)
+Negative skip -3/8 (from position 51/8 to 6)
+Negative skip -3/8 (from position 27/4 to 51/8)
+Negative skip -5/16 (from position 27/4 to 103/16)
+Negative skip -5/16 (from position 27/4 to 103/16)
+Negative skip -5/16 (from position 109/16 to 13/2)
+Negative skip -5/16 (from position 109/16 to 13/2)
+Negative skip -5/16 (from position 111/16 to 53/8)
+Negative skip -5/16 (from position 111/16 to 53/8)
+Negative skip -5/16 (from position 113/16 to 27/4)
+Negative skip -5/16 (from position 113/16 to 27/4)
+Negative skip -5/16 (from position 115/16 to 55/8)
+Negative skip -5/16 (from position 115/16 to 55/8)
+Negative skip -5/16 (from position 29/4 to 111/16)
+Negative skip -5/16 (from position 29/4 to 111/16)
+Negative skip -5/16 (from position 117/16 to 7)
+Negative skip -3/8 (from position 59/8 to 7)
+Negative skip -3/8 (from position 59/8 to 7)
+Negative skip -3/8 (from position 31/4 to 59/8)
+Negative skip -5/16 (from position 31/4 to 119/16)
+Negative skip -5/16 (from position 31/4 to 119/16)
+Negative skip -5/16 (from position 125/16 to 15/2)
+Negative skip -5/16 (from position 125/16 to 15/2)
+Negative skip -5/16 (from position 127/16 to 61/8)
+Negative skip -5/16 (from position 127/16 to 61/8)
+Negative skip -5/16 (from position 131/16 to 63/8)
+Negative skip -5/16 (from position 131/16 to 63/8)
+Negative skip -5/16 (from position 133/16 to 8)
+Negative skip -5/16 (from position 133/16 to 8)
+Cannot have a slur inside another slur
+  In: <slur placement=above number=1 bezier-x=5 bezier-y=24 default-y=16 default-x=14 type=start>
+  In: <notations >
+  In: <note default-x=10>
+  In: <measure width=247 number=17>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Negative skip -5/16 (from position 17/2 to 131/16)
+Negative skip -5/16 (from position 17/2 to 131/16)
+Negative skip -5/16 (from position 137/16 to 33/4)
+Negative skip -5/16 (from position 137/16 to 33/4)
+Negative skip -5/16 (from position 139/16 to 67/8)
+Negative skip -5/16 (from position 139/16 to 67/8)
+Negative skip -5/16 (from position 141/16 to 17/2)
+Negative skip -5/16 (from position 141/16 to 17/2)
+Negative skip -5/16 (from position 145/16 to 35/4)
+Negative skip -5/16 (from position 145/16 to 35/4)
+Negative skip -5/16 (from position 149/16 to 9)
+Negative skip -5/16 (from position 149/16 to 9)
+Negative skip -5/16 (from position 157/16 to 19/2)
+Output to `joy_to_the-haendel.ly'
+
+Reading MusicXML from o_come_all-anon1.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `o_come_all-anon1.ly'
+
+Reading MusicXML from o_kindeke_klein-bach.xml ...
+Converting to LilyPond expressions...
+Cannot have a slur inside another slur
+  In: <slur placement=below type=start number=1>
+  In: <notations >
+  In: <note default-x=99>
+  In: <measure width=147 number=3>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have a slur inside another slur
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=11>
+  In: <measure width=188 number=9>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Encountered closing slur, but no slur is open
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=141>
+  In: <measure width=166 implicit=yes number=0>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Encountered closing slur, but no slur is open
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=123>
+  In: <measure width=156 number=8>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `o_kindeke_klein-bach.ly'
+
+Reading MusicXML from once_in_royal-mann.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `once_in_royal-mann.ly'
+
+Reading MusicXML from on_christmas_night-williams.xml ...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=238 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=64>
+  In: <measure width=238 number=2>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=247 number=6>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=67>
+  In: <measure width=247 number=6>
+  In: <part id=P2>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Cannot have two simultaneous slurs
+  In: <slur placement=below type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=238 number=2>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=64>
+  In: <measure width=238 number=2>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=below type=start number=1 line-type=dashed>
+  In: <notations >
+  In: <note default-x=14>
+  In: <measure width=247 number=6>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=67>
+  In: <measure width=247 number=6>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=below type=start number=1>
+  In: <notations >
+  In: <note default-x=127>
+  In: <measure width=264 number=13>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=183>
+  In: <measure width=264 number=13>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=11>
+  In: <measure width=268 number=18>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=53>
+  In: <measure width=268 number=18>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous slurs
+  In: <slur placement=above type=start number=1>
+  In: <notations >
+  In: <note default-x=112>
+  In: <measure width=222 number=24>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Cannot have two simultaneous (closing) slurs
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=155>
+  In: <measure width=222 number=24>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Converting to LilyPond expressions...
+Output to `on_christmas_night-williams.ly'
+
+Reading MusicXML from rudolph-the-red.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Encountered closing slur, but no slur is open
+  In: <slur type=stop number=1>
+  In: <notations >
+  In: <note default-x=72>
+  In: <measure width=128 number=28>
+  In: <part id=P1>
+  In: <score-partwise version=2.0>
+Output to `rudolph-the-red.ly'
+
+Reading MusicXML from stille_nacht-ivens.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `stille_nacht-ivens.ly'
+
+Reading MusicXML from white_christmas-anon1.xml ...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Converting to LilyPond expressions...
+Output to `white_christmas-anon1.ly'
