@@ -1,31 +1,36 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
+\include "template-source.ly"
+
 \header {
   title = 
   arranger = 
-  tagline = "Kerstzingcie 2011"
+  tagline =  \markup { \center-column {
+    "Versie 2011-09-07"
+    "Collegium Musicum Kerstzingcie 2011"
+  } }
 }
 
-timeAndKey = {
-  \key g \major
-  \time 4/4
-}
+%timeAndKey = {
+%  \key g \major
+%  \time 4/4
+%}
 
-soprano = \relative c' {
-}
-
-alto = \relative c' {
-}
-
-tenor = \relative c' {
-}
-
-bass = \relative c {
-}
-
-verseOne = \lyricmode {
-}
+%soprano = \relative c' {
+%}
+%
+%alto = \relative c' {
+%}
+%
+%tenor = \relative c' {
+%}
+%
+%bass = \relative c {
+%}
+%
+%verseOne = \lyricmode {
+%}
 
 \score {
   \new ChoirStaff <<
