@@ -1,3 +1,4 @@
+% vim: set fileformat=dos:
 soprano = \relative c' {
 }
 
