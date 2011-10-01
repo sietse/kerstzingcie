@@ -28,27 +28,26 @@ soprano =  \relative a' {
   b4-. gis4-> f4->\mf g4 | % 21
   d'4 cis4 c4 b4 | % 22
   bes4 a4 gis4 g4 | % 23
-  g8 [ a8 g8 a8 ] g4 d'4 | % 24
+  g8 [ a8 g8 a8 ] g4 d4 | % 24
   c1 \bar "||"
   | % 25
   | % 25
   f4 \mp f4 a4 f4 | % 26
-  e4 g'8 [ e8 ] ~ e2 | % 27
-  d4 f'4 e4 d8 [ c8 ( ~ ] | % 28
+  e4 g8 [ e8 ] ~ e2 | % 27
+  d4 f4 e4 d8 [ c8 ~ ] | % 28
   c1 | % 29
   d4 e4 g4 a4 | \barNumberCheck #30
   b4 b8 [ b8 ~ ] b2 | % 31
   R1*2 | % 33
   g8 [ a8 r8 g8 ] e4 c'4 | % 34
   a4 g2. | % 35
-  g8 [ a8 g8 a8 ] g4 c'4 | % 36
-  b'1 | % 37
+  g8 [ a8 g8 a8 ] g4 c4 | % 36
+  b1 | % 37
   R1*2 | % 39
   | % 39
   g4 \f a4 g4 a4 | \barNumberCheck #40
-  g2 g b2 | % 41
-  c e2. b4 \rest | % 42
-  R1 \bar "|."
+  g2 b2 | % 41
+  g'2. \bar "|."
 }
 
 alto =  \relative a' {
@@ -85,7 +84,7 @@ alto =  \relative a' {
   | % 25
   d,4 \mp d4 f4 d4 | % 26
   c4 b8 [ c8 ] ~ c2 | % 27
-  a4 a4 b4 b8 [ c8 ( ~ ] | % 28
+  a4 a4 b4 b8 [ c8 ~ ] | % 28
   c1 | % 29
   d4 e4 g4 a4 | \barNumberCheck #30
   b4 b8 [ b8 ~ ] b2 | % 31
@@ -97,57 +96,56 @@ alto =  \relative a' {
   R1*2 | % 39
   | % 39
   d4 \f e4 d4 e4 | \barNumberCheck #40
-  d2 d2 | % 41
-  g2. b4 \rest | % 42
-  R1 \bar "|."
+  d2  <g b>2 | % 41
+  <c e>2. 
+  \bar "|."
 }
 
 tenor =  \relative g {
-    \clef "treble_8" \key c \major \numericTimeSignature\time 4/4
-    \partial 4 \tempo 4=80 r4 -\markup{ \italic {Rubato} } | % 1
-    R1*8 \bar "||"
-    | % 9
-    \time 2/2  | % 9
-    g8 \f [ a8 r8 g8 ] e4 c'4 | \barNumberCheck #10
-    a4 g2. | % 11
-    R1 | % 12
-    | % 12
-    r4 \mf g8 [ gis8 ] a8 ( [ gis8 g8 ) ] r8 | % 13
-    | % 13
-    f8 \f [ g8 r8 f8 ] d4 b'4 | % 14
-    a4 g2. | % 15
-    g8 [ a8 g8 a8 ] b4 b4 | % 16
-    c4 ( g2. ) | % 17
-    | % 17
-    c4. \mf d8 ~ d4 b4 | % 18
-    c4 e2. | % 19
-    e8 [ e8 e8 e8 ] e4 es4 | \barNumberCheck #20
-    d4 -. g4 -> e4 \f -> g,4 | % 21
-    f8 [ g8 r8 f8 ] d4 b'4 | % 22
-    a4 g2. | % 23
-    g4 g4 a4 b4 | % 24
-    c4 g4 c,4 r4 \bar "||"
-    | % 25
-    | % 25
-    a'4 \mf a4 c4 a4 | % 26
-    g4 e8 [ g8 ~ ] g2 | % 27
-    f4 a4 g4 f8 [ e8 ( ~ ] | % 28
-    e4 g2. ) | % 29
-    d4 e4 g4 a4 | \barNumberCheck #30
-    b4 b8 [ b8 ~ ] b2 | % 31
-    c4 c4 b4 a4 | % 32
-    g4 f8 [ d8 ~ ] d2 | % 33
-    g8 [ a8 r8 g8 ] e4 c'4 | % 34
-    a4 g2. | % 35
-    g8 [ a8 g8 a8 ] g4 c4 | % 36
-    b1 | % 37
-    R1*2 | % 39
-    | % 39
-    d4 \f c4 b4 a4 | \barNumberCheck #40
-    g2 d'2 | % 41
-    e2. r4 | % 42
-    R1 \bar "|."
-    }
+  \clef "treble_8" \key c \major \numericTimeSignature\time 4/4
+  \partial 4 \tempo 4=80 r4 -\markup{ \italic {Rubato} } | % 1
+  R1*8 \bar "||"
+  | % 9
+  \time 2/2  | % 9
+  g8 \f [ a8 r8 g8 ] e4 c'4 | \barNumberCheck #10
+  a4 g2. | % 11
+  R1 | % 12
+  | % 12
+  r4 \mf g8 [ gis8 ] a8 ( [ gis8 g8 ) ] r8 | % 13
+  | % 13
+  f8 \f [ g8 r8 f8 ] d4 b'4 | % 14
+  a4 g2. | % 15
+  g8 [ a8 g8 a8 ] b4 b4 | % 16
+  c4 ( g2. ) | % 17
+  | % 17
+  c4. \mf d8 ~ d4 b4 | % 18
+  c4 e2. | % 19
+  e8 [ e8 e8 e8 ] e4 es4 | \barNumberCheck #20
+  d4 -. g4 -> e4 \f -> g,4 | % 21
+  f8 [ g8 r8 f8 ] d4 b'4 | % 22
+  a4 g2. | % 23
+  g4 g4 a4 b4 | % 24
+  c4 g4 c,4 r4 \bar "||"
+  | % 25
+  | % 25
+  a'4 \mf a4 c4 a4 | % 26
+  g4 e8 [ g8 ~ ] g2 | % 27
+  f4 a4 g4 f8 [ e8 ( ~ ] | % 28
+  e4 g2. ) | % 29
+  d4 e4 g4 a4 | \barNumberCheck #30
+  b4 b8 [ b8 ~ ] b2 | % 31
+  c4 c4 b4 a4 | % 32
+  g4 f8 [ d8 ~ ] d2 | % 33
+  g8 [ a8 r8 g8 ] e4 c'4 | % 34
+  a4 g2. | % 35
+  g8 [ a8 g8 a8 ] g4 c4 | % 36
+  b1 | % 37
+  R1*2 | % 39
+  | % 39
+  d4 \f c4 b4 a4 | \barNumberCheck #40
+  g2 d'2 | % 41
+  e2. \bar "|."
+}
 
 bass =  \relative g {
   \clef "bass" \key c \major \numericTimeSignature\time 4/4 \partial 4
@@ -192,8 +190,7 @@ bass =  \relative g {
   | % 39
   g4 \f a4 g4 a4 | \barNumberCheck #40
   g2 g2 | % 41
-  c2. r4 | % 42
-  R1 \bar "|."
+  c2. \bar "|."
 }
 
 verseOne = \lyricmode {
@@ -209,7 +206,7 @@ verseOneSoprano =  \lyricmode {
   you would e -- ven say it glows, __
   all of the o -- ther rein -- deer, 
   used to laugh and call him names. 
-  RED NOSE 
+  RED NOSE!
   They ne -- ver let the rein -- deer Ru -- dolph 
   join in a -- ny rein -- deer games. 
   Then one fog -- gy Christ -- mas Eve,
@@ -233,7 +230,7 @@ verseOneAlto =  \lyricmode {
   you would e -- ven say it glows, __
   all of the o -- ther rein -- deer, 
   used to laugh and call him names. 
-  RED NOSE 
+  RED NOSE!
   They ne -- ver let the rein -- deer Ru -- dolph 
   join in a -- ny rein -- deer games. 
   Then one fog -- gy Christ -- mas Eve,
