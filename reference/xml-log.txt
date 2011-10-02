@@ -1,3 +1,28 @@
+Problems:
+Output to `ich_steh_an-bach.ly'
+Output to `joy_to_the-haendel.ly'
+Output to `o_kindeke_klein-bach.ly'
+Output to `on_christmas_night-williams.ly'
+Output to `rudolph-the-red.ly'
+Output to `deck_the_halls-anon1.ly'
+Output to `a_little_child-ep.ly'
+
+Fine:
+Output to `away_in_a-willcocks.ly'
+Output to `coventry_carol-shaw.ly'
+Output to `ding_dong_merrily-wood.ly'
+Output to `a_merry_christmas-anon1.ly'
+Output to `entre_le_boef-wakelkamp.ly'
+Output to `er_is_een-anon.ly'
+Output to `god_rest_you-ep.ly'
+Output to `hoor_de_englen-anon1.ly'
+Output to `o_come_all-anon1.ly'
+Output to `once_in_royal-mann.ly'
+Output to `stille_nacht-ivens.ly'
+Output to `white_christmas-anon1.ly'
+
+================================
+
 Reading MusicXML from a_little_child-ep.xml ...
 Converting to LilyPond expressions...
 Cannot have two simultaneous slurs
