@@ -35,27 +35,24 @@
 \score {
   \new ChoirStaff <<
     \new Staff = "sSoprano" << 
-      \clef "treble" \timeAndKey
       \new Voice = "vSoprano" { \soprano }
     >>
-    \new Lyrics \lyricsto "vSoprano" \verseOne
+    \new Lyrics \lyricsto "vSoprano" \verseOneSoprano
 
     \new Staff = "sAlto" << 
-      \clef "treble" \timeAndKey
       \new Voice = "vAlto" { \alto }
     >>
-    \new Lyrics \lyricsto "vAlto" \verseOne
+    \new Lyrics \lyricsto "vAlto" \verseOneAlto
 
     \new Staff = "sTenor" << 
-      \clef "treble_8" \timeAndKey
       \new Voice = "vTenor" { \tenor }
     >>
+    \new Lyrics \lyricsto "vtenor" \verseOnetenor
 
     \new Staff = "sBass" << 
-      \clef "bass" \timeAndKey
       \new Voice = "vBass" { \bass }
     >>
-    \new Lyrics \lyricsto "vBass" \verseOne
+    \new Lyrics \lyricsto "vBass" \verseOneBass
   >>
   \midi {
     \context {
