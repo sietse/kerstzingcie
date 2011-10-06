@@ -8,31 +8,17 @@
   %encodingdate = "2011-09-30"
   title = "A Merry Christmas"
   composer = "Arthur Warrell"
-  tagline =  \markup { \center-column {
-    "Versie 2011-10-02"
+  tagline = \markup { \center-column {
+    "Versie 2011-10-07"
     "Collegium Musicum Kerstzingcie 2011"
   } }
+  header = "A Merry Christmas"
 }
 
-%timeAndKey = {
-%  \key g \major
-%  \time 4/4
-%}
-
-%soprano = \relative c' {
-%}
-%
-%alto = \relative c' {
-%}
-%
-%tenor = \relative c' {
-%}
-%
-%bass = \relative c {
-%}
-%
-%verseOne = \lyricmode {
-%}
+% Make everything a bit smaller. 
+% The normal size of the music font is 20, but that gets things *really*
+% jammed together.
+#(set-global-staff-size 17)
 
 \score {
   \new ChoirStaff <<
@@ -59,19 +45,29 @@
 
   \midi {
     \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 120 4 )
+      \Score tempWholesPerMinute = #(ly:make-moment 60 4 )
     }
   }
   \layout { 
+    %\set annotate-spacing = ##t
+    %\context {
+    %  \RemoveEmptyStaffContext 
+    %}
+    %\context { \Score
+    %  \override VerticalAxisGroup #'remove-first = ##t
+    %}
     % We can haz ambitus to display pitch range?
     \context { \Staff 
       \consists "Ambitus_engraver"
     }
-    \context {
-      \RemoveEmptyStaffContext 
+    \context { \Staff
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
     }
-    \context { \Score
-      \override VerticalAxisGroup #'remove-first = ##t
+    \context { \Lyrics
+      \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
     }
   }
 }
