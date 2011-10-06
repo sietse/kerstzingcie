@@ -1,13 +1,13 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "template-source.ly"
+\include "coventry_carol-shaw-source.ly"
 
 \header {
-  title = 
-  arranger = 
+  title = "Coventry Carol"
+  arranger = "Arranged by Martin Shaw"
   tagline =  \markup { \center-column {
-    "Versie 2011-09-07"
+    "Versie 2011-10-07"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -24,6 +24,8 @@
     >>
 
     \new Lyrics \lyricsto "vSoprano" \verseOne
+    \new Lyrics \lyricsto "vSoprano" \verseTwo
+    \new Lyrics \lyricsto "vSoprano" \verseThree
 
     \new Staff = "lower" <<
       \clef "bass"

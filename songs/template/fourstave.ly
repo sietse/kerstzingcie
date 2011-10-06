@@ -12,25 +12,10 @@
   } }
 }
 
-%timeAndKey = {
-%  \key g \major
-%  \time 4/4
-%}
-
-%soprano = \relative c' {
-%}
-%
-%alto = \relative c' {
-%}
-%
-%tenor = \relative c' {
-%}
-%
-%bass = \relative c {
-%}
-%
-%verseOne = \lyricmode {
-%}
+% Make everything a bit smaller. 
+% The normal size of the music font is 20, but that gets things *really*
+% jammed together.
+#(set-global-staff-size 18)
 
 \score {
   \new ChoirStaff <<
@@ -64,5 +49,9 @@
     \context { \Staff 
       \consists "Ambitus_engraver"
     }
+    % space-saving tweaks
+    \override Staff.VerticalAxisGroup #'minimum-Y-extent = #'(-2 . 2)
+    \override Lyrics.VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
+    \override Lyrics.VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
   }
 }

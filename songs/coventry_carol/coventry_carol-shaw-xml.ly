@@ -3,33 +3,22 @@
 % automatically converted from coventry_carol-shaw.xml
 
 \header {
-    copyright = "CM Kerstzingcie 2006"
-    encodingdate = "2011-09-30"
-    tagline = "Finale 2011 for Macintosh"
-    title = "Coventry Carol"
-    composer = "Arr. by Martin Shaw"
-    encodingsoftware = "Finale 2011 for Macintosh"
-    }
+  copyright = "CM Kerstzingcie 2006"
+  encodingdate = "2011-09-30"
+  title = "Coventry Carol"
+  composer = "Arr. by Martin Shaw"
+  encodingsoftware = "Finale 2011 for Macintosh"
+}
 
-#(set-global-staff-size 20.5767485433)
-\paper {
-    paper-width = 21.59\cm
-    paper-height = 27.93\cm
-    top-margin = 1.27\cm
-    botton-margin = 1.27\cm
-    left-margin = 2.53\cm
-    right-margin = 1.27\cm
-    between-system-space = 2.3\cm
-    page-top-space = 1.37\cm
-    }
+%#(set-global-staff-size 20.5767485433)
 \layout {
-    \context { \Score
-        autoBeaming = ##f
-        }
-    }
+  \context { \Score
+    autoBeaming = ##f
+  }
+}
 PartPOneVoiceOne =  \relative d' {
     \clef "treble" \key g \minor \time 3/2 | % 1
-    d2 \pp d2 d2 | % 2
+    d2 d2 d2 | % 2
     d1 g2 | % 3
     f4 f4 f2 d2 | % 4
     d1. | % 5
@@ -38,7 +27,7 @@ PartPOneVoiceOne =  \relative d' {
     g1. \repeat volta 3 {
         | % 8
         | % 8
-        d2 \p \f \pp d2 d2 | % 9
+        d2 d2 d2 | % 9
         d1 g2 | \barNumberCheck #10
         f1 d2 | % 11
         d1. | % 12
@@ -46,8 +35,8 @@ PartPOneVoiceOne =  \relative d' {
         g1 fis2 | % 14
         g1 f2 | % 15
         a1 g2 | % 16
-        \slurDashed f2 ( \slurSolid f2 ) d2 | % 17
-        \slurDashed f2 ( \slurSolid f2 ) c2 | % 18
+        f2 ( f2 ) d2 | % 17
+        f2 ( f2 ) c2 | % 18
         d1. | % 19
         d2 d2 d2 | \barNumberCheck #20
         g1 fis2 | % 21
@@ -56,7 +45,7 @@ PartPOneVoiceOne =  \relative d' {
 
 PartPOneVoiceTwo =  \relative g' {
     \clef "treble" \key g \minor \time 3/2 | % 1
-    g2 \pp g2 fis2 | % 2
+    g2 g2 fis2 | % 2
     g1 bes2 | % 3
     a4 a4 a2 g2 | % 4
     fis1. | % 5
@@ -65,7 +54,7 @@ PartPOneVoiceTwo =  \relative g' {
     b1. \repeat volta 3 {
         | % 8
         | % 8
-        g2 \p \f \pp g2 fis2 | % 9
+        g2 g2 fis2 | % 9
         g1 bes2 | \barNumberCheck #10
         a1 g2 | % 11
         fis1. | % 12
@@ -73,29 +62,37 @@ PartPOneVoiceTwo =  \relative g' {
         c2 a1 | % 14
         g1 d'2 | % 15
         c1 bes2 | % 16
-        \slurDashed a2 ( \slurSolid a2 ) bes2 | % 17
-        \slurDashed a2 ( \slurSolid a2 ) g2 | % 18
+        a2 ( a2 ) bes2 | % 17
+        a2 ( a2 ) g2 | % 18
         fis1. | % 19
         g2 fis2 g2 | \barNumberCheck #20
         c2 a1 | % 21
         b1. }
     }
 
-PartPOneVoiceTwoLyricsTwo =  \lyricmode { Lul -- ly, lul -- la, thou lit
-    -- tle ti -- ny child, By by, lul -- ly lul -- lay. "2.He" -- rod,
-    the king, In his rag -- ing, Char -- ged he hath this day. His men
-    of "might, " __ In "his " __ own sight, All young chil -- dren to
-    slay. }
 PartPOneVoiceTwoLyricsOne =  \lyricmode { \skip4 \skip4 \skip4 \skip4
     \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
-    \skip4 \skip4 \skip4 "1.O" sis -- ters too, How may we do For to pre
-    -- serve this day this poor young -- "ling, " __ For whom do sing,
-    By by, lul -- ly lul -- "lay?" }
-PartPOneVoiceTwoLyricsThree =  \lyricmode { \skip4 \skip4 \skip4 \skip4
+    \skip4 \skip4 \skip4 
+    \markup{\dynamic f \bold{1.} O} sis -- ters too, How may we do For to pre
+    -- serve this day this poor young -- ling, __ For whom do sing,
+    By by, lul -- ly lul -- lay? }
+
+PartPOneVoiceTwoLyricsTwo =  \lyricmode { \markup{\dynamic pp Lul} -- ly, lul -- la, thou lit
+    -- tle ti -- ny child, By by, lul -- ly lul -- lay. 
+    \markup{\dynamic p \bold {2.} He} -- rod,
+    the king, In his rag -- ing, Char -- ged he hath this day. His men
+    of might, __ In his __ own sight, All young chil -- dren to
+    slay. }
+
+
+PartPOneVoiceTwoLyricsThree =  \lyricmode { 
+    \skip4 \skip4 \skip4 \skip4
     \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
-    \skip4 \skip4 \skip4 "3.That" woe is me, poor child for thee! And ev
-    -- er morn and day. For thy part -- ing, ther "say " __ nor sing, By
+    \skip4 \skip4 \skip4 
+    \markup{\dynamic pp \bold{3.} That} woe is me, poor child for thee! And ev
+    -- er morn and day. For thy part -- ing, ther say __ nor sing, By
     by, lul -- ly lul -- lay! }
+
 PartPTwoVoiceOne =  \relative g {
     \clef "bass" \key g \minor \time 3/2 g2 g2 d2 | % 2
     g1 es2 | % 3
@@ -113,8 +110,8 @@ PartPTwoVoiceOne =  \relative g {
         c2 d1 | % 14
         g1 bes2 | % 15
         f1 g2 | % 16
-        \slurDashed d2 ( \slurSolid d2 ) g2 | % 17
-        \slurDashed f2 ( \slurSolid f2 ) e2 | % 18
+        d2 ( d2 ) g2 | % 17
+        f2 ( f2 ) e2 | % 18
         d1. | % 19
         g2 d2 g2 | \barNumberCheck #20
         c,2 d1 | % 21
@@ -138,8 +135,8 @@ PartPTwoVoiceTwo =  \relative bes {
         es2 d1 | % 14
         d1 d2 | % 15
         f1 d2 | % 16
-        \slurDashed d2 ( \slurSolid d2 ) bes2 | % 17
-        \slurDashed c2 ( \slurSolid c2 ) g2 | % 18
+        d2 ( d2 ) bes2 | % 17
+        c2 ( c2 ) g2 | % 18
         a1. | % 19
         bes2 a2 bes2 | \barNumberCheck #20
         es2 d1 | % 21
@@ -150,22 +147,22 @@ PartPTwoVoiceTwo =  \relative bes {
 % The score definition
 \new StaffGroup \with { \override SpanBar #'transparent = ##t } <<
     \new Staff <<
-        \set Staff.instrumentName = "Soprano"
-        \set Staff.shortInstrumentName = "S"
+        \set Staff.instrumentName = "Women"
+        \set Staff.shortInstrumentName = ""
         \context Staff << 
-            \context Voice = "PartPOneVoiceOne" { \voiceOne \PartPOneVoiceOne }
-            \context Voice = "PartPOneVoiceTwo" { \voiceTwo \PartPOneVoiceTwo }
-            \new Lyrics \lyricsto "PartPOneVoiceTwo" \PartPOneVoiceTwoLyricsTwo
+            \context Voice = "PartPOneVoiceOne" { \voiceTwo \PartPOneVoiceOne }
+            \context Voice = "PartPOneVoiceTwo" { \voiceOne \PartPOneVoiceTwo }
             \new Lyrics \lyricsto "PartPOneVoiceTwo" \PartPOneVoiceTwoLyricsOne
+            \new Lyrics \lyricsto "PartPOneVoiceTwo" \PartPOneVoiceTwoLyricsTwo
             \new Lyrics \lyricsto "PartPOneVoiceTwo" \PartPOneVoiceTwoLyricsThree
             >>
         >>
     \new Staff <<
-        \set Staff.instrumentName = "Bass"
-        \set Staff.shortInstrumentName = "B"
+        \set Staff.instrumentName = "Men"
+        \set Staff.shortInstrumentName = ""
         \context Staff << 
-            \context Voice = "PartPTwoVoiceOne" { \voiceOne \PartPTwoVoiceOne }
-            \context Voice = "PartPTwoVoiceTwo" { \voiceTwo \PartPTwoVoiceTwo }
+            \context Voice = "PartPTwoVoiceOne" { \voiceTwo \PartPTwoVoiceOne }
+            \context Voice = "PartPTwoVoiceTwo" { \voiceOne \PartPTwoVoiceTwo }
             >>
         >>
     
