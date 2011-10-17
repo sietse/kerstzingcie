@@ -2,7 +2,7 @@
 \version "2.12.3"
 
 \header {
-  title = "O Tannenbaum"
+  title = "22. O Dennenboom"
   composer = "Ernst Anschütz (1824)"
   arranger = "Bernard Dewagtere"
   tagline = "Kerstzingcie 2011"
