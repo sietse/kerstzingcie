@@ -64,11 +64,18 @@ tenor = \relative d' {
   d4. r8^\p | % 12
   r4 r8 a8 | % 13
   a8 a8 a8 a8 | % 14
-  %a2^\markup{sing,___________________} ~ | % 15
-  a2^\markup{sing,\draw-line #'(20 . 0) } ~ | % 15
+  % Slight hackery to get some extra space above. Ought to use
+  % \pad-to-box #'(X . X)  #'(Y . Y).
+  a2^\markup{\column {
+    " "
+    \concat { sing,\draw-line #'(20 . 0) }
+  } } ~ | % 15
   a4. a16 [ g16 ] | % 16
   fis8\( a4\) 
-    d8^\f | %17
+  % Hackery: The fortissimo mark is officially below the staff so that
+  % it will force less vertical space, but is offset to above the staff.
+  \once \override DynamicText #'extra-offset = #'(-2.5 . 10)
+    d8_\f | %17
   d4. b8 | % 18
   a4 a8 [ g8 ] | % 19
   fis2 \bar "|."
