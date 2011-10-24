@@ -1,7 +1,7 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "template-source.ly"
+\include "FIXME-source.ly"
 
 \header {
   title = 
@@ -32,7 +32,7 @@
     \new Staff = "sTenor" << 
       \new Voice = "vTenor" { \tenor }
     >>
-    \new Lyrics \lyricsto "vtenor" \verseOnetenor
+    \new Lyrics \lyricsto "vTenor" \verseOneTenor
 
     \new Staff = "sBass" << 
       \new Voice = "vBass" { \bass }
@@ -50,8 +50,14 @@
       \consists "Ambitus_engraver"
     }
     % space-saving tweaks
-    \override Staff.VerticalAxisGroup #'minimum-Y-extent = #'(-2 . 2)
-    \override Lyrics.VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
-    \override Lyrics.VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
+    \context { \Staff
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
+    }
   }
 }
