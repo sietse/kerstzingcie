@@ -1,48 +1,4 @@
 % vim: set fileformat=dos:
-women = {
-  \clef "treble" \key f \major \time 3/4 \partial 4 a'4 | % 1
-  a'4 ( g'4 ) f'4 | % 2
-  c''2 a'4 | % 3
-  f'4 ( g'4 ) a'4 | % 4
-  f'2. | % 5
-  <c' c''>2. | % 6
-  <d' a'>2. | % 7
-  <c' c''>2. | % 8
-  <d' a'>2. | % 9
-  f'4 g'4 a'4 | \barNumberCheck #10
-  <f' c''>4 <g' bes'>4 <f' a'>4 | % 11
-  <d' f'>2 <c' e'>4 | % 12
-  <c' f'>2 c''4 | % 13
-  c''2 bes'4 | % 14
-  a'2 <f' d''>4 | % 15
-  <<
-    { 
-    c''4 ( bes'4 ) a'4 }
-    \\
-    { 
-    g'2 fis'4 }
-  >> \oneVoice | % 16
-  g'2 <e' c''>4 | % 17
-  <<
-    { \voiceOne
-      g'4 ( a'4 ) bes'4 }
-    { \voiceTwo
-      e'2 f'4 }
-  >> \oneVoice | % 18
-  <f' c''>2 <d' f'>4 | % 19
-  <c' f'>2 <c' e'>4 | \barNumberCheck #20
-  <c' f'>2 <f' bes'>4 | % 21
-  <<
-    { \voiceOne
-      bes'4 ( a'4 ) g'4 | % 22
-      a'4 ( bes'4 ) c''4 | } % 23
-    { \voiceTwo
-      f'2 e'4 |
-      f'2 f'4 | }
-  >> \oneVoice |
-  a'2 g'4 | % 24
-  f'2 \bar "|."
-}
 soprano = {
   \clef "treble" \key f \major \time 3/4 \partial 4 a'4 | % 1
   a'4 ( g'4 ) f'4 | % 2
@@ -53,9 +9,9 @@ soprano = {
   a'2. | % 7
   c''2. | % 8
   a'2. | % 9
-  f'4 g'4 a'4 | \barNumberCheck #10
-  c''4 bes'4 a'4 | % 11
-  f'2 e'4 | % 12
+  f'4\< g'4 a'4 | \barNumberCheck #10
+  c''4\< bes'4 a'4 | % 11
+  f'2\> e'4\! | % 12
   f'2 c''4 | % 13
   c''2 bes'4 | % 14
   a'2 d''4 | % 15
@@ -160,33 +116,119 @@ bass = {
     <f, c>2 \bar "|."
 }
 
-verseOne= \lyricmode {
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ \smaller \dynamic f A } lit -- tle child there is __ y -- bore,
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ \smaller{\dynamic mp} E } -- ia,
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ \smaller \dynamic pp E } -- ia, su -- san -- ni,
-  su -- san -- ni, su -- san -- ni,
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ \smaller \dynamic mf Y } sprung -- en out of 
-  \set associatedVoice = "one"
-  Jes -- se’s 
-  \set associatedVoice = "women"
-  more, 
-  Al -- 
-  \set associatedVoice = "one"
-  le -- lu -- 
-  \set associatedVoice = "women"
-  ya, Al -- le -- lu -- ya. 
+
+eia = \lyricmode {
+  E -- ia, E -- ia,
+  su -- san -- ni, su -- san -- ni, su -- san -- ni,
+}
+
+eia = \lyricmode {
+  E -- ia, E -- ia,
+  su -- san -- ni, su -- san -- ni, su -- san -- ni,
+}
+
+eiaSkip = \lyricmode {
+  \skip2. \skip2. 
+  \skip2. \skip2. 
+  \skip 4 \skip 4 \skip 4
+  \skip 4 \skip 4 \skip 4
+  \skip 4 \skip 4 \skip 4
+}
+
+allelu = \lyricmode {
+  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
+}
+alleluSkip = \lyricmode {
+  \skip 4 \skip 4 \skip 4
+  \skip 4 \skip 4 \skip 4
+  \skip 4 \skip 4 
+}
+
+verseOne = \lyricmode {
+  A lit -- tle child there is __ y -- bore,
+  \eiaSkip
+  Y -- sprung -- en out of Jes -- se’s more, 
+  \alleluSkip
   To save __ us all __ that were fore -- lore.
 }
 
-verseOneAlto = \lyricmode {
+verseTwo = \lyricmode {
+  %\once \override LyricText #'self-alignment-X = #RIGHT
+  \markup { 
+    \smaller \dynamic f
+    Je } 
+    -- sus that is so full of might
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller{\dynamic mp} 
+    E } -- ia, 
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller{\dynamic pp} 
+    E } -- ia, 
+    su -- san -- ni, su -- san -- ni, su -- san -- ni,
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller \dynamic mf 
+    Y } -- bore he was a -- bout mid -- night;
+  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
+  The an -- gels sang __ with all their might.
 }
 
-verseOneTenor = \lyricmode {
+verseThree = \lyricmode {
+  Je -- sus _ is that child's _ name,
+  \eiaSkip
+  A maid and mo -- ther is __ his dame,
+  \alleluSkip
+  And
+    \set ignoreMelismata = ##t
+    so 
+    \unset ignoreMelismata
+    our sor -- row __ is turned to game.
 }
 
-verseOneBass = \lyricmode {
+verseFour = \lyricmode {
+  It fell up -- on the high mid -- night,
+  \eiaSkip
+  The stars they shone both fair __ and bright,
+  \alleluSkip
+  The an -- gels sang __ with all their might.
 }
+
+verseFive = \lyricmode {
+  \markup { 
+    \smaller \dynamic f
+    Three } 
+    kings there came with their pre -- sents
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller{\dynamic mp} 
+    E } -- ia, 
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller{\dynamic pp} 
+    E } -- ia, 
+    su -- san -- ni, su -- san -- ni, su -- san -- ni,
+
+  \once \override LyricText #'self-alignment-X = #RIGHT
+  \markup{ 
+    \smaller \dynamic mf 
+    Of } 
+    myrrh and gold and frank -- in -- cense,
+  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
+  As cler -- kes sing __ in their se -- quence.
+}
+
+verseSix = \lyricmode {
+  Now sit we down up -- on our knee,
+  \eiaSkip
+  And pray that child that is __ so free:
+  \alleluSkip
+  And with good heart  __ _ now sing we.
+}
+

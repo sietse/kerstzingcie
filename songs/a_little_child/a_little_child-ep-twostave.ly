@@ -4,8 +4,10 @@
 \include "a_little_child-ep-source.ly"
 
 \header {
-  title = "A little child there is ybore"
-  arranger = "E.P."
+  title = "A Little Child There Is Ybore"
+  arranger = \markup { 
+    German carol tune, 16\super{th} century, arr. E.P.
+  }
   tagline =  \markup { \center-column {
     "Versie 2011-10-05"
     "Collegium Musicum Kerstzingcie 2011"
@@ -25,6 +27,11 @@
     >>
 
     \new Lyrics \lyricsto "vSoprano" \verseOne
+    \new Lyrics \lyricsto "vSoprano" \verseTwo
+    \new Lyrics \lyricsto "vSoprano" \verseThree
+    \new Lyrics \lyricsto "vSoprano" \verseFour
+    \new Lyrics \lyricsto "vSoprano" \verseFive
+    \new Lyrics \lyricsto "vSoprano" \verseSix
 
     \new Staff = "lower" <<
       \clef "bass"
