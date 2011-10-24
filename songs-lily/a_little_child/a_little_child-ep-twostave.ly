@@ -9,7 +9,7 @@
     German carol tune, 16\super{th} century, arr. E.P.
   }
   tagline =  \markup { \center-column {
-    "Versie 2011-10-05"
+    "Versie 2011-10-24"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
