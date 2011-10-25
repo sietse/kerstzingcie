@@ -48,11 +48,6 @@
       \new Lyrics \lyricsto "vBass" \verseFourBass
     >>
   >>
-  \midi {
-    \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 120 4 )
-    }
-  }
   \layout { 
     % We can haz ambitus to display pitch range?
     \context { \Voice 

@@ -17,11 +17,6 @@ class String
         self.split('-')[0..-2].join('-')
     end
 
-    def lfile
-        # => 'song-arranger-layout.ly'
-        self.split('/')[-1]
-    end
-
     def lsansext
         # => dir/song-arranger-layout
         # For lilypond's --output argument
@@ -68,7 +63,8 @@ LILY_MASTERS.each do |master|
     # Create the PDF dependencies.
     file master.lpdf => [master, master.lsource()] do
         system %{
-            lilypond --output #{master.lsansext()} #{master.lfile()}
+            lilypond --output #{master.lsansext()} #{master}
+            rm #{master.ext('ps')}
         }
     end
     
@@ -83,7 +79,9 @@ LILY_MASTERS.each do |master|
     end
 end
 
-task :create_pdfs => LILY_MASTERS
+task :pdfs => LILY_MASTERS.map { |x| x.lpdf() }
+
+task :midis => LILY_MASTERS.map { |x| x.lmidis_midi() }.flatten
 
 task :test do
     jan = 'asdf.ly'

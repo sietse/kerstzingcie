@@ -12,7 +12,6 @@
     "Versie 2011-10-07"
     "Collegium Musicum Kerstzingcie 2011"
   } }
-  header = "A Merry Christmas"
 }
 
 % Make everything a bit smaller. 
@@ -43,11 +42,6 @@
     \new Lyrics \lyricsto "vBass" \verseOneBass
   >>
 
-  \midi {
-    \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 60 4 )
-    }
-  }
   \layout { 
     %\set annotate-spacing = ##t
     %\context {

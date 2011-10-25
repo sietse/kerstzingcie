@@ -15,7 +15,7 @@ soprano = \relative g' {
     b4 a4 g4 fis4 | % 7
     g8 ( [ a8 ) ] b4 a4 a4 \breathe | % 8
     g4 fis4 g4 d4 | % 9
-    g4 a4 b4 \breathe g8 ( [ a8 ) ] | \barNumberCheck #10
+    g4 a4 b4 \breathe g8 ( [ a8 ) ] |
     b4 c4 d4 c8 ( [ b8 ) ] | % 11
     a8 ( [ g8 ] a4 ) g4 \bar "|."
 }
@@ -31,7 +31,7 @@ alto = \relative d' {
     g4. fis8 fis8 ( [ e8 ) e8 ( dis8 ) ] | % 7
     e4 d4 d4 d4 | % 8
     d8 ( [ c8 ) ] d4 d8 ( [ c8 ) ] b4 | % 9
-    b4 e4 dis4 b4 | \barNumberCheck #10
+    b4 e4 dis4 b4 |
     e4 e4 d8 ( [ e16 fis16 ) ] g4 | % 11
     g4 ( fis4 ) d4 \bar "|."
 }
@@ -63,7 +63,7 @@ bass = \relative g {
     b8 ( [ c8 ) ] d4 g,8 ( [ a8 ) ] b4 | % 7
     e,8 ( [ fis8 ) ] g4 d4 d'8[ ( \breathe c8 ) ] | % 8
     b4. a8 g4. fis8 | % 9
-    e8 ( [ d8 ) ] c4 b4 e4 | \barNumberCheck #10
+    e8 ( [ d8 ) ] c4 b4 e4 |
     e8 ( [ d8 ) ] c4 b8 ( [ a8 ) ] g4 | % 11
     d'2 g,4 \bar "|."
 }
