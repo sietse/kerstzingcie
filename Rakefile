@@ -1,17 +1,8 @@
-directory "pdf"
-
-# Take a file, assume everything up to the last hyphen is the root, and
-# return a string of the form `root-source.ly`.
-def lily_source(l)
-    return l.gsub(/(.*)-(.*)/, '\1-source.ly')
-end
-def lily_dir(l)
-    return l.split('/')[0..-2].join('/')
-end
-
+# All the following methods manipulate a string of the form
+# 'dir/song-arranger-layout.ly'
 class String
-    # All the following methods manipulate a string of the form
-    # 'dir/song-arranger-layout.ly'
+    # => 'dir/song-arranger'
+    # Used by the other methods.
     def lroot
         # => 'dir'
         self.split('-')[0..-2].join('-')
@@ -48,18 +39,51 @@ class String
     end
 end
 
-LILY_MASTERS = [
-    'songs-lily/a_little_child/a_little_child-ep-twostave.ly',
-    'songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.ly',
-    'songs-lily/coventry_carol/coventry_carol-shaw-twostave.ly',
-    'songs-lily/ich_steh_an/ich_steh_an-bach-fourstave.ly',
-    'songs-lily/joy_to_the/joy_to_the-haendel-twostave.ly',
-    'songs-lily/o_tannenbaum/o_tannenbaum-dewagtere-fourstave.ly',
-    'songs-lily/rejoice_and_be/rejoice_and_be-twostave.ly',
-    'songs-lily/stille_nacht/stille_nacht-ivens-twostave.ly'
-]
+# MASTER-inhoudsopgave.txt contains the songs and their index numbers.
+# MASTER stores this as a hash: song => number
+tmp = {}
+open('MASTER-inhoudsopgave.txt').each { |line| 
+    if not line =~ /^#/
+        line = line.gsub!(/\n/, '')
+        tmp[line.split(': ')[1]] = line.split(': ')[0]
+    end
+}
+MASTER = tmp
 
-LILY_MASTERS.each do |master|
+LILYS_PDF = MASTER.keys.select {|x| x =~ /^songs-lily/ }
+LILYS_LY = LILYS_PDF.map { |x| x.ext('ly') }
+
+# Make sure the song numbers are Oll Korrekt in each file
+# This task is *always* invoked --- it's only put in a task in case I
+# ever want to reuse it.
+task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
+    MASTER.each do |filename, nummer|
+        # For each Lilypond song ...
+        filename = filename.ext('ly')
+        if (filename =~ /^songs-lily/) != nil
+            # ... see how the title is numbered ...
+            lilyfile = open(filename)
+            line = lilyfile.readline
+            while (line =~ /nummer = "/) == nil
+                line = lilyfile.readline
+            end
+            # ... and change that number if needed.
+            line.gsub!(/^ *nummer = "/, '')
+            if line.scan(/^[0-9π¾]*\./)[0].eql?(nummer)
+                puts "nochangery"
+            else
+                puts "changery"
+                system %{
+                    sed -i '/nummer = "/s/".*"/"#{nummer}"/' \
+                        #{filename}
+                }
+            end
+        end
+    end
+end
+Rake::Task["update_title_numbers"].invoke()
+
+LILYS_LY.each do |master|
     # Create the PDF dependencies.
     file master.lpdf => [master, master.lsource()] do
         system %{
@@ -79,11 +103,13 @@ LILY_MASTERS.each do |master|
     end
 end
 
-task :pdfs => LILY_MASTERS.map { |x| x.lpdf() }
+task :pdfs => LILYS_PDF
 
-task :midis => LILY_MASTERS.map { |x| x.lmidis_midi() }.flatten
+task 'output/kerst-songbook-2011.pdf' => LILYS_PDF do
+end
 
-task :test do
-    jan = 'asdf.ly'
-    puts jan.ext('pdf')
+task :midis => LILYS_PDF.map { |x| x.lmidis_midi() }.flatten
+
+task :test => [:update_title_numbers] do
+    puts 'hi'
 end
