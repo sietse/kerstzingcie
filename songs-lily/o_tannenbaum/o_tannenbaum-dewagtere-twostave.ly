@@ -3,8 +3,10 @@
 
 \include "o_tannenbaum-dewagtere-source.ly"
 
+nummer = "22."
+
 \header {
-  title = "22.  O Dennenboom"
+  title = \markup { \nummer "O Dennenboom" }
   composer = "Ernst Anschütz (1824)"
   arranger = "Arr. Bernard Dewagtere"
   tagline =  \markup { \center-column {

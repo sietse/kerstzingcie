@@ -3,8 +3,10 @@
 
 \include "coventry_carol-shaw-source.ly"
 
+nummer = "09."
+
 \header {
-  title = "Coventry Carol"
+  title = \markup { \nummer "Coventry Carol" }
   arranger = "Arranged by Martin Shaw"
   tagline =  \markup { \center-column {
     "Versie 2011-10-07"
@@ -17,7 +19,7 @@
     \new Staff = "upper" <<
       \clef "treble"
       \new Voice = "vSoprano" { 
-        \override Ambitus #'X-offset = #2.0
+        \override Ambitus #'X-offset = #4.0
         \voiceOne \soprano 
       }
       \new Voice = "vAlto" { \voiceTwo \alto }

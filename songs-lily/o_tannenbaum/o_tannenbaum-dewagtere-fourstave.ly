@@ -1,10 +1,12 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
+nummer = "22."
+
 \include "o_tannenbaum-dewagtere-source.ly"
 
 \header {
-  title = "22.  O Dennenboom"
+  title = \markup {\nummer "O Dennenboom"}
   composer = "Ernst Anschütz (1824)"
   arranger = "Arr. Bernard Dewagtere"
   tagline =  \markup { \center-column {

@@ -1,8 +1,10 @@
 \version "2.12.3"
 \include "stille_nacht-ivens-source.ly"
 
+nummer = "18."
+
 \header {
-  title = "Stille Nacht"
+  title = \markup { \nummer "Stille Nacht" }
   composer = "Franz Gruber (1787-1863)"
   arranger = "Arr. Jo Ivens"
   tagline =  \markup { \center-column {
@@ -45,11 +47,6 @@
     >>
   >>
 
-  \midi { 
-    \context { 
-        \Score tempWholesPerMinute = #(ly:make-moment 50 4 ) 
-    } 
-  }
   \layout { 
     % modify ChoirStaff context to accept Dynamics context. This lets us
     % print the dynamics in the middle.

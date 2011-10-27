@@ -3,8 +3,10 @@
 
 \include "rejoice_and_be-source.ly"
 
+nummer = "4π."
+
 \header {
-  title = "Rejoice and be Merry"
+  title = \markup { \nummer "Rejoice and be Merry" }
   composer = "Traditional English West Country"
   tagline =  \markup { \center-column {
     "Versie 2011-09-07"

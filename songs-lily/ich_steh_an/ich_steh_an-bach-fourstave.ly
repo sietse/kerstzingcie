@@ -3,14 +3,17 @@
 
 \include "ich_steh_an-bach-source.ly"
 
+nummer = "06."
+
 \header {
-  title = \markup { \center-column { 
-    "06. Choral"
-    "Ich steh' an deine Krippen hier"
+  title = \markup { 
+    \center-column { 
+    \line {\nummer "Choral"}
+    "Ich steh’ an deine Krippen hier"
   } }
   composer = "Johann Sebastian Bach"
   tagline =  \markup { \center-column {
-    "Versie 2011-09-07"
+    "Versie 2011-10-26"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }

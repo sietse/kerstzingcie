@@ -3,10 +3,12 @@
 
 \include "a_merry_christmas-anon1-source.ly"
 
+nummer = "20."
+
 \header {
   copyright = "1935 Oxford university press"
   %encodingdate = "2011-09-30"
-  title = "A Merry Christmas"
+  title = \markup { \nummer "A Merry Christmas" }
   composer = "Arthur Warrell"
   tagline = \markup { \center-column {
     "Versie 2011-10-07"

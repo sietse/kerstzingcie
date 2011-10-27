@@ -3,10 +3,13 @@
 
 \include "a_little_child-ep-source.ly"
 
+nummer = "13."
+
 \header {
-  title = "A Little Child There Is Ybore"
+  %title = \markup { \line { \number "A Little Child There Is Ybore" }}
+  title = \markup {\nummer "A Little Child There Is Ybore" }
   arranger = \markup { 
-    German carol tune, 16\super{th} century, arr. E.P.
+    German carol tune, 16th century, arr. E.P.
   }
   tagline =  \markup { \center-column {
     "Versie 2011-10-24"

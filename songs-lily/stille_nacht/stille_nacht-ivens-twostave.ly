@@ -1,8 +1,10 @@
 \version "2.12.3"
 \include "stille_nacht-ivens-source.ly"
 
+nummer = "18."
+
 \header {
-  title = "Stille Nacht"
+  title = \markup { \nummer "Stille Nacht" }
   composer = "Franz Gruber (1787-1863)"
   arranger = "Arr. Jo Ivens"
   tagline =  \markup { \center-column {

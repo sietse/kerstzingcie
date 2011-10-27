@@ -3,10 +3,12 @@
 
 \include "joy_to_the-haendel-source.ly"
 
+nummer = "03."
+
 \header {
-  title = "03. Joy to the World"
+  title = \markup { \nummer "Joy to the World" }
   poet = "Tekst Isaac Watts (1719)"
-  composer = "Componist onbekend; blijkt niet Händel te zijn"
+  composer = "Componist onbekend; niet Händel"
   arranger = "Op muziek gezet door Lowell Mason (1839)"
   tagline =  \markup { \center-column {
     "Versie 2011-10-19"
