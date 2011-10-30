@@ -1,7 +1,7 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "rejoice_and_be-source.ly"
+\include "rejoice_and_be-anon1-source.ly"
 
 nummer = "4π."
 
