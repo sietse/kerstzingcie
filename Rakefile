@@ -101,6 +101,60 @@ task :midis => SONGMIDIS do
     puts "Done making all MIDI files"
 end
 
+# Creating bundles.
+
+file 'output/kerst-2011-bladmuziek.pdf' => SONGPDFS do
+    puts '----'
+    puts 'Creating kerst-2011-bladmuziek.pdf'
+    system %{
+        pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
+            cat output output/kerst-2011-bladmuziek.pdf
+    }
+    puts 'Done creating kerst-2011-bladmuziek.pdf'
+end
+
+desc "PDF met alle liedjes op volgorde"
+task :bladmuziek_pdf => 'output/kerst-2011-bladmuziek.pdf' do end
+
+file 'output/kerst-2011-bladmuziek.zip' => SONGPDFS + 
+    ['output/kerst-2011-bladmuziek.pdf'] do
+    puts '----'
+    puts 'Creating kerst-2011-bladmuziek.zip'
+    system %{
+        zip output/kerst-2011-bladmuziek.zip #{SONGPDFS.join(' ')} \
+            output/kerst-2011-bladmuziek.pdf
+    }
+    puts 'Done creating kerst-2011-bladmuziek.zip'
+end
+desc "Zipje van alle pdfs"
+task :bladmuziek_zip => 'output/kerst-2011-bladmuziek.zip' do end
+
+desc "Alle midi zips"
+task :midizips do 
+    puts "Created all midi zips"
+end
+
+VOICES.each do |voice_i|
+    zipfile_voice_i = "output/kerst-2011-midis-#{voice_i}.zip"
+    songmidis_of_voice_i = SONGMIDIS.select { |x| x =~ /#{voice_i}/ }
+
+    file zipfile_voice_i => songmidis_of_voice_i do
+        puts '----'
+        puts "Creating #{zipfile_voice_i}"
+        system %{
+            zip #{zipfile_voice_i} #{songmidis_of_voice_i.join(' ')}
+        }
+        puts "Done creating #{zipfile_voice_i}"
+    end
+
+    desc "Zipje van alle #{voice_i} midis"
+    task voice_i.to_sym => zipfile_voice_i do end
+
+    task :midizips => voice_i.to_sym do end
+end
+
+task :bundles => [:midizips :bladmuziek_zip]
+
 task :test do
     #for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do
         #puts song_i.lroot + '-source.ly'
