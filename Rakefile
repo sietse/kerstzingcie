@@ -48,6 +48,45 @@ end
 
 SONGMIDIS = tmp
 
+# == Insert song numbers ==
+
+# Make sure the song numbers are Oll Korrekt in each file
+# This task is *always* invoked --- it's only put in a task in case I
+# ever want to reuse it.
+
+task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
+    puts "---- Updating file numbers ----"
+    # For each song ...
+    MASTER.each do |filename, nummer, position| # position not used
+
+        # ... that is a Lilypond song ...
+        filename = filename.ext('ly')
+        if (filename =~ /^songs-lily/) != nil
+
+            # ... see how the title is numbered ...
+            lilyfile = open(filename)
+            line = lilyfile.readline
+            while (line =~ /nummer = "/) == nil
+                line = lilyfile.readline
+            end
+            # ... and change that number if needed.
+            nummer_oud = line.gsub!(
+                /^ *nummer = "/, ''
+            ).scan(/^[0-9π¾]*\./)[0]
+            if nummer_oud.eql?(nummer)
+            else
+                puts "Changing '#{nummer_oud}' to '#{nummer}' in #{filename}"
+                system %{
+                    sed -i '/nummer = "/s/".*"/"#{nummer}"/' \
+                        #{filename}
+                }
+            end
+        end
+    end
+    puts "---- Done updating file numbers ----"
+end
+Rake::Task["update_title_numbers"].invoke()
+
 # == The direct targets ==
 
 # Each lilypond PDF file depends on its ditto.ly file and its -source.ly
@@ -57,13 +96,12 @@ SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
         song_i.ext('ly'),
         song_i.lroot + '-source.ly'
     ] do
-        puts "--------"
-        puts "Making #{song_i}"
+        puts "---- Making #{song_i} ----"
         system %{
             lilypond --output #{song_i.gsub(/\.[a-z]*$/, '')} \
             #{song_i.ext('ly')}
         }
-        puts "Removing #{song_i.ext('ps')}"
+        puts "---- Removing #{song_i.ext('ps')} ----"
         system %{
             rm #{song_i.ext('ps')}
         }
@@ -79,8 +117,7 @@ SONGPDFS.select { |x| x =~ /^songs-lily/ }.each do |song_i|
             song_i.lroot + '-source.ly',
             midi_target.ext('ly')
         ] do
-            puts '----'
-            puts "Making " + midi_target
+            puts "---- Making " + midi_target + " ----"
             system %{
                 lilypond --output #{midi_target.gsub(/\.[a-z]*$/, '')} \
                 #{midi_target.ext('ly')}
@@ -91,21 +128,18 @@ end
 
 desc "Check existence of/compile all PDF files"
 task :pdfs => SONGPDFS do
-    puts '--------'
-    puts "Done making all PDF files"
+    puts "---- Done making all PDF files ----"
 end
 
 desc "Make all MIDI files"
 task :midis => SONGMIDIS do
-    puts '--------'
-    puts "Done making all MIDI files"
+    puts "---- Done making all MIDI files ----"
 end
 
 # Creating bundles.
 
 file 'output/kerst-2011-bladmuziek.pdf' => SONGPDFS do
-    puts '----'
-    puts 'Creating kerst-2011-bladmuziek.pdf'
+    puts "---- Creating kerst-2011-bladmuziek.pdf ----"
     system %{
         pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
             cat output output/kerst-2011-bladmuziek.pdf
@@ -118,8 +152,7 @@ task :bladmuziek_pdf => 'output/kerst-2011-bladmuziek.pdf' do end
 
 file 'output/kerst-2011-bladmuziek.zip' => SONGPDFS + 
     ['output/kerst-2011-bladmuziek.pdf'] do
-    puts '----'
-    puts 'Creating kerst-2011-bladmuziek.zip'
+    puts "---- Creating kerst-2011-bladmuziek.zip ----"
     system %{
         zip output/kerst-2011-bladmuziek.zip #{SONGPDFS.join(' ')} \
             output/kerst-2011-bladmuziek.pdf
@@ -139,8 +172,7 @@ VOICES.each do |voice_i|
     songmidis_of_voice_i = SONGMIDIS.select { |x| x =~ /#{voice_i}/ }
 
     file zipfile_voice_i => songmidis_of_voice_i do
-        puts '----'
-        puts "Creating #{zipfile_voice_i}"
+        puts "---- Creating #{zipfile_voice_i} ----"
         system %{
             zip #{zipfile_voice_i} #{songmidis_of_voice_i.join(' ')}
         }
@@ -153,7 +185,7 @@ VOICES.each do |voice_i|
     task :midizips => voice_i.to_sym do end
 end
 
-task :bundles => [:midizips :bladmuziek_zip]
+task :bundles => [:midizips, :bladmuziek_zip] do end
 
 task :test do
     #for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do

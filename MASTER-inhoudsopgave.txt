@@ -3,7 +3,7 @@
 02.: songs-scan/es_ist_ein/er_is_een-anon-oud.pdf
 02.: songs-scan/es_ist_ein/es_ist_ein-anon-oud.pdf
 03.: songs-lily/joy_to_the/joy_to_the-haendel-twostave.pdf
-04.: songs-scan/away_in_a/away_in_a-willcocks-oud.pdf
+04.: songs-lily/away_in_a/away_in_a-willcocks-fourstave.pdf
 05.: songs-scan/god_rest_you/god_rest_you-ep-oud.pdf
 06.: songs-lily/ich_steh_an/ich_steh_an-bach-fourstave.pdf
 07.: songs-scan/once_in_royal/once_in_royal-mann-oud.pdf

@@ -3,7 +3,7 @@
 
 \include "away_in_a-willcocks-source.ly"
 
-nummer = "13."
+nummer = "04."
 
 \header {
   title = \markup {\nummer "Away in a Manger"}
