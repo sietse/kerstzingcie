@@ -1,0 +1,146 @@
+# All the following methods manipulate a string of the form
+# 'dir/song-arranger-layout.ly'
+#
+VOICES = ['soprano', 'alto', 'tenor', 'bass', 'tutti']
+
+class String
+    # => 'dir/song-arranger'
+    # Used by the other methods.
+    def lroot
+        # => 'dir'
+        self.split('-')[0..-2].join('-')
+    end
+
+    def lsansext
+        # => dir/song-arranger-layout
+        # For lilypond's --output argument
+        self.gsub(/\.[a-z]*$/, '')
+    end
+
+    def lsource
+        # => 'dir/song-arranger-source.ly'
+        self.lroot + '-source.ly'
+    end
+
+    def lpdf
+        # => 'dir/song-arranger-layout.pdf'
+        self.ext('pdf')
+    end
+
+    def lmidis_ly
+        # => ['dir/song-arranger-midi-soprano.ly', ..., 'etc-bass.ly']
+        ['soprano', 'alto', 'tenor', 'bass'].map { |voice|
+            self.lroot + '-midi-' + voice + '.ly'
+        }
+    end
+
+    def lmidis_midi
+        # ['dir/song-arranger-midi-soprano.midi', ..., 'etc-bass.midi']
+        VOICES.map { |voice|
+            self.lroot + '-midi-' + voice + '.midi'
+        }
+    end
+end
+
+# MASTER-inhoudsopgave.txt contains the songs and their index numbers.
+# MASTER stores this as a hash: song => number
+tmp = []
+i = 0
+open('MASTER-inhoudsopgave.txt').each do |line| 
+    if not line =~ /^#/
+        line = line.gsub!(/\n/, '')
+        tmp << [line.split(': ')[1], line.split(': ')[0], i]
+        i += 1
+    end
+end
+MASTER = tmp
+
+LILYS_PDF = MASTER.transpose[0].select {|x| x =~ /^songs-lily/ }
+LILYS_LY = LILYS_PDF.map { |x| x.ext('ly') }
+MIDIS = LILYS_PDF.map { |song| song.lmidis_midi }.flatten
+
+# Make sure the song numbers are Oll Korrekt in each file
+# This task is *always* invoked --- it's only put in a task in case I
+# ever want to reuse it.
+#
+# FIXME doesn't change stuff?
+task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
+    puts "Updating file numbers"
+    # For each song ...
+    MASTER.each do |filename, nummer, position| # position not used
+
+        # ... that is a Lilypond song ...
+        filename = filename.ext('ly')
+        if (filename =~ /^songs-lily/) != nil
+
+            # ... see how the title is numbered ...
+            lilyfile = open(filename)
+            line = lilyfile.readline
+            while (line =~ /nummer = "/) == nil
+                line = lilyfile.readline
+            end
+            # ... and change that number if needed.
+            nummer_oud = line.gsub!(
+                /^ *nummer = "/, ''
+            ).scan(/^[0-9π¾]*\./)[0]
+            if nummer_oud.eql?(nummer)
+            else
+                puts "Changing '#{nummer_oud}' to '#{nummer}' in #{filename}"
+                system %{
+                    sed -i '/nummer = "/s/".*"/"#{nummer}"/' \
+                        #{filename}
+                }
+            end
+        end
+    end
+    puts "Done updating file numbers"
+end
+Rake::Task["update_title_numbers"].invoke()
+
+LILYS_LY.each do |master|
+    # Create the PDF dependencies.
+    file master.lpdf => [master, master.lsource()] do
+        system %{
+            lilypond --output #{master.lsansext()} #{master}
+            rm #{master.ext('ps')}
+        }
+    end
+    
+end
+
+# Create the midi dependencies.
+MIDIS.each do |midi| 
+    file midi => [midi.lsource(), midi.ext('ly')] do
+        system %{
+            lilypond --output #{midi_ly.lsansext()} #{midi_ly}
+        }
+    end
+end
+
+
+task :pdfs => LILYS_PDF do
+end
+
+for voice_i in VOICES do
+    midis_voice_i = MIDIS.select { |x| x =~ /-#{voice_i}.midi/ }
+    file %{output/kerst-midi-#{voice_i}-2011.zip} => midis_voice_i do
+        system ( 
+            'zip ' + "output/kerst-midi-#{voice_i}-2011.zip " + 
+            midis_voice_i.join(' ') 
+        )
+    end
+end
+
+
+file 'output/kerst-songbook-2011.pdf' => LILYS_PDF do
+    puts 'Creating kerst-songbook-2011.pdf'
+    system %{
+        pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
+            cat output output/kerst-songbook-2011.pdf
+    }
+end
+
+task :midis => LILYS_PDF.map { |x| x.lmidis_midi() }.flatten
+
+task :test do
+end

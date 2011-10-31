@@ -1,115 +1,108 @@
-# All the following methods manipulate a string of the form
-# 'dir/song-arranger-layout.ly'
+# == Constants and methods ==
+
+# A method to get the `'path/song-arranger'` root from a derived
+# filename.
+
 class String
-    # => 'dir/song-arranger'
+    # => 'path/song-arranger'
     # Used by the other methods.
     def lroot
-        # => 'dir'
-        self.split('-')[0..-2].join('-')
-    end
-
-    def lsansext
-        # => dir/song-arranger-layout
-        # For lilypond's --output argument
-        self.gsub(/\.[a-z]*$/, '')
-    end
-
-    def lsource
-        # => 'dir/song-arranger-source.ly'
-        self.lroot + '-source.ly'
-    end
-
-    def lpdf
-        # => 'dir/song-arranger-layout.pdf'
-        self.ext('pdf')
-    end
-
-    def lmidis_ly
-        # => ['dir/song-arranger-midi-soprano.ly', ..., 'etc-bass.ly']
-        ['soprano', 'alto', 'tenor', 'bass'].map { |voice|
-            self.lroot + '-midi-' + voice + '.ly'
-        }
-    end
-
-    def lmidis_midi
-        # ['dir/song-arranger-midi-soprano.midi', ..., 'etc-bass.midi']
-        ['soprano', 'alto', 'tenor', 'bass'].map { |voice|
-            self.lroot + '-midi-' + voice + '.midi'
-        }
+        path, filename = self.scan(/(.*\/)(.*)/)[0]
+        if filename.split('-').length != 3
+            puts "*** Error in '" + filename + "'" +
+                "\n*** Filename should be of the form" +
+                " 'song-arranger-layout.pdf'"
+        end
+        path + filename.split('-')[0,2].join('-')
     end
 end
 
 # MASTER-inhoudsopgave.txt contains the songs and their index numbers.
-# MASTER stores this as a hash: song => number
-tmp = {}
-open('MASTER-inhoudsopgave.txt').each { |line| 
+# MASTER stores this as an array of triples
+# [song_pdf, number, position]
+
+tmp = []
+open('MASTER-inhoudsopgave.txt').each_with_index do |line, i| 
     if not line =~ /^#/
         line = line.gsub!(/\n/, '')
-        tmp[line.split(': ')[1]] = line.split(': ')[0]
-    end
-}
-MASTER = tmp
-
-LILYS_PDF = MASTER.keys.select {|x| x =~ /^songs-lily/ }
-LILYS_LY = LILYS_PDF.map { |x| x.ext('ly') }
-
-# Make sure the song numbers are Oll Korrekt in each file
-# This task is *always* invoked --- it's only put in a task in case I
-# ever want to reuse it.
-task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
-    MASTER.each do |filename, nummer|
-        # For each Lilypond song ...
-        filename = filename.ext('ly')
-        if (filename =~ /^songs-lily/) != nil
-            # ... see how the title is numbered ...
-            lilyfile = open(filename)
-            line = lilyfile.readline
-            while (line =~ /nummer = "/) == nil
-                line = lilyfile.readline
-            end
-            # ... and change that number if needed.
-            line.gsub!(/^ *nummer = "/, '')
-            if line.scan(/^[0-9π¾]*\./)[0].eql?(nummer)
-                puts "nochangery"
-            else
-                puts "changery"
-                system %{
-                    sed -i '/nummer = "/s/".*"/"#{nummer}"/' \
-                        #{filename}
-                }
-            end
-        end
+        tmp << [line.split(': ')[1], line.split(': ')[0], i]
     end
 end
-Rake::Task["update_title_numbers"].invoke()
+MASTER = tmp
 
-LILYS_LY.each do |master|
-    # Create the PDF dependencies.
-    file master.lpdf => [master, master.lsource()] do
+# SONGPDFS is an array of the PDF targets --- basically the first column
+# of the MASTER array.
+
+SONGPDFS = MASTER.transpose[0]
+
+# SONGMIDIS is a 1D array with five midis for each lilypond song: 
+# 'path/song-arr-midi-soprano.midi' ... 'path/song-arr-midi-tutti.midi'
+
+VOICES = ['soprano', 'alto', 'tenor', 'bass', 'tutti']
+tmp = []
+SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
+    VOICES.each do |voice_i| 
+        tmp << song_i.lroot + '-midi-' + voice_i + '.midi'
+    end
+end
+
+SONGMIDIS = tmp
+
+# == The direct targets ==
+
+# Each lilypond PDF file depends on its ditto.ly file and its -source.ly
+# file.
+SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
+    file song_i => [
+        song_i.ext('ly'),
+        song_i.lroot + '-source.ly'
+    ] do
+        puts "--------"
+        puts "Making #{song_i}"
         system %{
-            lilypond --output #{master.lsansext()} #{master}
-            rm #{master.ext('ps')}
+            lilypond --output #{song_i.gsub(/\.[a-z]*$/, '')} \
+            #{song_i.ext('ly')}
+        }
+        puts "Removing #{song_i.ext('ps')}"
+        system %{
+            rm #{song_i.ext('ps')}
         }
     end
-    
-    # Create the midi dependencies.
-    ly_midi = master.lmidis_ly.zip(master.lmidis_midi)
-    ly_midi.each do |midi_ly, midi_midi|
-        file midi_midi => [master.lsource(), midi_ly] do
+end
+
+# Each lilypond midi file depends on its -source file and its -source.ly
+# file.
+SONGPDFS.select { |x| x =~ /^songs-lily/ }.each do |song_i|
+    VOICES.each do |voice_i|
+        midi_target = song_i.lroot + '-midi-' + voice_i + '.midi'
+        file midi_target => [
+            song_i.lroot + '-source.ly',
+            midi_target.ext('ly')
+        ] do
+            puts '----'
+            puts "Making " + midi_target
             system %{
-                lilypond --output #{midi_ly.lsansext()} #{midi_ly}
+                lilypond --output #{midi_target.gsub(/\.[a-z]*$/, '')} \
+                #{midi_target.ext('ly')}
             }
         end
     end
 end
 
-task :pdfs => LILYS_PDF
-
-task 'output/kerst-songbook-2011.pdf' => LILYS_PDF do
+desc "Check existence of/compile all PDF files"
+task :pdfs => SONGPDFS do
+    puts '--------'
+    puts "Done making all PDF files"
 end
 
-task :midis => LILYS_PDF.map { |x| x.lmidis_midi() }.flatten
+desc "Make all MIDI files"
+task :midis => SONGMIDIS do
+    puts '--------'
+    puts "Done making all MIDI files"
+end
 
-task :test => [:update_title_numbers] do
-    puts 'hi'
+task :test do
+    #for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do
+        #puts song_i.lroot + '-source.ly'
+    #end
 end
