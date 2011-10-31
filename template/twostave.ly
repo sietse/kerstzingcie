@@ -3,8 +3,10 @@
 
 \include "FIXME-source.ly"
 
+nummer = "13."
+
 \header {
-  title = 
+  title = \markup {\nummer ""}
   arranger = 
   tagline =  \markup { \center-column {
     "Versie 2011-09-07"
@@ -34,11 +36,6 @@
       \new Voice = "vBass" { \voiceTwo \bass }
     >>
   >>
-  \midi {
-    \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 120 4 )
-    }
-  }
   \layout { 
     % We can haz ambitus to display pitch range?
     \context { \Voice 
