@@ -19,7 +19,7 @@
 14.: songs-scan/white_christmas/white_christmas-anon1-oud.pdf
 15.: songs-scan/on_christmas_night/on_christmas_night-williams-oud.pdf
 16.: songs-scan/entre_le_boeuf/entre_le_boeuf-wakelkamp.pdf
-17.: songs-scan/deck_the_halls/deck_the_halls-anon1-oud.pdf
+17.: songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
 18.: songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
 19.: songs-scan/hoor_de_englen/hark_the_herald-anon1-oud.pdf
 19.: songs-scan/hoor_de_englen/hoor_de_englen-anon1-oud.pdf
