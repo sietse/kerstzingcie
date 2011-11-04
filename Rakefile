@@ -89,8 +89,8 @@ Rake::Task["update_title_numbers"].invoke()
 
 # == The direct targets ==
 
-# Each lilypond PDF file depends on its ditto.ly file and its -source.ly
-# file.
+# Each song-arr-layout.pdf depends on 
+# song-arr-layout.ly and song-arr-source.ly
 SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
     file song_i => [
         song_i.ext('ly'),
@@ -117,7 +117,7 @@ SONGPDFS.select { |x| x =~ /^songs-lily/ }.each do |song_i|
             song_i.lroot + '-source.ly',
             midi_target.ext('ly')
         ] do
-            puts "---- Making " + midi_target + " ----"
+            puts "---- Making #{midi_target} ----"
             system %{
                 lilypond --output #{midi_target.gsub(/\.[a-z]*$/, '')} \
                 #{midi_target.ext('ly')}
@@ -138,29 +138,34 @@ end
 
 # Creating bundles.
 
-file 'output/kerst-2011-bladmuziek.pdf' => SONGPDFS do
+file 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' => SONGPDFS do
     puts "---- Creating kerst-2011-bladmuziek.pdf ----"
     system %{
         pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
-            cat output output/kerst-2011-bladmuziek.pdf
+            cat output kerstsite/muziek/kerst-2011-bladmuziek.pdf
     }
     puts '---- Done creating kerst-2011-bladmuziek.pdf ----'
 end
 
 desc "PDF met alle liedjes op volgorde"
-task :bladmuziek_pdf => 'output/kerst-2011-bladmuziek.pdf' do end
+task :bladmuziek_pdf => 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' do end
 
-file 'output/kerst-2011-bladmuziek.zip' => SONGPDFS + 
-    ['output/kerst-2011-bladmuziek.pdf'] do
-    puts "---- Creating kerst-2011-bladmuziek.zip ----"
+file 'kerstsite/muziek/kerst-2011-bladmuziek.zip' => SONGPDFS + 
+    ['kerstsite/muziek/kerst-2011-bladmuziek.pdf'] do
+    puts "---- Removing old bladmuziek zipfile ----"
     system %{
-        zip output/kerst-2011-bladmuziek.zip #{SONGPDFS.join(' ')} \
-            output/kerst-2011-bladmuziek.pdf
+        rm kerstsite/muziek/kerst-2011-bladmuziek.zip
     }
-    puts '---- Done creating kerst-2011-bladmuziek.zip ----'
+    puts "---- Creating bladmuziek zipfile ----"
+    system %{
+        zip --junk-paths \
+            kerstsite/muziek/kerst-2011-bladmuziek.zip #{SONGPDFS.join(' ')} \
+            kerstsite/muziek/kerst-2011-bladmuziek.pdf
+    }
+    puts '---- Done creating bladmuziek zip ----'
 end
 desc "Zipje van alle pdfs"
-task :bladmuziek_zip => 'output/kerst-2011-bladmuziek.zip' do end
+task :bladmuziek_zip => 'kerstsite/muziek/kerst-2011-bladmuziek.zip' do end
 
 desc "Alle midi zips"
 task :midizips do 
@@ -168,13 +173,18 @@ task :midizips do
 end
 
 VOICES.each do |voice_i|
-    zipfile_voice_i = "output/kerst-2011-midis-#{voice_i}.zip"
+    zipfile_voice_i = "kerstsite/muziek/kerst-2011-midis-#{voice_i}.zip"
     songmidis_of_voice_i = SONGMIDIS.select { |x| x =~ /#{voice_i}/ }
 
     file zipfile_voice_i => songmidis_of_voice_i do
-        puts "---- Creating #{zipfile_voice_i} ----"
+        puts "---- Deleting old #{voice_i} midi zipfile ----"
         system %{
-            zip #{zipfile_voice_i} #{songmidis_of_voice_i.join(' ')}
+            rm #{zipfile_voice_i}
+        }
+        puts "---- Creating #{voice_i} midi zipfile ----"
+        system %{
+            zip --junk-paths \
+            #{zipfile_voice_i} #{songmidis_of_voice_i.join(' ')}
         }
         puts "---- Done creating #{zipfile_voice_i} ----"
     end
@@ -185,8 +195,10 @@ VOICES.each do |voice_i|
     task :midizips => voice_i.to_sym do end
 end
 
-task :bundles => [:midizips, :bladmuziek_zip] do end
+desc "Make all songs and bundles"
+task :all => [:midizips, :bladmuziek_zip] do end
 
+desc "Test task. Currently does nothing."
 task :test do
     #for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do
         #puts song_i.lroot + '-source.ly'
