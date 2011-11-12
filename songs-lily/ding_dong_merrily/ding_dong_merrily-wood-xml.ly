@@ -48,10 +48,15 @@ PartPOneVoiceOne =  \relative bes' {
         bes2 bes2 }
     }
 
-PartPOneVoiceOneLyricsOne =  \lyricmode { Ding -- dong mer -- ly high,
-    in "heav'n" the bells are ring -- ing, Ding -- dong ve -- ly sky is
-    rent with an -- gels sing -- ing. Glo -- \skip4 a, Ho -- san -- na
-    in ex -- cel -- sis. -- }
+PartPOneVoiceOneLyricsOne =  \lyricmode { 
+  Ding -- dong mer -- ri -- ly on high,
+  in heav’n the bells are ring -- ing, 
+  Ding -- dong ve -- ri -- ly the sky 
+  is rent with an -- gels sing -- ing. 
+  \set associatedVoice = #"alto"
+  Glo __ -- ri -- a, Ho -- san -- na
+  in ex -- cel -- sis. -- 
+}
 PartPOneVoiceTwo =  \relative f' {
     \clef "treble" \key bes \major \numericTimeSignature\time 4/4 f4 f4
     g8 [ g8 ] es8 [ es8 ] | % 2
