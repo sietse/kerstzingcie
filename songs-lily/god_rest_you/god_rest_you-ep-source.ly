@@ -130,7 +130,7 @@ verseTwo = \lyricmode {
   this bles -- sed babe was born, 
   and laid with -- in a man -- ger 
   up -- on this bles -- sed morn, 
-  the which his mo -- ther Ma __ -- _ ry 
+  the which his mo -- ther "Ma     " -- _ ry 
   no -- thing did take in scorn;
 }
 

@@ -179,11 +179,11 @@ tenor = \relative d' {
   g4 c4 a4 | % 24
   bes2 f4 | % 25
   bes4 bes4 d4 | % 26
-  c4 ( f4 ) c4 | % 27
+  c4( f4) c4 | % 27
   d8([ e8)] f4 e4 | % 28
   c2 f4 | \barNumberCheck #29
-  d4 ( f2 | % 30
-  c4 ) a4 bes4 | % 31
+  d4\( f2 | % 30
+  c4\) a4 bes4 | % 31
   bes4 g'4 f4 | % 32
   f2 f,8. [ f16 ] | % 33
   bes8 ( [ d8 ) ] f8 ( [ es8 ) ] d8 [ c8 ] | % 34
@@ -408,7 +408,7 @@ verseOneTenor = \lyricmode {
 
   Good ti -- dings we bring 
   to you and your kin; 
-  We wish __ you a hap -- py New Year. 
+  We wi -- i -- ish you a hap -- py New Year. 
 
   For we all like fig -- gy pud -- ding,
   for we all like fig -- gy pud -- ding,

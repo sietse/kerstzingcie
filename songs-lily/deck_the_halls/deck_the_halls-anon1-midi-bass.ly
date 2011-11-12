@@ -7,13 +7,14 @@
     \new Voice = "vSoprano" { \set midiInstrument = #"glockenspiel" \soprano }
     \new Voice = "vAlto" { \set midiInstrument = #"glockenspiel" \alto }
     \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" \tenor }
-    \new Voice = "vBass" { \set midiInstrument = #"cello" \bass }
+    \new Voice = "vBass" { \set midiInstrument = #"cello" \keepWithTag #'midi \bass }
   >>
   \midi {
     \context { \Staff \remove "Staff_performer" }
     \context { \Voice 
       \consists "Staff_performer" 
     }
-    \context { \Score tempoWholesPerMinute = #(ly:make-moment 120 4) }
+    % 116 4. = 116 3*8 = 348 8
+    \context { \Score tempoWholesPerMinute = #(ly:make-moment 348 8) }
   }
 }

@@ -5,7 +5,8 @@
 soprano = {
   \autoBeamOff
   \clef "treble" \key f \major \time 4/4 | % 1
-  \tempo 2=116 
+  \tag #'score { \tempo 2=116 }
+  \tag #'midi { \tempo 4.=116 }
   c''4. bes'8 a'4 g'4 | % 2
   f'4 g'4 a'4 f'4 | % 3
   g'8 a'8 bes'8 g'8 a'4. g'8 | % 4
@@ -20,14 +21,13 @@ soprano = {
   e''4 d''4 c''2 | % 13
   c''4. bes'8 a'4 g'4 | % 14
   f'4 g'4 a'4 f'4 | % 15
-  bes'8 f''8 d''8 bes'8 a'4. g'8 | % 16
+  <g' bes'>8 <d'' f''>8 <bes' d''>8 <g' bes'>8 a'4. g'8 | % 16
   f'4 e'4 f'2 \bar "|."
 }
 
 alto = {
   \autoBeamOff
   \clef "treble" \key f \major \time 4/4 | % 1
-  \tempo 2=116 
   a'4. g'8 f'4 e'4 | % 2
   f'4 e'4 f'4 f'4 | % 3
   d'8 d'8 d'8 d'8 f'4. d'8 | % 4
