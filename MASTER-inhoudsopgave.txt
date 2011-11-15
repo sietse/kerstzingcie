@@ -1,7 +1,7 @@
 # nummer: pad/naar/bestand.pdf
 01.: songs-lily/rudolph_the_red/rudolph_the_red-rondel-threestave.pdf
-02.: songs-scan/es_ist_ein/er_is_een-anon-oud.pdf
-02.: songs-scan/es_ist_ein/es_ist_ein-anon-oud.pdf
+02.: songs-lily/es_ist_ein/er_is_een-anon1-twostave.pdf
+02.: songs-lily/es_ist_ein/es_ist_ein-anon1-twostave.pdf
 03.: songs-lily/joy_to_the/joy_to_the-haendel-twostave.pdf
 04.: songs-lily/away_in_a/away_in_a-willcocks-fourstave.pdf
 05.: songs-lily/god_rest_you/god_rest_you-ep-twostave.pdf
