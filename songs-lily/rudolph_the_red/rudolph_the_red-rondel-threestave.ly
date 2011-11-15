@@ -8,7 +8,7 @@ nummer = "01."
 \header {
   title = \markup { \nummer "Rudolph the Red-Nosed Reindeer" }
   composer = "Jonny Marks" 
-  arranger = "Arr. M. Rondel"
+  arranger = "Arranged by M. Rondel"
   tagline =  \markup { \center-column {
     "Versie 2011-09-30"
     "Collegium Musicum Kerstzingcie 2011"

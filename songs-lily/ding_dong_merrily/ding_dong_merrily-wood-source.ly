@@ -53,7 +53,7 @@ alto = \relative f' {
 }
 
 tenor = \relative d' {
-  \clef "bass" 
+  \clef "treble_8" 
   \key bes \major 
   \numericTimeSignature\time 4/4 
   d4 bes4 g8 [ g8 ] c8 [ bes8 ] | % 1
@@ -108,14 +108,14 @@ verseOne = \lyricmode {
 verseTwo = \lyricmode {
   Now on earth be -- low be -- low,
   the stee -- ple bells are ring -- ing,
-  and i -- o, i -- o, i --o, 
+  And i -- o, i -- o, i -- o, 
   are priest and peo -- ple sing -- ing.
 }
 
 verseThree = \lyricmode {
   May -- you  du -- ti -- ful -- ly prime
   your ma -- tin chime, you ring -- ers,
-  may you beau -- ti -- ful -- ly rhyme
+  May you beau -- ti -- ful -- ly rhyme
   your e -- ven -- song, you sing -- ers.
 }
 
@@ -123,7 +123,7 @@ verseTwoSoprano = {
   \verseTwo
   \lyricmode {
     % \set associatedVoice = #"alto" % for ri
-    Glo -- ri -- a, Ho -- san -- na
+    Glo -- ri -- a, ho -- san -- na
     in ex -- cel -- sis.
   }
 }
@@ -131,7 +131,7 @@ verseTwoSoprano = {
 verseTwoOther = {
   \verseTwo
   \lyricmode {
-    Glo -- o -- o -- ri -- a, Ho -- san -- na
+    Glo -- o -- o -- ri -- a, ho -- san -- na
     in ex -- cel -- sis.
   }
 }

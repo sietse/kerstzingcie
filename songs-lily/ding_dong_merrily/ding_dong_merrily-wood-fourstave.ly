@@ -8,7 +8,7 @@ nummer = "08."
 \header {
   title = \markup {\nummer "" Ding, Dong, Merrily on High}
   composer = "16th-century French dance tune"
-  arranger = "Arr. Charles Wood"
+  arranger = "Arranged by Charles Wood"
   tagline =  \markup { \center-column {
     "Versie 2011-11-12"
     "Collegium Musicum Kerstzingcie 2011"
@@ -32,9 +32,6 @@ nummer = "08."
     \new Staff = "sAlto" << 
       \new Voice = "vAlto" { \alto }
     >>
-    \new Lyrics \lyricsto "vAlto" \verseOne
-    \new Lyrics \lyricsto "vAlto" \verseTwoOther
-    \new Lyrics \lyricsto "vAlto" \verseThree
 
     \new Staff = "sTenor" << 
       \new Voice = "vTenor" { \tenor }
@@ -46,9 +43,6 @@ nummer = "08."
     \new Staff = "sBass" << 
       \new Voice = "vBass" { \bass }
     >>
-    \new Lyrics \lyricsto "vBass" \verseOne
-    \new Lyrics \lyricsto "vBass" \verseTwoOther
-    \new Lyrics \lyricsto "vBass" \verseThree
   >>
   \layout { 
     % We can haz ambitus to display pitch range?
@@ -56,9 +50,11 @@ nummer = "08."
       \consists "Ambitus_engraver"
     }
     % space-saving tweaks
+    %{
     \context { \Staff
       \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
     }
+    %}
     \context { \Lyrics
       \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
     }

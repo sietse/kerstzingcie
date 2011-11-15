@@ -8,7 +8,7 @@ nummer = "22."
 \header {
   title = \markup { \nummer "O Dennenboom" }
   composer = "Ernst Anschütz (1824)"
-  arranger = "Arr. Bernard Dewagtere"
+  arranger = "Arranged by Bernard Dewagtere"
   tagline =  \markup { \center-column {
     "Versie 2011-10-17"
     "Collegium Musicum Kerstzingcie 2011"

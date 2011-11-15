@@ -110,24 +110,31 @@ verseOne = \lyricmode {
   \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 
-  \markup{\dynamic f \bold{1.} O} sis -- ters too, How may we do For to pre
-  -- serve this day this poor young -- ling, __ For whom do sing,
-  By by, lul -- ly lul -- lay? 
+  \markup{\dynamic f \bold{1.} O} sis -- ters too, 
+  How may we do for to pre -- serve this day 
+  this poor young -- ling, __ 
+  for whom do sing,
+  by, by, lul -- ly lul -- lay? 
 }
 verseTwo = \lyricmode {
-  \markup{\dynamic pp Lul} -- ly, lul -- la, thou lit
-  -- tle ti -- ny child, By by, lul -- ly lul -- lay. 
-  \markup{\dynamic p \bold {2.} He} -- rod,
-  the king, In his rag -- ing, Char -- ged he hath this day. His men
-  of might, __ In his __ own sight, All young chil -- dren to
-  slay. 
+  \markup{\dynamic pp Lul} -- ly, lul -- la, 
+  thou lit -- tle ti -- ny child, 
+  by, by, lul -- ly lul -- lay. 
+  \markup{\dynamic p \bold {2.} He} -- rod, the king, 
+  in his rag -- ing, 
+  char -- ged he hath this day 
+  his men of might, __ in his __ own sight, 
+  all young chil -- dren to slay. 
 }
 
 verseThree = \lyricmode {
   \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 
-  \markup{\dynamic pp \bold{3.} That} woe is me, poor child for thee! And ev
-  -- er morn and day. For thy part -- ing, then say __ nor sing, By
-  by, lul -- ly lul -- lay! 
+  \markup{\dynamic pp \bold{3.} That} woe is me, 
+  poor child for thee! 
+  and ev -- er morn and day 
+  for thy part -- ing, 
+  then say __ nor sing, 
+  by, by, lul -- ly lul -- lay! 
 }

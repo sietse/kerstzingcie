@@ -104,7 +104,7 @@ verseOne = {
   \set stanza = \markup { \dynamic "pp" "1. " }
   \lyricmode {
     A -- way in a __ man -- ger, 
-    no__ crib for a bed, The __ 
+    no__ crib for a bed, the __ 
 
     lit -- tle Lord Je -- sus laid __ 
     down his sweet head. The 
@@ -121,7 +121,7 @@ verseTwo = {
   \set stanza = \markup { \dynamic "p" "2. " }
   \lyricmode {  
     The cat -- tle are __ low -- ing, the __ 
-    ba -- by a -- wakes, But __ 
+    ba -- by a -- wakes, but __ 
 
     lit -- tle Lord Je -- sus no __ 
     cry -- ing he makes. I 

@@ -8,7 +8,7 @@ nummer = "07."
 \header {
   title = \markup {\nummer "Once in Royal David’s City"}
   poet = "Words by C.F. Alexander"
-  arranger = "Arr. A.H. Mann"
+  arranger = "Arranged by A.H. Mann"
   tagline =  \markup { \center-column {
     "Versie 2011-11-12"
     "Collegium Musicum Kerstzingcie 2011"

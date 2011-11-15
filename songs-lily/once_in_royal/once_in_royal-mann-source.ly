@@ -37,7 +37,10 @@ alto = \relative d' {
   e8[ fis8] g8[ a8] | % 6
   d,4 d4 e4 fis4 | % 7
   g4( fis4) e8[ fis8] g8[ a8] | % 8
-  d,8[ fis8 g8] g8 e4 d4 | % 9
+  % If melisma is created by manual beams rather than a slur, 
+  % the lyric is placed under the first note only.
+  \once \override Slur #'transparent = ##t
+  d,8[( fis8 g8]) g8 e4 d4 | % 9
   d4 ~ d4 \bar "|."
 }
 
@@ -81,7 +84,7 @@ verseOne = \lyricmode {
   \set stanza = #"1. "
   Once in roy -- al Da -- vid’s ci -- ty 
   stood a low -- ly cat -- tle shed, 
-  Ma -- ry was that mo -- ther mild,
+  Ma -- ry was that mo -- ther mild, __
   Je -- sus Christ __ her lit -- tle child.
 }
 
@@ -117,7 +120,7 @@ verseFour = \lyricmode {
     \set ignoreMelismata = ##t 
       sad -- ness,
     \unset ignoreMelismata
-  and he sha -- reth in our 
+  and he sha __ -reth in our 
     \set ignoreMelismata = ##t 
       glad -- ness.
     \unset ignoreMelismata
@@ -132,7 +135,7 @@ verseFive = \lyricmode {
   \set stanza = #"5. "
   And our eyes at last shall see him,
   through his own re -- deem -- ing love
-  and he leads his chil -- dren on
+  and he leads his chil -- dren on __
   to the place __ where he is gone.
 }
 

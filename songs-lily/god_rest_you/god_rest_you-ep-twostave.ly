@@ -8,7 +8,7 @@ nummer = "05."
 \header {
   title = \markup {\nummer "God Rest You Merry, Gentlemen"}
   composer = "English traditional carol tune"
-  arranger = "Arr. E.P."
+  arranger = "Arranged by E.P."
   tagline =  \markup { \center-column {
     "Versie 2011-11-02"
     "Collegium Musicum Kerstzingcie 2011"

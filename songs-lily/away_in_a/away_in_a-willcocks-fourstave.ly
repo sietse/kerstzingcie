@@ -8,7 +8,7 @@ nummer = "04."
 \header {
   title = \markup {\nummer "Away in a Manger"}
   composer = "W.J. Kirkpatrick (1838-1921)"
-  arranger = "Arr. David Willcocks"
+  arranger = "Arranged by David Willcocks"
   tagline = \markup { \center-column {
     "Versie 2011-10-31"
     "Collegium Musicum Kerstzingcie 2011"
