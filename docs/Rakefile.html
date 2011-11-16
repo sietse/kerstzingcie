@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Rakefile.rb</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>Rakefile.rb</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-0'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-0">#</a>
+        </div>
+        <h2>Constants and methods</h2>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-1'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-1">#</a>
+        </div>
+        <p>(1) Create a method to get the <code>'path/song-arranger'</code> root from a derived
+filename. From this you can make <code>'path/song-arranger-source.ly'</code>,
+<code>'path/song-arranger-midi-tenor.midi'</code>, etc.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="k">class</span> <span class="nc">String</span>
+    <span class="k">def</span> <span class="nf">lroot</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(.*\/)(.*)/</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">3</span>
+            <span class="nb">puts</span> <span class="s2">&quot;*** Error in &#39;&quot;</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*** Filename should be of the form&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot; &#39;song-arranger-layout.pdf&#39;&quot;</span>
+        <span class="k">end</span>
+        <span class="n">path</span> <span class="o">+</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">].</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-2'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-2">#</a>
+        </div>
+        <p>(2) The file <code>MASTER-inhoudsopgave.txt</code> contains the songs and their index
+numbers. The variable <code>MASTER</code> stores this as an array of triples
+<code>[song_pdf, number, position]</code>.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="n">tmp</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="nb">open</span><span class="p">(</span><span class="s1">&#39;MASTER-inhoudsopgave.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> 
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/^#/</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/\n/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="o">[</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">i</span><span class="o">]</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="no">MASTER</span> <span class="o">=</span> <span class="n">tmp</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-3'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <hr />
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-4'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-4">#</a>
+        </div>
+        <h2>Making the PDFS</h2>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-5'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-5">#</a>
+        </div>
+        <ol>
+<li>Transfer the correct title numbers from <code>MASTER</code> to the
+   <code>layout.ly</code> files.</li>
+<li>The PDFs in songs-scan need no rule; the PDFs in <code>songs-lily</code> do.</li>
+<li>Concatenate the PDFs with pdftk to make a songbook file.</li>
+<li>Zip 'em up.</li>
+</ol>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-6'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-6">#</a>
+        </div>
+        <p><code>SONGPDFS</code> is an array of the PDF targets --- basically the first
+column of the MASTER array.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="no">SONGPDFS</span> <span class="o">=</span> <span class="no">MASTER</span><span class="o">.</span><span class="n">transpose</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-7'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-7">#</a>
+        </div>
+        <h3>1. Insert song numbers</h3>
+<p>Make sure the song numbers are Oll Korrekt in each file. This task is
+<em>always</em> invoked --- one could also simply not wrap it in a task, but
+that somehow feels dirty. </p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="n">task</span> <span class="ss">:update_title_numbers</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;MASTER-inhoudsopgave.txt&#39;</span><span class="o">]</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Updating file numbers ----&quot;</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-8'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-8">#</a>
+        </div>
+        <p>For each song ...</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre>    <span class="no">MASTER</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">filename</span><span class="p">,</span> <span class="n">nummer</span><span class="p">,</span> <span class="n">position</span><span class="o">|</span> <span class="c1"># position not used</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-9'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-9">#</a>
+        </div>
+        <p>... that is a Lilypond song ...</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre>        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ly&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">filename</span> <span class="o">=~</span> <span class="sr">/^songs-lily/</span><span class="p">)</span> <span class="o">!=</span> <span class="kp">nil</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-10'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-10">#</a>
+        </div>
+        <p>... see how the title is numbered ...</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre>            <span class="n">lilyfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">lilyfile</span><span class="o">.</span><span class="n">readline</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">line</span> <span class="o">=~</span> <span class="sr">/nummer = &quot;/</span><span class="p">)</span> <span class="o">==</span> <span class="kp">nil</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">lilyfile</span><span class="o">.</span><span class="n">readline</span>
+            <span class="k">end</span>
+            <span class="n">nummer_oud</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr"></span>
+<span class="sr">                /^ *nummer = &quot;/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/^[0-9ÏÂ¾]*\./</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-11'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-11">#</a>
+        </div>
+        <p>... and change that number if needed.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre>            <span class="k">if</span> <span class="n">nummer_oud</span><span class="o">.</span><span class="n">eql?</span><span class="p">(</span><span class="n">nummer</span><span class="p">)</span>
+            <span class="k">else</span>
+                <span class="nb">puts</span> <span class="s2">&quot;Changing &#39;</span><span class="si">#{</span><span class="n">nummer_oud</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">#{</span><span class="n">nummer</span><span class="si">}</span><span class="s2">&#39; &quot;</span> <span class="o">+</span>
+                    <span class="s2">&quot;in </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">                    sed -i &#39;/nummer = &quot;/s/&quot;.*&quot;/&quot;</span><span class="si">#{</span><span class="n">nummer</span><span class="si">}</span><span class="sx">&quot;/&#39; </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">                }</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Done updating file numbers ----&quot;</span>
+<span class="k">end</span>
+<span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="s2">&quot;update_title_numbers&quot;</span><span class="o">].</span><span class="n">invoke</span><span class="p">()</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-12'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-12">#</a>
+        </div>
+        <h3>2. The PDF rules</h3>
+<p>Each <code>song-arr-layout.pdf</code> depends on 
+<code>song-arr-layout.ly</code> and <code>song-arr-source.ly</code></p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="no">SONGPDFS</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">=~</span> <span class="sr">/^songs-lily/</span> <span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">song_i</span><span class="o">|</span>
+    <span class="n">file</span> <span class="n">song_i</span> <span class="o">=&gt;</span> <span class="o">[</span>
+        <span class="n">song_i</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ly&#39;</span><span class="p">),</span>
+        <span class="n">song_i</span><span class="o">.</span><span class="n">lroot</span> <span class="o">+</span> <span class="s1">&#39;-source.ly&#39;</span>
+    <span class="o">]</span> <span class="k">do</span>
+        <span class="nb">puts</span> <span class="s2">&quot;---- Making </span><span class="si">#{</span><span class="n">song_i</span><span class="si">}</span><span class="s2"> ----&quot;</span>
+        <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">            lilypond --output </span><span class="si">#{</span><span class="n">song_i</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\.[a-z]*$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"> </span><span class="si">#{</span><span class="n">song_i</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ly&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">        }</span>
+        <span class="nb">puts</span> <span class="s2">&quot;---- Removing </span><span class="si">#{</span><span class="n">song_i</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> ----&quot;</span>
+        <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">            rm </span><span class="si">#{</span><span class="n">song_i</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">        }</span>
+    <span class="k">end</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-13'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-13">#</a>
+        </div>
+        <h3>3. The songbook PDF</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="n">file</span> <span class="s1">&#39;kerstsite/muziek/kerst-2011-bladmuziek.pdf&#39;</span> <span class="o">=&gt;</span> <span class="no">SONGPDFS</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Creating kerst-2011-bladmuziek.pdf ----&quot;</span>
+    <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">        pdftk </span><span class="si">#{</span><span class="no">MASTER</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="si">}</span><span class="sx">.transpose[0].join(&#39; &#39;)}</span> <span class="p">\</span>
+            <span class="n">cat</span> <span class="n">output</span> <span class="n">kerstsite</span><span class="o">/</span><span class="n">muziek</span><span class="o">/</span><span class="n">kerst</span><span class="o">-</span><span class="mi">2011</span><span class="o">-</span><span class="n">bladmuziek</span><span class="o">.</span><span class="n">pdf</span>
+    <span class="p">}</span>
+    <span class="nb">puts</span> <span class="s1">&#39;---- Done creating kerst-2011-bladmuziek.pdf ----&#39;</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-14'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-14">#</a>
+        </div>
+        <h3>4. Zip the PDFs.</h3>
+<p>Straightforward. Main note: <code>zip</code> only updates archives additively,
+but we sometimes remove songs, so we have to build the zipfile 
+afresh each time.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="n">file</span> <span class="s1">&#39;kerstsite/muziek/kerst-2011-bladmuziek.zip&#39;</span> <span class="o">=&gt;</span> <span class="no">SONGPDFS</span> <span class="o">+</span> 
+    <span class="o">[</span><span class="s1">&#39;kerstsite/muziek/kerst-2011-bladmuziek.pdf&#39;</span><span class="o">]</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Removing old bladmuziek zipfile ----&quot;</span>
+    <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">        rm kerstsite/muziek/kerst-2011-bladmuziek.zip</span>
+<span class="sx">    }</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Creating bladmuziek zipfile ----&quot;</span>
+    <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">        zip --junk-paths \</span>
+<span class="sx">            kerstsite/muziek/kerst-2011-bladmuziek.zip </span><span class="si">#{</span><span class="no">SONGPDFS</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"> \</span>
+<span class="sx">            kerstsite/muziek/kerst-2011-bladmuziek.pdf</span>
+<span class="sx">    }</span>
+    <span class="nb">puts</span> <span class="s1">&#39;---- Done creating bladmuziek zip ----&#39;</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-15'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-15">#</a>
+        </div>
+        <hr />
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-16'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-16">#</a>
+        </div>
+        <h2>Making the MIDI files</h2>
+<ol>
+<li>Compose <code>SONGMIDIS</code>, a list of the MIDI filenames we will be making.</li>
+<li>Tell Rake how to compile each of those MIDIs.</li>
+<li>For each voice, create a zipfile of those midis.</li>
+</ol>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-17'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-17">#</a>
+        </div>
+        <h3>1. Compose a list of MIDI filenames</h3>
+<p><code>SONGMIDIS</code> is a 1D array with five midis for each lilypond song:
+'path/song-arr-midi-soprano.midi' ... 'path/song-arr-midi-tutti.midi'</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="no">VOICES</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;soprano&#39;</span><span class="p">,</span> <span class="s1">&#39;alto&#39;</span><span class="p">,</span> <span class="s1">&#39;tenor&#39;</span><span class="p">,</span> <span class="s1">&#39;bass&#39;</span><span class="p">,</span> <span class="s1">&#39;tutti&#39;</span><span class="o">]</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="no">SONGPDFS</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">=~</span> <span class="sr">/^songs-lily/</span> <span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">song_i</span><span class="o">|</span>
+    <span class="no">VOICES</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">voice_i</span><span class="o">|</span> 
+        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">song_i</span><span class="o">.</span><span class="n">lroot</span> <span class="o">+</span> <span class="s1">&#39;-midi-&#39;</span> <span class="o">+</span> <span class="n">voice_i</span> <span class="o">+</span> <span class="s1">&#39;.midi&#39;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">SONGMIDIS</span> <span class="o">=</span> <span class="n">tmp</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-18'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-18">#</a>
+        </div>
+        <h3>2. A rule for each MIDI file ###</h3>
+<p>Each <code>song-arr-midi-voice.midi</code> depends on <code>song-arr-midi-voice.ly</code>
+and <code>song-arr-source.ly</code></p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="no">SONGPDFS</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">=~</span> <span class="sr">/^songs-lily/</span> <span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">song_i</span><span class="o">|</span>
+    <span class="no">VOICES</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">voice_i</span><span class="o">|</span>
+        <span class="n">midi_target</span> <span class="o">=</span> <span class="n">song_i</span><span class="o">.</span><span class="n">lroot</span> <span class="o">+</span> <span class="s1">&#39;-midi-&#39;</span> <span class="o">+</span> <span class="n">voice_i</span> <span class="o">+</span> <span class="s1">&#39;.midi&#39;</span>
+        <span class="n">file</span> <span class="n">midi_target</span> <span class="o">=&gt;</span> <span class="o">[</span>
+            <span class="n">song_i</span><span class="o">.</span><span class="n">lroot</span> <span class="o">+</span> <span class="s1">&#39;-source.ly&#39;</span><span class="p">,</span>
+            <span class="n">midi_target</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ly&#39;</span><span class="p">)</span>
+        <span class="o">]</span> <span class="k">do</span>
+            <span class="nb">puts</span> <span class="s2">&quot;---- Making </span><span class="si">#{</span><span class="n">midi_target</span><span class="si">}</span><span class="s2"> ----&quot;</span>
+            <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">                lilypond --output </span><span class="si">#{</span><span class="n">midi_target</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\.[a-z]*$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"> </span><span class="si">#{</span><span class="n">midi_target</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;ly&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">            }</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-19'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-19">#</a>
+        </div>
+        <h3>3. Zip up the MIDI files per voice</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="no">VOICES</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">voice_i</span><span class="o">|</span>
+    <span class="n">zipfile_voice_i</span> <span class="o">=</span> <span class="s2">&quot;kerstsite/muziek/kerst-2011-midis-</span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="s2">.zip&quot;</span>
+    <span class="n">songmidis_of_voice_i</span> <span class="o">=</span> <span class="no">SONGMIDIS</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">=~</span> <span class="sr">/</span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="sr">/</span> <span class="p">}</span>
+
+    <span class="n">file</span> <span class="n">zipfile_voice_i</span> <span class="o">=&gt;</span> <span class="n">songmidis_of_voice_i</span> <span class="k">do</span>
+        <span class="nb">puts</span> <span class="s2">&quot;---- Deleting old </span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="s2"> midi zipfile ----&quot;</span>
+        <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">            rm </span><span class="si">#{</span><span class="n">zipfile_voice_i</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">        }</span>
+        <span class="nb">puts</span> <span class="s2">&quot;---- Creating </span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="s2"> midi zipfile ----&quot;</span>
+        <span class="nb">system</span> <span class="sx">%{</span>
+<span class="sx">            zip --junk-paths </span><span class="si">#{</span><span class="n">zipfile_voice_i</span><span class="si">}</span><span class="sx"> </span><span class="si">#{</span><span class="n">songmidis_of_voice_i</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">        }</span>
+        <span class="nb">puts</span> <span class="s2">&quot;---- Done creating </span><span class="si">#{</span><span class="n">zipfile_voice_i</span><span class="si">}</span><span class="s2"> ----&quot;</span>
+    <span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-20'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-20">#</a>
+        </div>
+        <p>Create a user-facing task for this: <code>rake tenor</code> makes the zip
+with tenor MIDIs, etc.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre>    <span class="n">desc</span> <span class="s2">&quot;Make MIDI zipfile for </span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">task</span> <span class="n">voice_i</span><span class="o">.</span><span class="n">to_sym</span> <span class="o">=&gt;</span> <span class="n">zipfile_voice_i</span> <span class="k">do</span> <span class="k">end</span>
+<span class="k">end</span></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-21'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-21">#</a>
+        </div>
+        <hr />
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre></pre></div></pre></div>
+      </td>
+    </tr><tr id='section-22'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-22">#</a>
+        </div>
+        <h2>Create some user-friendly tasks</h2>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><div class="highlight"><pre><span class="n">desc</span> <span class="s2">&quot;Make all song PDF files&quot;</span>
+<span class="n">task</span> <span class="ss">:pdfs</span> <span class="o">=&gt;</span> <span class="no">SONGPDFS</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Done making all PDF files ----&quot;</span>
+<span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Make all MIDI files&quot;</span>
+<span class="n">task</span> <span class="ss">:midis</span> <span class="o">=&gt;</span> <span class="no">SONGMIDIS</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Done making all MIDI files ----&quot;</span>
+<span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Make the songbook: a PDF with all songs in order&quot;</span>
+<span class="n">task</span> <span class="ss">:bladmuziek_pdf</span> <span class="o">=&gt;</span> 
+    <span class="s1">&#39;kerstsite/muziek/kerst-2011-bladmuziek.pdf&#39;</span> <span class="k">do</span> <span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Zip of all PDFs&quot;</span>
+<span class="n">task</span> <span class="ss">:bladmuziek_zip</span> <span class="o">=&gt;</span> 
+    <span class="s1">&#39;kerstsite/muziek/kerst-2011-bladmuziek.zip&#39;</span> <span class="k">do</span> <span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Make MIDI zipfile for all voices&quot;</span>
+<span class="n">task</span> <span class="ss">:midizips</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:soprano</span><span class="p">,</span> <span class="ss">:alto</span><span class="p">,</span> <span class="ss">:tenor</span><span class="p">,</span> <span class="ss">:bass</span><span class="p">,</span> <span class="ss">:tutti</span><span class="o">]</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;---- Done creating all midi zips ----&quot;</span>
+<span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Make all everything&quot;</span>
+<span class="n">task</span> <span class="ss">:all</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:midizips</span><span class="p">,</span> <span class="ss">:bladmuziek_zip</span><span class="o">]</span> <span class="k">do</span> <span class="k">end</span>
+
+
+<span class="n">desc</span> <span class="s2">&quot;Test task. Currently does nothing.&quot;</span>
+<span class="n">task</span> <span class="ss">:test</span> <span class="k">do</span>
+    <span class="s2">&quot;for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do</span>
+<span class="s2">        puts song_i.lroot + &#39;-source.ly&#39;</span>
+<span class="s2">    end&quot;</span>
+<span class="k">end</span>
+
+</pre></div></pre></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
