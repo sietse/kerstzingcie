@@ -13,7 +13,7 @@ nummer = "06."
   } }
   composer = "Johann Sebastian Bach"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-26"
+    "Versie 2011-11-16"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -29,21 +29,25 @@ nummer = "06."
       \new Voice = "vSoprano" { \soprano }
     >>
     \new Lyrics \lyricsto "vSoprano" \verseOne
+    \new Lyrics \lyricsto "vSoprano" \verseTwo
 
     \new Staff = "sAlto" << 
-      \new Voice = "vAlto" { \alto }
+      \new Voice = "vAlto" { \keepWithTag #'fourstave \alto }
     >>
     \new Lyrics \lyricsto "vAlto" \verseOne
+    \new Lyrics \lyricsto "vAlto" \verseTwo
 
     \new Staff = "sTenor" << 
       \new Voice = "vTenor" { \tenor }
     >>
     \new Lyrics \lyricsto "vTenor" \verseOne
+    \new Lyrics \lyricsto "vTenor" \verseTwo
 
     \new Staff = "sBass" << 
       \new Voice = "vBass" { \bass }
     >>
     \new Lyrics \lyricsto "vBass" \verseOne
+    \new Lyrics \lyricsto "vBass" \verseTwo
   >>
   \layout { 
     % We can haz ambitus to display pitch range?

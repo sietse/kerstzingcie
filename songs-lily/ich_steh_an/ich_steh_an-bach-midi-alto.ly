@@ -5,7 +5,7 @@
 \score {
   \new Staff <<
     \new Voice = "vSoprano" { \set midiInstrument = #"glockenspiel" \soprano }
-    \new Voice = "vAlto" { \set midiInstrument = #"cello" \alto }
+    \new Voice = "vAlto" { \set midiInstrument = #"cello" \keepWithTag #'twostave \alto }
     \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" \tenor }
     \new Voice = "vBass" { \set midiInstrument = #"glockenspiel" \bass }
   >>

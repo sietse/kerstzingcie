@@ -3,7 +3,10 @@
 \version "2.12.3"
 
 soprano = \relative g' {
-    \clef "treble" \key g \major \time 4/4 \partial 4 
+    \clef "treble" 
+    \key g \major 
+    \time 4/4 
+    \partial 4 
     \repeat volta 2 {
       g4 | % 1
       g8 ( [ a8 ) ] b4 a4 g4 | % 2
@@ -21,12 +24,19 @@ soprano = \relative g' {
 }
 
 alto = \relative d' {
-    \clef "treble" \key g \major \time 4/4 \partial 4 \repeat volta 2 {
+    \clef "treble" 
+    \key g \major 
+    \time 4/4 
+    \partial 4 \repeat volta 2 {
         d4 | % 1
         e8 ( [ fis8 ) ] g4 g8 ( [ fis8 ) ] g4 | % 2
         g4 fis4 g4 \breathe e8 ( [ fis8 ) ] | % 3
-        g8 b4( a16[ g16]) fis4 g4 | % 4
-        g4 ( fis4 ) d4 }
+        %\slurDown
+        \tag #'twostave  { g8( b4) }
+        \tag #'fourstave {  g8( \stemUp b4) \stemNeutral }
+          a16[( g16]) fis4 g4 | % 4
+        g4 ( fis4 ) d4 
+    }
     g4 
     g4. fis8 fis8[( e8]) e8[( dis8]) | % 7
     e4 d4 d4 \breathe d4 | % 8
@@ -37,7 +47,11 @@ alto = \relative d' {
 }
 
 tenor = \relative b {
-    \clef "treble_8" \key g \major \time 4/4 \partial 4 \repeat volta 2 {
+    \clef "treble_8" 
+    \key g \major 
+    \time 4/4 
+    \partial 4 
+    \repeat volta 2 {
         b4 | % 1
         b4 e4 e8 ( [ d8 ) ] d4 | % 2
         e8 ( [ c8 ) ] a8 ( [ d8 ) ] d4 \breathe e4 | % 3
@@ -53,7 +67,11 @@ tenor = \relative b {
 }
 
 bass = \relative g {
-    \clef "bass" \key g \major \time 4/4 \partial 4 \repeat volta 2 {
+    \clef "bass" 
+    \key g \major 
+    \time 4/4 
+    \partial 4 
+    \repeat volta 2 {
         g8 ( [ fis8 ) ] | % 1
         e4. d8 c4. b8 | % 2
         c8 ( [ a8 ) ] d4 g,4 \breathe c4 | % 3
@@ -69,11 +87,16 @@ bass = \relative g {
 }
 
 verseOne = \lyricmode {
-  Ich steh __ an dei -- ner Krip pen hier, 
+  Ich steh’ an dei -- ner Krip -- pen hier, 
   o __ Je -- su -- lein,
-  mein __ Le -- ben 
-  Nimm hin! Es ist mein Geist __ und Sinn, 
-  Herz, Seel und Mut, 
+  mein __ Le -- ben,
+  Nimm hin! Es ist mein __ Geist __ und Sinn, 
+  Herz, Seel’ und Mut, 
   nimm al -- les hin, 
-  und __ lass "dir’s" wohl -- ge -- fal -- len.
+  und lass dir’s wohl -- ge -- fal -- len.
+}
+
+verseTwo = \lyricmode {
+  Ich kom -- me, bring’ und schen -- ke dir,
+  was du mir hast ge -- ge -- ben.
 }

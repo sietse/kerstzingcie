@@ -13,7 +13,7 @@ nummer = "06."
   } }
   composer = "Johann Sebastian Bach"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-26"
+    "Versie 2011-11-16"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -26,10 +26,11 @@ nummer = "06."
         \override Ambitus #'X-offset = #2.0
         \voiceOne \soprano 
       }
-      \new Voice = "vAlto" { \voiceTwo \alto }
+      \new Voice = "vAlto" { \voiceTwo \keepWithTag #'twostave \alto }
     >>
 
     \new Lyrics \lyricsto "vSoprano" \verseOne
+    \new Lyrics \lyricsto "vSoprano" \verseTwo
 
     \new Staff = "lower" <<
       \clef "bass"
