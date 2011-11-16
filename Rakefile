@@ -29,6 +29,11 @@ open('MASTER-inhoudsopgave.txt').each_with_index do |line, i|
 end
 MASTER = tmp
 
+# (3) The zips are put in 'kerstsite/muziek'. Better create that
+# directory.
+
+directory 'kerstsite/muziek'
+
 # ---------------------------------------------------------------------
 
 # ## Making the PDFS
@@ -105,7 +110,8 @@ end
 
 # ### 3. The songbook PDF
 #
-file 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' => SONGPDFS do
+file 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' => SONGPDFS + 
+    ['kerstsite/muziek'] do
     puts "---- Creating kerst-2011-bladmuziek.pdf ----"
     system %{
         pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
@@ -121,6 +127,7 @@ end
 # afresh each time.
 
 file 'kerstsite/muziek/kerst-2011-bladmuziek.zip' => SONGPDFS + 
+    ['kerstsite/muziek'] +
     ['kerstsite/muziek/kerst-2011-bladmuziek.pdf'] do
     puts "---- Removing old bladmuziek zipfile ----"
     system %{
@@ -187,7 +194,8 @@ VOICES.each do |voice_i|
     zipfile_voice_i = "kerstsite/muziek/kerst-2011-midis-#{voice_i}.zip"
     songmidis_of_voice_i = SONGMIDIS.select { |x| x =~ /#{voice_i}/ }
 
-    file zipfile_voice_i => songmidis_of_voice_i do
+    file zipfile_voice_i => songmidis_of_voice_i +
+        ['kerstsite/muziek'] do
         puts "---- Deleting old #{voice_i} midi zipfile ----"
         system %{
             rm #{zipfile_voice_i}

@@ -1,1 +1,1 @@
-Rakefile-nonmidi
+./Rakefile
