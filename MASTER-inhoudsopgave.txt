@@ -1,4 +1,4 @@
-# nummer: pad/naar/bestand.pdf
+# liednummer.: pad/naar/bestand.pdf
 01.: songs-lily/rudolph_the_red/rudolph_the_red-rondel-threestave.pdf
 02.: songs-lily/es_ist_ein/er_is_een-anon1-twostave.pdf
 02.: songs-lily/es_ist_ein/es_ist_ein-anon1-twostave.pdf
@@ -22,7 +22,7 @@
 17.: songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
 18.: songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
 19.: songs-scan/hoor_de_englen/hark_the_herald-anon1-oud.pdf
-19.: songs-scan/hoor_de_englen/hoor_de_englen-anon1-oud.pdf
+19.: songs-lily/hoor_de_englen/hoor_de_englen-anon1-twostave.pdf
 20.: songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.pdf
 21.: songs-scan/winter_wonderland/winter_wonderland-oud.pdf
 22.: songs-lily/o_tannenbaum/o_tannenbaum-dewagtere-fourstave.pdf

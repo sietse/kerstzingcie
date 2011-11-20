@@ -21,35 +21,38 @@
     between-system-space = 3.11\cm
     page-top-space = 2.53\cm
     }
+
 \layout {
     \context { \Score
         autoBeaming = ##f
         }
     }
-PartPOneVoiceOne =  \relative d' {
+
+PartPOneVoiceOne =  {
     \repeat volta 3 {
-        \clef "treble" \key g \major \time 4/4 \partial 2 d4 <d g>4 | % 1
-        g4. fis8 <d g>4 <g b>4 | % 2
-        <g b>4 ~ ~ <fis a>4 <g d'>4 <fis d'>4 | % 3
-        d'4. c8 <g b>4 <fis a>4 | % 4
-        <g b>2 \bar "||"
-        d4 <d g>4 | % 5
-        <d g>4. <c fis>8 <b g'>4 <g' b>4 | % 6
-        b4 ~ a4 <fis d'>4 <e a>4 | % 7
-        <fis a>4. <d fis>8 <d fis>4 <cis e>4 | % 8
-        d2 <d d'>4 <d d'>4 | % 9
-        <d d'>4 g4 <a c>4 <g b>4 | \barNumberCheck #10
-        <g b>4 ~ ~ <fis a>4 <d d'>4 <d d'>4 | % 11
-        <d d'>4 g4 <a c>4 <g b>4 | % 12
-        <g b>4 ~ ~ <fis a>4 <c' e>4 <c e>4 | % 13
-        <c e>4 <b d>4 <a c>4 <gis b>4 | % 14
-        <a c>2 <fis a>4 b8 ( [ c8 ) ] | % 15
-        <g d'>4. <d g>8 <d g>4 <fis a>4 | % 16
-        <g b>2 <c e>4. <c e>8 | % 17
-        <c e>4 <b d>4 <a c>4 <gis b>4 | % 18
-        <a c>2 <d, a'>4 b'8 ( [ c8 ) ] | % 19
-        <d, g d'>4. <b d g>8 <d g>4 <fis a>4 | \barNumberCheck #20
-        <d g>2 }
+        \clef "treble" \key g \major \time 4/4 \partial 2 d'4 <d' g'>4 | % 1
+        g'4. fis'8 <d' g'>4 <g' b'>4 | % 2
+        <g' b'>4 ~ ~ <fis' a'>4 <g' d''>4 <fis' d''>4 | % 3
+        d''4. c''8 <g' b'>4 <fis' a'>4 | % 4
+        <g' b'>2 \bar "||"
+        d'4 <d' g'>4 | % 5
+        <d' g'>4. <c' fis'>8 <b g'>4 <g' b'>4 | % 6
+        b'4 ~ a'4 <fis' d''>4 <e' a'>4 | % 7
+        <fis' a'>4. <d' fis'>8 <d' fis'>4 <cis' e'>4 | % 8
+        d'2 <d' d''>4 <d' d''>4 | % 9
+        <d' d''>4 g'4 <a' c''>4 <g' b'>4 | \barNumberCheck #10
+        <g' b'>4 ~ ~ <fis' a'>4 <d' d''>4 <d' d''>4 | % 11
+        <d' d''>4 g'4 <a' c''>4 <g' b'>4 | % 12
+        <g' b'>4 ~ ~ <fis' a'>4 <c'' e''>4 <c'' e''>4 | % 13
+        <c'' e''>4 <b' d''>4 <a' c''>4 <gis' b'>4 | % 14
+        <a' c''>2 <fis' a'>4 b'8 ( [ c''8 ) ] | % 15
+        <g' d''>4. <d' g'>8 <d' g'>4 <fis' a'>4 | % 16
+        <g' b'>2 <c'' e''>4. <c'' e''>8 | % 17
+        <c'' e''>4 <b' d''>4 <a' c''>4 <gis' b'>4 | % 18
+        <a' c''>2 <d' a'>4 b'8 ( [ c''8 ) ] | % 19
+        <d' g' d''>4. <b d' g'>8 <d' g'>4 <fis' a'>4 | \barNumberCheck
+        #20
+        <d' g'>2 }
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode { "1. Hoor" de "eng'" len zin --
@@ -63,51 +66,51 @@ PartPOneVoiceOneLyricsThree =  \lyricmode { "3. Lof" aan u die eeu --
     wig "leeft " __ bo -- ren zou -- den zijn. \skip4 \skip4 \skip4
     \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
     \skip4 \skip4 }
-PartPOneVoiceTwo =  \relative d' {
+PartPOneVoiceTwo =  {
     \repeat volta 3 {
         \clef "treble" \key g \major \time 4/4 \partial 2 s2 | % 1
-        d4 d4 s1. | % 3
-        e4 a4 s1 \bar "||"
+        d'4 d'4 s1. | % 3
+        e'4 a'4 s1 \bar "||"
         s1. | % 6
-        g2 s4*33 fis4 s4*15 <d fis>4 s1. }
+        g'2 s4*33 fis'4 s4*15 <d' fis'>4 s1. }
     }
 
-PartPTwoVoiceOne =  \relative g {
+PartPTwoVoiceOne =  {
     \repeat volta 3 {
         \clef "bass" \key g \major \time 4/4 \partial 2 <g b>4 <g b>4 | % 1
-        b4. a8 <b, g'>4 <g d''>4 | % 2
-        <d' d'>2 <b d'>4 <b d'>4 | % 3
+        b4. a8 <b, g>4 <g, d'>4 | % 2
+        <d d'>2 <b, d'>4 <b, d'>4 | % 3
         <c e'>4 <c e'>4 <d d'>4 <d d'>4 | % 4
         <g d'>2 \bar "||"
         <g b>4 <g b>4 | % 5
-        <g b>4. <d a'>8 <e g>4 <d d'>4 | % 6
+        <g b>4. <d a>8 <e g>4 <d d'>4 | % 6
         e'2 <b, d'>4 <c e'>4 | % 7
-        a'4. a8 <g, b'>4 <a g'>4 | % 8
-        <d fis>2 d'4 d4 | % 9
-        d4 <b d>4 <fis d'>4 <g d'>4 | \barNumberCheck #10
-        <d d'>2 d'4 d4 | % 11
-        d4 <b d>4 <fis d'>4 <g d'>4 | % 12
+        a4. a8 <g, b>4 <a, g>4 | % 8
+        <d fis>2 d'4 d'4 | % 9
+        d'4 <b d'>4 <fis d'>4 <g d'>4 | \barNumberCheck #10
+        <d d'>2 d'4 d'4 | % 11
+        d'4 <b d'>4 <fis d'>4 <g d'>4 | % 12
         <d d'>2 <c e'>4 <c e'>4 | % 13
         <c e'>4 <d f'>4 <e e'>4 <e e'>4 | % 14
-        <a c>2 d4 <c d>4 | % 15
-        <b d>4. <g b>8 <d b'>4 <d d'>4 | % 16
-        <g d'>2 <c e>4. <c e>8 | % 17
-        <c e>4 <b d>4 <a c>4 <gis b>4 | % 18
-        <a c>2 <fis d'>4 c'4 | % 19
-        b4 g4 <d b'>4 <d c'>4 | \barNumberCheck #20
+        <a c'>2 d'4 <c' d'>4 | % 15
+        <b d'>4. <g b>8 <d b>4 <d d'>4 | % 16
+        <g d'>2 <c' e'>4. <c' e'>8 | % 17
+        <c' e'>4 <b d'>4 <a c'>4 <gis b>4 | % 18
+        <a c'>2 <fis d'>4 c'4 | % 19
+        b4 g4 <d b>4 <d c'>4 | \barNumberCheck #20
         <g b>2 }
     }
 
-PartPTwoVoiceTwo =  \relative g {
+PartPTwoVoiceTwo =  {
     \repeat volta 3 {
         \clef "bass" \key g \major \time 4/4 \partial 2 s2 | % 1
         g4 d4 s1*3 \bar "||"
         s1. | % 6
-        cis4. ( a8 ) s2 | % 7
-        d4 fis,4 s4*41 e'4 | % 18
-        a4 ( g4 ) s4 c,4 | % 19
-        b4 g4 d4 d4 | \barNumberCheck #20
-        g2 }
+        cis4. ( a,8 ) s2 | % 7
+        d4 fis,4 s4*41 e4 | % 18
+        a4 ( g4 ) s4 c4 | % 19
+        b,4 g,4 d,4 d,4 | \barNumberCheck #20
+        g,2 }
     }
 
 
