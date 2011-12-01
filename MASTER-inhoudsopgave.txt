@@ -21,7 +21,7 @@
 16.: songs-scan/entre_le_boeuf/entre_le_boeuf-wakelkamp.pdf
 17.: songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
 18.: songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
-19.: songs-scan/hoor_de_englen/hark_the_herald-anon1-oud.pdf
+19.: songs-lily/hoor_de_englen/hark_the_herald-anon1-twostave.pdf
 19.: songs-lily/hoor_de_englen/hoor_de_englen-anon1-twostave.pdf
 20.: songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.pdf
 21.: songs-scan/winter_wonderland/winter_wonderland-oud.pdf

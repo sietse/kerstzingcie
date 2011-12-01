@@ -2,11 +2,15 @@
 \version "2.12.3"
 
 soprano = {
-  \clef "treble" \key g \major \time 4/4 \partial 2 d'4 g'4 | % 1
+  \clef "treble" 
+  \key g \major 
+  \time 4/4 
+  \partial 2 
+    d'4 g'4 | % 1
   g'4. fis'8 g'4 b'4 | % 2
   b'4( a'4) d''4 d''4 | % 3
   d''4. c''8 b'4 a'4 | % 4
-  b'2 \bar "||"
+  b'2 \bar "||" \noBreak
   d'4 g'4 | % 5
   g'4. fis'8 g'4 b'4 | % 6
   b'4( a'4) d''4 a'4 | % 7
@@ -28,7 +32,11 @@ soprano = {
 }
 
 alto = {
-  \clef "treble" \key g \major \time 4/4 \partial 2 d'4 d'4 | % 1
+  \clef "treble" 
+  \key g \major 
+  \time 4/4 
+  \partial 2 
+    d'4 d'4 | % 1
   g'4. fis'8 d'4 g'4 | % 2
   g'4( fis'4) g'4 fis'4 | % 3
   e'4 a'4 g'4 fis'4 | % 4
@@ -53,7 +61,11 @@ alto = {
 }
 
 tenor = {
-  \clef "bass" \key g \major \time 4/4 \partial 2 b4 b4 | % 1
+  \clef "bass" 
+  \key g \major 
+  \time 4/4 
+  \partial 2 
+    b4 b4 | % 1
   b4. a8 g4 d'4 | % 2
   d'2 d'4 d'4 | % 3
   e'4 e'4 d'4 d'4 | % 4
@@ -81,7 +93,8 @@ bass = {
   \clef "bass" 
   \key g \major 
   \time 4/4 
-  \partial 2 g4 g4 | % 1
+  \partial 2 
+    g4 g4 | % 1
   g4 d4 b,4 g,4 | % 2
   d2 b,4 b,4 | % 3
   c4 c4 d4 d4 | % 4
@@ -138,4 +151,39 @@ verseThreeNL = \lyricmode {
   ons tot red -- ding uit het graf,
   dat wij on -- ge -- rept en rein
   nieuw -- ge -- bo -- ren zou -- den zijn;
+}
+
+verseOneEN = \lyricmode {
+  Hark! the he -- "rald -" an -- gels sing
+  glo -- ry to the new -- born King;
+  Peace on earth and mer -- cy mild,
+  God and sin -- ners re -- con -- ciled;
+  joy -- ful all ye na -- tions rise,
+  join the tri -- umph of the skies,
+  with th’an -- gel -- ic host pro -- claim,
+  Christ is born in Beth -- le hem.
+}
+
+verseTwoEN = \lyricmode {
+  Christ, by high -- est heav’n a -- dored,
+  Christ, the e -- ver -- last -- ing Lord;
+  Late in time be -- hold him come,
+  off -- spring of a vir -- gin’s womb:
+  Veiled in flesh the God -- head see,
+  hail th’in -- car -- nate De -- i -- ty!
+  Pleased as man with man to dwell,
+  Je -- sus, our Em -- ma -- nu -- el.
+  Hark! the he -- rald -- an -- gels sing
+  glo -- ry to the new -- born King.
+}
+
+verseThreeEN = \lyricmode {
+  Hail the heav’n -- born Prince of Peace!
+  Hail the sun of righ -- teous -- ness!
+  Light and live to all he brings,
+  ris’n with hea -- ling in his wings:
+  Mild he lays his glo -- ry by,
+  born that man no more may die,
+  born to raise the sons of earth,
+  born to give them se -- cond birth:
 }

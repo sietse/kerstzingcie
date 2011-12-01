@@ -1,15 +1,19 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "hoor_de_englen-anon1-source.ly"
+\include "hark_the_herald-anon1-source.ly"
 
 nummer = "19."
 
 \header {
-  title = \markup {\nummer "Hoor de eng’len zingen d’eer"}
+  title = \markup {\nummer "Hark! the herald-angels sing"}
+  poet = \markup { \left-column { 
+    "Words by Charles Wesley (1707-1788)"
+    "and others" 
+  } }
   composer = "J.L.F. Mendelssohn Bartholdy (1809–1847)"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-18"
+    "Versie 2011-11-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -27,9 +31,9 @@ nummer = "19."
       \new Voice = "vAlto" { \voiceTwo \alto }
     >>
 
-    \new Lyrics \lyricsto "vSoprano" \verseOneNL
-    \new Lyrics \lyricsto "vSoprano" \verseTwoNL
-    \new Lyrics \lyricsto "vSoprano" \verseThreeNL
+    \new Lyrics \lyricsto "vSoprano" \verseOneEN
+    \new Lyrics \lyricsto "vSoprano" \verseTwoEN
+    \new Lyrics \lyricsto "vSoprano" \verseThreeEN
 
     \new Staff = "lower" <<
       \clef "bass"
