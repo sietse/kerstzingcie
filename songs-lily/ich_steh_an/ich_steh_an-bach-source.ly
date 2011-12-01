@@ -83,7 +83,14 @@ bass = \relative g {
     b4. a8 g4. fis8 | % 9
     e8 ( [ d8 ) ] c4 b4 \breathe e4 |
     e8 ( [ d8 ) ] c4 b8 ( [ a8 ) ] g4 | % 11
-    d'2 g,4 \bar "|."
+    d'2 g,4 
+    \once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
+    \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+    \once \override Score.RehearsalMark #'direction = #DOWN
+    \override Score.RehearsalMark #'padding = #5
+    \mark \markup {\italic "Zweimal singen" }
+
+    \bar "|."
 }
 
 verseOne = \lyricmode {

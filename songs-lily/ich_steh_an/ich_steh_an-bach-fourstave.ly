@@ -13,7 +13,7 @@ nummer = "06."
   } }
   composer = "Johann Sebastian Bach"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-16"
+    "Versie 2011-11-18"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
