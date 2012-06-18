@@ -11,15 +11,9 @@
 }
 
 globalUpper = {
-  \clef treble
-  \key d \major
-  \time 3/4
 }
 
 globalLower = {
-  \clef bass
-  \key d \major
-  \time 3/4
 }
 
 soprano = \relative c' {
