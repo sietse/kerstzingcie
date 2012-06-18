@@ -1,3 +1,5 @@
-.*\.ps
-kerstsite/
-gdocs/
+syntax: glob
+*.ps
+kerstsite/*
+gdocs/*
+.rake_tasks~
