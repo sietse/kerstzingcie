@@ -148,7 +148,7 @@ verseThree = \lyricmode {
 
 verseFour = \lyricmode {
   Fear not, then said the "An__"  -- _ gel,
-  let nothing you af -- fright;
+  let no -- thing you af -- fright;
   this day is born a Sa -- vior,
   of vir -- tue, po -- wer, and might;
   so fre -- quent -- ly to van -- quish all
