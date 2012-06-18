@@ -51,9 +51,10 @@ SONGPDFS = MASTER.transpose[0]
 
 # ### 1. Insert song numbers
 # 
-# Make sure the song numbers are Oll Korrekt in each file. This task is
-# *always* invoked --- one could also simply not wrap it in a task, but
-# that somehow feels dirty. 
+# Update the title of each song so that its song number matches the song
+# number specified in `MASTER-inhoudsopgave.txt`. This task is *always*
+# invoked --- one could also simply not wrap it in a task, but that
+# somehow feels dirty.
 
 task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
     puts "---- Updating file numbers ----"
@@ -115,9 +116,10 @@ file 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' => SONGPDFS +
     puts "---- Creating kerst-2011-bladmuziek.pdf ----"
     system %{
         pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
-            cat output kerstsite/muziek/kerst-2011-bladmuziek.pdf
+            cat output kerstsite/muziek/kerst-2011-bladmuziek.pdf  &&
+        echo '---- Done creating kerst-2011-bladmuziek.pdf ----'   ||
+        echo '---- Failed creating kerst-2011-bladmuziek.pdf ----'
     }
-    puts '---- Done creating kerst-2011-bladmuziek.pdf ----'
 end
 
 # ### 4. Zip the PDFs.
@@ -206,35 +208,43 @@ VOICES.each do |voice_i|
         }
         puts "---- Done creating #{zipfile_voice_i} ----"
     end
-
-    # Create a user-facing task for this: `rake tenor` makes the zip
-    # with tenor MIDIs, etc.
-    desc "Make MIDI zipfile for #{voice_i}"
-    task voice_i.to_sym => zipfile_voice_i do end
 end
+
 
 # ---------------------------------------------------------------------
 
 # ## Create some user-friendly tasks
+
+# ### PDF tasks
 desc "Make all song PDF files"
 task :pdfs => SONGPDFS do
     puts "---- Done making all PDF files ----"
 end
 
+desc "Make the songbook: a PDF with all songs in order"
+task :bladmuziek_pdf => 
+    'kerstsite/muziek/kerst-2011-bladmuziek.pdf' do 
+end
+
+desc "Zip of all PDFs"
+task :bladmuziek_zip => 
+    'kerstsite/muziek/kerst-2011-bladmuziek.zip' do 
+end
+
+# ### MIDI tasks
 desc "Make all MIDI files"
 task :midis => SONGMIDIS do
     puts "---- Done making all MIDI files ----"
 end
 
-desc "Make the songbook: a PDF with all songs in order"
-task :bladmuziek_pdf => 
-    'kerstsite/muziek/kerst-2011-bladmuziek.pdf' do end
+# create :soprano, :alto, :tenor, :bass, and :tutti tasks
+VOICES.each do |voice_i|
+    zipfile_voice_i = "kerstsite/muziek/kerst-2011-midis-#{voice_i}.zip"
+    desc "Make MIDI zipfile for #{voice_i}"
+    task voice_i.to_sym => zipfile_voice_i do end
+end
 
-desc "Zip of all PDFs"
-task :bladmuziek_zip => 
-    'kerstsite/muziek/kerst-2011-bladmuziek.zip' do end
-
-desc "Make MIDI zipfile for all voices"
+desc "Make MIDI zipfile for every voice"
 task :midizips => [:soprano, :alto, :tenor, :bass, :tutti] do
     puts "---- Done creating all midi zips ----"
 end
