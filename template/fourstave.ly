@@ -22,21 +22,25 @@ nummer = "13."
 \score {
   \new ChoirStaff <<
     \new Staff = "sSoprano" << 
+      \clef "treble"
       \new Voice = "vSoprano" { \soprano }
     >>
     \new Lyrics \lyricsto "vSoprano" \verseOneSoprano
 
     \new Staff = "sAlto" << 
+      \clef "treble"
       \new Voice = "vAlto" { \alto }
     >>
     \new Lyrics \lyricsto "vAlto" \verseOneAlto
 
     \new Staff = "sTenor" << 
+      \clef "treble_8"
       \new Voice = "vTenor" { \tenor }
     >>
     \new Lyrics \lyricsto "vTenor" \verseOneTenor
 
     \new Staff = "sBass" << 
+      \clef "bass"
       \new Voice = "vBass" { \bass }
     >>
     \new Lyrics \lyricsto "vBass" \verseOneBass
