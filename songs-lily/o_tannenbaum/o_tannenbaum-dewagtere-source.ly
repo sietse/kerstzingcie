@@ -106,7 +106,6 @@ altoVar = \relative c' {
 }
 
 tenor = \relative c' {
-  \clef "treble_8"
   \key g \major
   \time 3/4
   % o
@@ -162,7 +161,6 @@ tenorVar = \relative c' {
 }
 
 bass = \relative c {
-  \clef "bass"
   \key g \major
   \time 3/4
   % o
