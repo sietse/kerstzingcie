@@ -4,9 +4,10 @@
 \include "the_first_nowell-stainer-source.ly"
 
 nummer = "9¾. "
+varnummer = \markup {9\hcenter-in #0.1 \raise #0.7 \small\fraction 3 4 \hcenter-in #0.1 .} 
 
 \header {
-  title = \markup {\nummer "The first Nowell"}
+  title = \markup {\varnummer "The first Nowell"}
   arranger = "Arranged by John Stainer"
   tagline =  \markup { \center-column {
     "Versie 2012-06-18"
