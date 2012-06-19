@@ -150,7 +150,7 @@ verseFour = \lyricmode {
   Fear not, then said the "An__"  -- _ gel,
   let no -- thing you af -- fright;
   this day is born a Sa -- vior,
-  of vir -- tue, po -- wer, and might;
+  of vir -- tue, pow’r, and might;
   so fre -- quent -- ly to van -- quish all
   the friends of Sa -- tan quite;
 }
