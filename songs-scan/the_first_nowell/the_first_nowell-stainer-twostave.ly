@@ -7,7 +7,7 @@ nummer = "9¾. "
 
 \header {
   title = \markup {\nummer "The first Nowell"}
-  arranger = "John Stainer"
+  arranger = "Arranged by John Stainer"
   tagline =  \markup { \center-column {
     "Versie 2012-06-18"
     "Collegium Musicum Kerstzingcie 2011"
