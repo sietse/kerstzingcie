@@ -118,6 +118,14 @@ bass = {
   g2 
 }
 
+  italic = { % italic
+    \override Lyrics.LyricText #'font-shape = #'italic
+  }
+
+  normal = { % text face
+    \revert Lyrics.LyricText #'font-shape
+  }
+
 verseOneNL = \lyricmode {
   Hoor, de eng’ -- len zing -- en d’eer
   van de nieuw ge -- bo -- ren Heer!
@@ -138,8 +146,10 @@ verseTwoNL = \lyricmode {
   woord dat vlees ge -- wor -- den zijt,
   tus -- sen al -- le men -- sen in,
   in het __ men -- se -- lijk ge -- zin;
+  \italic
   Hoor, de eng’ -- len zing -- en d’eer
   van de nieuw ge -- bo -- ren Heer.
+  \normal
 }
 
 verseThreeNL = \lyricmode {
@@ -161,7 +171,7 @@ verseOneEN = \lyricmode {
   joy -- ful all ye na -- tions rise,
   join the tri -- umph of the skies,
   with th’an -- gel -- ic host pro -- claim,
-  Christ is born in Beth -- le hem.
+  Christ is born in Beth -- le -- hem.
 }
 
 verseTwoEN = \lyricmode {
@@ -173,8 +183,10 @@ verseTwoEN = \lyricmode {
   hail th’in -- car -- nate De -- i -- ty!
   Pleased as man with man to dwell,
   Je -- sus, our Em -- ma -- nu -- el.
+  \italic
   Hark! the he -- rald -- an -- gels sing
   glo -- ry to the new -- born King.
+  \normal
 }
 
 verseThreeEN = \lyricmode {

@@ -1,30 +1,70 @@
-# Change this line
-SONG_ARR = "XXX"
-if SONG_ARR == 'XXX' then 
-    raise '=== Before anything else: please edit the Rakefile' +
-          '    to specify the song-arrangement prefix in SONG_ARR'
+OUTPUT_FILES = [
+    "hark_the_herald-anon1-twostave.pdf",
+    "hark_the_herald-anon1-midi-soprano.midi",
+    "hark_the_herald-anon1-midi-alto.midi",
+    "hark_the_herald-anon1-midi-tenor.midi",
+    "hark_the_herald-anon1-midi-bass.midi",
+    "hark_the_herald-anon1-midi-tutti.midi",
+    "hoor_de_englen-anon1-twostave.pdf",
+    "hoor_de_englen-anon1-midi-soprano.midi",
+    "hoor_de_englen-anon1-midi-alto.midi",
+    "hoor_de_englen-anon1-midi-tenor.midi",
+    "hoor_de_englen-anon1-midi-bass.midi",
+    "hoor_de_englen-anon1-midi-tutti.midi"
+]
+
+# name of current directory. Useful for reporting
+HERE = File.basename(Dir.getwd)
+
+# A function to obtain hark_the_herald-anon1
+def sourcefile(filename)
+    root = filename.split('-')[0,2].join('-') 
+    return root + '-source.ly'
 end
 
-SA = SONG_ARR 
+# A rule for each PDF or MIDI file in OUTPUT_FILES
+OUTPUT_FILES.each do |f|
+    # Check for output that we don't know how to produce
+    if not File.exist?(f.ext('ly')) then
+        raise "==== #{f} is listed in OUTPUT_FILES,\n" +
+              "     but #{f.ext('ly')} does not exist."
+    end
+    if not File.exist?(sourcefile(f)) then
+        raise "==== #{f} is listed in OUTPUT_FILES,\n" +
+              "     but #{sourcefile(f)} does not exist"
+    end
 
+    file f => [f.ext('ly'), sourcefile(f)] do
+        puts "---- Compiling #{f}"
+        system("lilypond #{f.ext('ly')}")
+        if f =~ /pdf$/ then
+            puts "---- Deleting #{f.ext('ps')}"
+            rm(f.ext('ps'))
+        end
+    end
+end
+
+# A rule for each directory we shall be needing
 directory "../../all-pdfs/"
-MIDIDIRS = [
+MIDI_DIRS = [
     "../../all-midis/soprano/",
     "../../all-midis/alto/",
     "../../all-midis/tenor/",
     "../../all-midis/bass/",
     "../../all-midis/tutti/"
 ]
-
-MIDIDIRS.each do |dir_i| directory dir_i end
+MIDI_DIRS.each do |dir_i| directory dir_i end
 
 
 # ---------------------------------------------------------------------- 
 # Initialization task: Invoke this if you've just copied the template
 
-desc "Initialize template: turn XXX into [default: #{SONG_ARR}]"
+# hark_the_herald-ep-twostave.pdf --> best_guess = 'hark_the_herald-ep'
+best_guess = OUTPUT_FILES[1].split('-')[0,2].join('-')
+
+desc 'initialize template: turns XXX into [default: #{best_guess}]'
 task :init, [:song_arr] do |t, args|
-    args.with_defaults(:song_arr => SA)
+    args.with_defaults(:song_arr => best_guess)
     FileList["XXX-*.ly"].each do |file_i|
         sh("sed -i 's/XXX/#{args.song_arr}/g' #{file_i}")
         sh("rename -v 's/XXX/#{args.song_arr}/g' #{file_i}")
@@ -32,67 +72,37 @@ task :init, [:song_arr] do |t, args|
 end
 
 # ---------------------------------------------------------------------- 
-# A file task for each PDF file
-
-file "#{SA}-twostave.pdf" => [
-    "#{SA}-twostave.ly", "#{SA}-source.ly"
-] do
-    puts "---- Compiling #{SA}-fourstave.ly ----"
-    system("lilypond #{SA}-twostave.ly")
-    rm("#{SA}-twostave.ps")
-end
-
-file "#{SA}-fourstave.pdf" => [
-    "#{SA}-fourstave.ly", "#{SA}-source.ly"
-] do
-    puts "---- Compiling #{SA}-fourstave.ly ----"
-    system("lilypond #{SA}-fourstave.ly")
-    rm("#{SA}-fourstave.ps")
-end
-
-# ---------------------------------------------------------------------- 
-# A loop that creates a file task for each MIDI file
-
-FileList["#{SA}-midi-*.ly"].each do |f|
-    file f.ext("midi") => [f, "#{SA}-source.ly"] do
-        puts "---- Compiling #{f.ext("midi")} ----"
-        system("lilypond #{f}")
-    end
-end
-
-# ---------------------------------------------------------------------- 
 # The user-facing tasks
 
-# Get names of PDF files by remapping *-stave.ly to .pdf
-# Get names of MIDI files by remapping *-midi-*.ly to .midi
-PDF_FILES = FileList["#{SA}-*stave.ly"].map{|f| f.ext('pdf')}
-MIDI_FILES = FileList["#{SA}-midi-*.ly"].map{|f| f.ext('midi')}
-
-desc "Compile PDF files"
-task :pdf => PDF_FILES + ["../../all-pdfs/"] do
-    puts "--- PDFs of #{SA} are up to date ---"
+desc "Compile PDF files and copy them to ../../all-pdfs"
+task :pdf => OUTPUT_FILES.grep(/\.pdf$/) + ["../../all-pdfs/"] do
+    puts "---- Done compiling PDFs in #{HERE}"
+    puts "---- Updating ../../all-pdfs"
     FileList["*.pdf"].each do |source|
         targetdir = "../../all-pdfs/"
         if not uptodate?(targetdir + source, source) then
             cp(source, targetdir)
         end
     end
-    puts "--- Copies in ../../all-pdfs/ are up to date--"
+    puts "---- Done updating ../../all-pdfs"
 end
 
-desc "Compile MIDI files"
-# This task depends on *.midi. But those midi files might not yet exist,
-# so we get their names by mapping *-midi-*.ly to .midi.
-task :midi => MIDI_FILES + MIDIDIRS do
-    puts "--- MIDIs of #{SA} are up to date ---"
+desc "Compile MIDI files and copy them to ../../all-midis"
+# Compile ever midi file in OUTPUT_FILES; then copy them to
+# ../../all-midis/soprano/ or .../alto/, etc., as appropriate.
+task :midi => OUTPUT_FILES.grep(/\.midi$/) + MIDI_DIRS do
+    puts "---- Done compiling MIDIs in #{HERE}"
+    puts "---- Updating ../../all-midis"
     ['soprano', 'alto', 'tenor', 'bass', 'tutti'].each do |voice_i|
         targetdir = "../../all-midis/#{voice_i}/"
-        source = "#{SA}-midi-#{voice_i}.midi"
-        if not uptodate?(targetdir + source, source) then
-            cp(source, targetdir)
+        source = OUTPUT_FILES.grep(/#{voice_i}\.midi/)
+        source.each do |source_i|
+            if not uptodate?(targetdir + source_i, source_i) then
+                cp(source_i, targetdir)
+            end
         end
     end
-    puts "--- Copies in ../../all-midis/ are up to date--"
+    puts "---- Done updating ../../all-midis"
 end
 
 desc "Compile both PDF and MIDI output"
@@ -101,7 +111,7 @@ end
 
 desc "Clobber all produced PDF and MIDI files"
 task :clobber do
-    rm(PDF_FILES + MIDI_FILES)
+    rm(OUTPUT_FILES)
 end
 
 task :default => [:all] do
