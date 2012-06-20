@@ -116,15 +116,12 @@ bass = {
     <f, c>2 \bar "|."
 }
 
-
-eia = \lyricmode {
-  E -- ia, E -- ia,
-  su -- san -- ni, su -- san -- ni, su -- san -- ni,
+italic = { % italic
+  \override Lyrics.LyricText #'font-shape = #'italic
 }
 
-eia = \lyricmode {
-  E -- ia, E -- ia,
-  su -- san -- ni, su -- san -- ni, su -- san -- ni,
+normal = { % text face
+  \revert Lyrics.LyricText #'font-shape
 }
 
 eiaSkip = \lyricmode {
@@ -135,9 +132,6 @@ eiaSkip = \lyricmode {
   \skip 4 \skip 4 \skip 4
 }
 
-allelu = \lyricmode {
-  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
-}
 alleluSkip = \lyricmode {
   \skip 4 \skip 4 \skip 4
   \skip 4 \skip 4 \skip 4
@@ -157,24 +151,28 @@ verseTwo = \lyricmode {
   \markup { 
     \smaller \dynamic f
     Je } 
-    -- sus that is so full of might
+    -- sus that is so full __ of might
 
+  \italic
   \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ 
-    \smaller{\dynamic mp} 
-    E } -- ia, 
+    \markup{ 
+      \smaller{\dynamic mp} 
+      E } -- ia, 
 
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ 
-    \smaller{\dynamic pp} 
-    E } -- ia, 
-    su -- san -- ni, su -- san -- ni, su -- san -- ni,
+    \once \override LyricText #'self-alignment-X = #RIGHT
+    \markup{ 
+      \smaller{\dynamic pp} 
+      E } -- ia, 
+      su -- san -- ni, su -- san -- ni, su -- san -- ni,
+  \normal
 
   \once \override LyricText #'self-alignment-X = #RIGHT
   \markup{ 
     \smaller \dynamic mf 
     Y } -- bore he was a -- bout mid -- night;
-  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
+  \italic
+    Al -- "- le" -- lu -- ya, Al -- le -- lu -- ya,
+  \normal
   The an -- gels sang __ with all their might.
 }
 
@@ -204,28 +202,32 @@ verseFive = \lyricmode {
     Three } 
     kings there came with their pre -- sents
 
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ 
-    \smaller{\dynamic mp} 
-    E } -- ia, 
+  \italic
+    \once \override LyricText #'self-alignment-X = #RIGHT
+    \markup{ 
+      \smaller{\dynamic mp} 
+      E } -- ia, 
 
-  \once \override LyricText #'self-alignment-X = #RIGHT
-  \markup{ 
-    \smaller{\dynamic pp} 
-    E } -- ia, 
-    su -- san -- ni, su -- san -- ni, su -- san -- ni,
+    \once \override LyricText #'self-alignment-X = #RIGHT
+    \markup{ 
+      \smaller{\dynamic pp} 
+      E } -- ia, 
+      su -- san -- ni, su -- san -- ni, su -- san -- ni,
+  \normal
 
   \once \override LyricText #'self-alignment-X = #RIGHT
   \markup{ 
     \smaller \dynamic mf 
     Of } 
     myrrh and gold and frank -- in -- cense,
-  Al -- le -- lu -- ya, Al -- le -- lu -- ya,
+  \italic
+    Al -- "- le" -- lu -- ya, Al -- le -- lu -- ya,
+  \normal
   As cler -- kes sing __ in their se -- quence.
 }
 
 verseSix = \lyricmode {
-  Now sit we down up -- on our knee,
+  Now sit we down up -- on __ our knee,
   \eiaSkip
   And pray that child that is __ so free:
   \alleluSkip
