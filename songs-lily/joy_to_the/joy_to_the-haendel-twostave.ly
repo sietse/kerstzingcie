@@ -3,7 +3,7 @@
 
 \include "joy_to_the-haendel-source.ly"
 
-nummer = "03."
+nummer = "03. "
 
 \header {
   title = \markup { \nummer "Joy to the World" }
@@ -11,10 +11,25 @@ nummer = "03."
   composer = "Componist onbekend; niet Händel"
   arranger = "Op muziek gezet door Lowell Mason (1839)"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-19"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
+
+% This useful function kills extenders that are too short to be useful
+% Combine this with \override LyricExtender #'minimum-length = #0 for
+% beautiful results: an extender if there is space, no extender if there
+% is not.
+#(define (conditional-kill-lyric-extender-callback . args)
+   (lambda (grob)
+    (let* ((minimum-length
+            (if (null? args)
+             (ly:grob-property grob 'minimum-length 0)
+             (car args)))
+           (X-extent (ly:stencil-extent (ly:grob-property grob 'stencil empty-stencil) X))
+           (length (- (cdr X-extent) (car X-extent))))
+     (if (> minimum-length length)
+      (ly:grob-suicide! grob)))))
 
 % Make everything a bit smaller. 
 % The normal size of the music font is 20, but that gets things *really*
@@ -54,6 +69,12 @@ nummer = "03."
     % We can haz ambitus to display pitch range?
     \context { \Voice 
       \consists "Ambitus_engraver"
+    }
+    % Beautiful extender lines
+    \context { \Lyrics
+      \override LyricExtender #'minimum-length = #0
+      \override LyricExtender #'after-line-breaking = %
+         #(conditional-kill-lyric-extender-callback 1)
     }
   }
 }
