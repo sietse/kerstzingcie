@@ -59,7 +59,7 @@ To re-align a syllable:
 
 To add a custom-length horizontal line at the end of a syllable
 
-    \draw-line (3 . 0)
+    \markup{ Fa \draw-line #'(3 . 0) }
 
 
 To briefly change the associated voice:
