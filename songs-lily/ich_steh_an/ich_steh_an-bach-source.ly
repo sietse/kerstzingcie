@@ -94,16 +94,16 @@ bass = \relative g {
 }
 
 verseOne = \lyricmode {
-  Ich steh’ an dei -- ner Krip -- pen hier, 
+  Ich steh’ an dei -- ner Krip -- pen __ hier, 
   o __ Je -- su -- lein,
   mein __ Le -- ben,
-  Nimm hin! Es ist mein __ Geist __ und Sinn, 
-  Herz, Seel’ und Mut, 
-  nimm al -- les hin, 
+  Nimm hin! Es __ ist __ mein __ Geist __ und Sinn, 
+  Herz, __ Seel’ __ und Mut, __
+  nimm al -- les __ hin, 
   und lass dir’s wohl -- ge -- fal -- len.
 }
 
 verseTwo = \lyricmode {
-  Ich kom -- me, bring’ und schen -- ke dir,
+  Ich kom -- me, bring’ und schen -- ke __ dir,
   was du mir hast ge -- ge -- ben.
 }
