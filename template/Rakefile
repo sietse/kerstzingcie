@@ -1,0 +1,70 @@
+# Change this line
+SONG_ARR = "XXX"
+if SONG_ARR == 'XXX' then 
+    raise '=== Please edit the Rakefile to specify SONG_ARR'
+end
+
+SA = SONG_ARR 
+
+# ---------------------------------------------------------------------- 
+# Initialization task: Invoke this if you've just copied the template
+
+desc "Turn XXX-foo.ly into song_arr-foo.ly. Default: #{SONG_ARR}."
+task :init, [:song_arr] do |t, args|
+    args.with_defaults(:song_arr => SA)
+    FileList["XXX-*.ly"].each do |file_i|
+        sh("sed -i 's/XXX/#{args.song_arr}/g' #{file_i}")
+        sh("rename -v 's/XXX/#{args.song_arr}/g' #{file_i}")
+    end
+end
+
+# ---------------------------------------------------------------------- 
+# A file task for each PDF file
+
+file "#{SA}-twostave.pdf" => [
+    "#{SA}-twostave.ly", "#{SA}-source.ly"
+] do
+    puts "---- Compiling #{SA}-fourstave.ly ----"
+    system("lilypond #{SA}-twostave.ly")
+    rm("#{SA}-twostave.ps")
+end
+
+file "#{SA}-fourstave.pdf" => [
+    "#{SA}-fourstave.ly", "#{SA}-source.ly"
+] do
+    puts "---- Compiling #{SA}-fourstave.ly ----"
+    system("lilypond #{SA}-fourstave.ly")
+    rm("#{SA}-fourstave.ps")
+end
+
+# ---------------------------------------------------------------------- 
+# A loop that creates a file task for each MIDI file
+
+FileList["#{SA}-midi-*.ly"].each do |f|
+    file f.ext("midi") => [f, "#{SA}-source.ly"] do
+        puts "---- Compiling #{f.ext("midi")} ----"
+        system("lilypond #{f}")
+    end
+end
+
+# ---------------------------------------------------------------------- 
+# The user-facing tasks
+
+desc "Compile PDF files"
+# Depends on *-stave.pdf. But those PDFs might not yet exist,
+# so we get their names by remapping *-stave.ly
+task :pdfs => FileList["#{SA}-*stave.ly"].map{|f| f.ext('pdf')} do
+    puts "--- #{SA}-*.pdf is up to date ---"
+end
+
+desc "Compile MIDI files"
+task :midis => FileList["#{SA}-midi-*.ly"].map{|f| f.ext('midi')} do
+    puts "--- #{SA}-*.midi is up to date ---"
+end
+
+desc "Compile both PDF and MIDI output"
+task :all => [:pdfs, :midis] do
+end
+
+task :default => [:all] do
+end

@@ -1,3 +1,4 @@
+% vim: set fileformat=dos:
 \version "2.12.3"
 
 \include "XXX-source.ly"

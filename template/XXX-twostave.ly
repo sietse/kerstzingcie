@@ -1,13 +1,13 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "FIXME-source.ly"
+\include "XXX-source.ly"
 
-nummer = "13."
+nummer = "99." % FIXME
 
 \header {
   title = \markup {\nummer ""}
-  arranger = 
+  arranger = "" % FIXME
   tagline =  \markup { \center-column {
     "Versie 2011-09-07"
     "Collegium Musicum Kerstzingcie 2011"
