@@ -1,5 +1,9 @@
 syntax: glob
-*.ps
+
+all-pdfs/*
+all-midis/*
+
 kerstsite/*
 gdocs/*
+
 .rake_tasks~
