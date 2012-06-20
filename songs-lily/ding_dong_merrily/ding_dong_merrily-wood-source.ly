@@ -5,11 +5,11 @@ soprano = \relative bes' {
   \clef "treble" 
   \key bes \major 
   \numericTimeSignature\time 4/4 
-  bes4 bes4 c8 [ bes8 ] a8 [ g8 ] | % 1
+  bes4 bes4 c8  bes8 [ a8 ] g8  | % 1
   f2. f4 | % 2
   g4 bes4 bes4 a4 | % 3
   bes2 bes2 | % 4
-  bes4 bes4 c8 [ bes8 ] a8 [ g8 ] | % 5
+  bes4 bes4 c8 bes8 [ a8 ] g8 | % 5
   f2. f4 | % 6
   g4 bes4 bes4 a4 | % 7
   bes2 bes2 | % 8
@@ -29,12 +29,12 @@ alto = \relative f' {
   \clef "treble" 
   \key bes \major 
   \numericTimeSignature\time 4/4 
-  f4 f4 g8 [ g8 ] es8 [ es8 ] | % 1
+  f4 f4 g8 g8 [ es8 ] es8 | % 1
   c2. f4 | % 2
   f4 es4 c4 f4 | % 3
   f2 f2 | % 4
   %\break
-  f4 f4 g8 [ g8 ] es8 [ es8 ] | % 5
+  f4 f4 g8 g8 [ es8 ] es8 | % 5
   c2. f4 | % 6
   f4 es4 c4 f4 | % 7
   f2 f2 | % 8
@@ -56,11 +56,11 @@ tenor = \relative d' {
   \clef "treble_8" 
   \key bes \major 
   \numericTimeSignature\time 4/4 
-  d4 bes4 g8 [ g8 ] c8 [ bes8 ] | % 1
+  d4 bes4 g8 g8 [ c8 ] bes8 | % 1
   a2. bes4 | % 2
   bes4 bes4 c4 c4 | % 3
   d2 d2 | % 4
-  d4 bes4 g8 [ g8 ] c8 [ bes8 ] | % 5
+  d4 bes4 g8 g8 [ c8 ] bes8 | % 5
   a2. bes4 | % 6
   bes4 bes4 c4 c4 | % 7
   d2 d2 | % 8
@@ -80,11 +80,11 @@ bass = \relative bes, {
   \clef "bass" 
   \key bes \major 
   \numericTimeSignature\time 4/4 
-  bes4 d4 es8 [ es8 ] c8 [ c8 ] | % 1
+  bes4 d4 es8 es8 [ c8 ] c8 | % 1
   f2. d4 | % 2
   es4 g4 f4 f4 | % 3
   bes,2 bes2 | % 4
-  bes4 d4 es8 [ es8 ] c8 [ c8 ] | % 5
+  bes4 d4 es8 es8 [ c8 ] c8 | % 5
   f2. d4 | % 6
   es4 g4 f4 f4 | % 7
   bes,2 bes2 | % 8
@@ -97,6 +97,14 @@ bass = \relative bes, {
     bes,2 bes2 
   }
 }
+
+    italic = { % italic
+      \override Lyrics.LyricText #'font-shape = #'italic
+    }
+
+    normal = { % text face
+      \revert Lyrics.LyricText #'font-shape
+    }
 
 verseOne = \lyricmode {
   Ding, dong, mer -- ri -- ly on high,
@@ -123,15 +131,19 @@ verseTwoSoprano = {
   \verseTwo
   \lyricmode {
     % \set associatedVoice = #"alto" % for ri
+    \italic
     Glo -- ri -- a, ho -- san -- na
     in ex -- cel -- sis.
+    \normal
   }
 }
 
 verseTwoOther = {
   \verseTwo
   \lyricmode {
+    \italic
     Glo -- o -- o -- ri -- a, ho -- san -- na
     in ex -- cel -- sis.
+    \normal
   }
 }

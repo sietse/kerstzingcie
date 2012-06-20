@@ -10,7 +10,7 @@ nummer = "08."
   composer = "16th-century French dance tune"
   arranger = "Arranged by Charles Wood"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-12"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
