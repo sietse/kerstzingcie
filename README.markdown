@@ -23,7 +23,11 @@ De midi-bestanden
 
 ## Lilypond tricks
 
-To italicize text: 
+To format lyrics text:
+
+    bold = { % bold
+      \override Lyrics.LyricText #'font-series = #'bold
+    }
 
     italic = { % italic
       \override Lyrics.LyricText #'font-shape = #'italic
