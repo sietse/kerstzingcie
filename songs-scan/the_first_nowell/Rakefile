@@ -1,5 +1,8 @@
 # Change this line
-SONG_ARR = "XXX"
+SONG_ARR = "the_first_nowell-stainer"
+
+# Force the user to change the above line from 'XXX' by throwing an
+# error if she hasn't.
 if SONG_ARR == 'XXX' then 
     raise '=== Please edit the Rakefile to specify SONG_ARR'
 end
