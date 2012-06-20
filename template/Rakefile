@@ -1,15 +1,28 @@
 # Change this line
 SONG_ARR = "XXX"
 if SONG_ARR == 'XXX' then 
-    raise '=== Please edit the Rakefile to specify SONG_ARR'
+    raise '=== Before anything else: please edit the Rakefile' +
+          '    to specify the song-arrangement prefix in SONG_ARR'
 end
 
 SA = SONG_ARR 
 
+directory "../../all-pdfs/"
+MIDIDIRS = [
+    "../../all-midis/soprano/",
+    "../../all-midis/alto/",
+    "../../all-midis/tenor/",
+    "../../all-midis/bass/",
+    "../../all-midis/tutti/"
+]
+
+MIDIDIRS.each do |dir_i| directory dir_i end
+
+
 # ---------------------------------------------------------------------- 
 # Initialization task: Invoke this if you've just copied the template
 
-desc "Turn XXX-foo.ly into song_arr-foo.ly. Default: #{SONG_ARR}."
+desc "Initialize template: turn XXX into [default: #{SONG_ARR}]"
 task :init, [:song_arr] do |t, args|
     args.with_defaults(:song_arr => SA)
     FileList["XXX-*.ly"].each do |file_i|
@@ -50,20 +63,45 @@ end
 # ---------------------------------------------------------------------- 
 # The user-facing tasks
 
+# Get names of PDF files by remapping *-stave.ly to .pdf
+# Get names of MIDI files by remapping *-midi-*.ly to .midi
+PDF_FILES = FileList["#{SA}-*stave.ly"].map{|f| f.ext('pdf')}
+MIDI_FILES = FileList["#{SA}-midi-*.ly"].map{|f| f.ext('midi')}
+
 desc "Compile PDF files"
-# Depends on *-stave.pdf. But those PDFs might not yet exist,
-# so we get their names by remapping *-stave.ly
-task :pdfs => FileList["#{SA}-*stave.ly"].map{|f| f.ext('pdf')} do
+task :pdf => PDF_FILES + ["../../all-pdfs/"] do
     puts "--- PDFs of #{SA} are up to date ---"
+    FileList["*.pdf"].each do |source|
+        targetdir = "../../all-pdfs/"
+        if not uptodate?(targetdir + source, source) then
+            cp(source, targetdir)
+        end
+    end
+    puts "--- Copies in ../../all-pdfs/ are up to date--"
 end
 
 desc "Compile MIDI files"
-task :midis => FileList["#{SA}-midi-*.ly"].map{|f| f.ext('midi')} do
+# This task depends on *.midi. But those midi files might not yet exist,
+# so we get their names by mapping *-midi-*.ly to .midi.
+task :midi => MIDI_FILES + MIDIDIRS do
     puts "--- MIDIs of #{SA} are up to date ---"
+    ['soprano', 'alto', 'tenor', 'bass', 'tutti'].each do |voice_i|
+        targetdir = "../../all-midis/#{voice_i}/"
+        source = "#{SA}-midi-#{voice_i}.midi"
+        if not uptodate?(targetdir + source, source) then
+            cp(source, targetdir)
+        end
+    end
+    puts "--- Copies in ../../all-midis/ are up to date--"
 end
 
 desc "Compile both PDF and MIDI output"
-task :all => [:pdfs, :midis] do
+task :all => [:pdf, :midi] do
+end
+
+desc "Clobber all produced PDF and MIDI files"
+task :clobber do
+    rm(PDF_FILES + MIDI_FILES)
 end
 
 task :default => [:all] do
