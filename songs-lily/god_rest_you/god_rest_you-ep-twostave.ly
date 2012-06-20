@@ -10,7 +10,7 @@ nummer = "05."
   composer = "English traditional carol tune"
   arranger = "Arranged by E.P."
   tagline =  \markup { \center-column {
-    "Versie 2011-11-02"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
