@@ -9,7 +9,7 @@ nummer = "17."
   title = \markup {\nummer "Deck the Halls"}
   arranger = "Welsh traditional"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-31"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
