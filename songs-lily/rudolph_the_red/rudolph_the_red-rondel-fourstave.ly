@@ -23,11 +23,14 @@
 \score {
   \new ChoirStaff <<
     \new Staff = "sSoprano" << 
-      \new Voice = "vSoprano" { \voiceOne \soprano }
       \new Voice = "vAlto" { \voiceTwo \altoClean }
     >>
     \new Lyrics \lyricsto "vSoprano" \verseOneSoprano
-    %\new Lyrics \lyricsto "vAlto" \verseOneAlto
+
+    \new Staff = "sAlto" << 
+      \new Voice = "vAlto" { \voiceTwo \altoClean }
+    >>
+    \new Lyrics \lyricsto "vAlto" \verseOneSoprano
 
     \new Staff = "sTenor" << 
       \new Voice = "vTenor" { \tenor }
@@ -39,11 +42,6 @@
     >>
     %\new Lyrics \lyricsto "vBass" \verseOne
   >>
-  \midi {
-    \context {
-      \Score tempWholesPerMinute = #(ly:make-moment 120 4 )
-    }
-  }
   \layout { 
     % We can haz ambitus to display pitch range?
     \context { \Staff 
