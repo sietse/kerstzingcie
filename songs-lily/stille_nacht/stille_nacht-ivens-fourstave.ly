@@ -1,7 +1,7 @@
 \version "2.12.3"
 \include "stille_nacht-ivens-source.ly"
 
-nummer = "18."
+nummer = "18. "
 
 \header {
   title = \markup { \nummer "Stille Nacht" }

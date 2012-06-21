@@ -3,7 +3,7 @@
 
 \include "ich_steh_an-bach-source.ly"
 
-nummer = "06."
+nummer = "06. "
 
 \header {
   title = \markup { 

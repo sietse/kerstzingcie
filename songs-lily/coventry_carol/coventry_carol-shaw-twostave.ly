@@ -3,7 +3,7 @@
 
 \include "coventry_carol-shaw-source.ly"
 
-nummer = "09."
+nummer = "09. "
 
 \header {
   title = \markup { \nummer "Coventry Carol" }

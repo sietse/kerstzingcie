@@ -3,7 +3,7 @@
 
 \include "a_little_child-ep-source.ly"
 
-nummer = "13."
+nummer = "13. "
 
 \header {
   %title = \markup { \line { \number "A Little Child There Is Ybore" }}

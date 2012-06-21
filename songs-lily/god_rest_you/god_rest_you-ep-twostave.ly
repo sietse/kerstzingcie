@@ -3,7 +3,7 @@
 
 \include "god_rest_you-ep-source.ly"
 
-nummer = "05."
+nummer = "05. "
 
 \header {
   title = \markup {\nummer "God Rest You Merry, Gentlemen"}

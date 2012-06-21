@@ -1,30 +1,30 @@
-# liednummer.: pad/naar/bestand.pdf
-01.: songs-lily/rudolph_the_red/rudolph_the_red-rondel-threestave.pdf
-02.: songs-lily/es_ist_ein/er_is_een-anon1-twostave.pdf
-02.: songs-lily/es_ist_ein/es_ist_ein-anon1-twostave.pdf
-03.: songs-lily/joy_to_the/joy_to_the-haendel-twostave.pdf
-04.: songs-lily/away_in_a/away_in_a-willcocks-fourstave.pdf
-05.: songs-lily/god_rest_you/god_rest_you-ep-twostave.pdf
-06.: songs-lily/ich_steh_an/ich_steh_an-bach-fourstave.pdf
-07.: songs-lily/once_in_royal/once_in_royal-mann-twostave.pdf
-08.: songs-lily/ding_dong_merrily/ding_dong_merrily-wood-fourstave.pdf
-09.: songs-lily/coventry_carol/coventry_carol-shaw-twostave.pdf
-9¾.: songs-scan/the_first_nowell/the_first_nowell-scan.pdf
-10.: songs-scan/jingle_bells/jingle_bells-oud.pdf
-11.: songs-scan/o_kindeke_klein/o_kindeke_klein-bach-oud.pdf
-11.: songs-scan/o_kindeke_klein/o_little_one-oud.pdf
-12.: songs-scan/o_come_all/o_come_all-wade-oud.pdf
-4π.: songs-lily/rejoice_and_be/rejoice_and_be-anon1-twostave.pdf
-13.: songs-lily/a_little_child/a_little_child-ep-twostave.pdf
-14.: songs-scan/white_christmas/white_christmas-anon1-oud.pdf
-15.: songs-scan/on_christmas_night/on_christmas_night-williams-oud.pdf
-16.: songs-scan/entre_le_boeuf/entre_le_boeuf-wakelkamp.pdf
-17.: songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
-18.: songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
-19.: songs-lily/hoor_de_englen/hark_the_herald-anon1-twostave.pdf
-19.: songs-lily/hoor_de_englen/hoor_de_englen-anon1-twostave.pdf
-20.: songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.pdf
-21.: songs-scan/winter_wonderland/winter_wonderland-oud.pdf
-22.: songs-lily/o_tannenbaum/o_tannenbaum-dewagtere-fourstave.pdf
-23.: songs-scan/hoe_leit_dit/hoe_leit_dit-oud.pdf
-24.: songs-scan/o_little_town/o_little_town-armstrong-can.pdf
+# liednummer. : pad/naar/bestand.pdf
+01. : songs-lily/rudolph_the_red/rudolph_the_red-rondel-threestave.pdf
+02. : songs-lily/es_ist_ein/er_is_een-anon1-twostave.pdf
+02. : songs-lily/es_ist_ein/es_ist_ein-anon1-twostave.pdf
+03. : songs-lily/joy_to_the/joy_to_the-haendel-twostave.pdf
+04. : songs-lily/away_in_a/away_in_a-willcocks-fourstave.pdf
+05. : songs-lily/god_rest_you/god_rest_you-ep-twostave.pdf
+06. : songs-lily/ich_steh_an/ich_steh_an-bach-fourstave.pdf
+07. : songs-lily/once_in_royal/once_in_royal-mann-twostave.pdf
+08. : songs-lily/ding_dong_merrily/ding_dong_merrily-wood-fourstave.pdf
+09. : songs-lily/coventry_carol/coventry_carol-shaw-twostave.pdf
+9¾. : songs-scan/the_first_nowell/the_first_nowell-scan.pdf
+10. : songs-scan/jingle_bells/jingle_bells-oud.pdf
+11. : songs-scan/o_kindeke_klein/o_kindeke_klein-bach-oud.pdf
+11. : songs-scan/o_kindeke_klein/o_little_one-oud.pdf
+12. : songs-scan/o_come_all/o_come_all-wade-oud.pdf
+4π. : songs-lily/rejoice_and_be/rejoice_and_be-anon1-twostave.pdf
+13. : songs-lily/a_little_child/a_little_child-ep-twostave.pdf
+14. : songs-scan/white_christmas/white_christmas-anon1-oud.pdf
+15. : songs-scan/on_christmas_night/on_christmas_night-williams-oud.pdf
+16. : songs-scan/entre_le_boeuf/entre_le_boeuf-wakelkamp.pdf
+17. : songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
+18. : songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
+19. : songs-lily/hoor_de_englen/hark_the_herald-anon1-twostave.pdf
+19. : songs-lily/hoor_de_englen/hoor_de_englen-anon1-twostave.pdf
+20. : songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.pdf
+21. : songs-scan/winter_wonderland/winter_wonderland-oud.pdf
+22. : songs-lily/o_tannenbaum/o_tannenbaum-dewagtere-fourstave.pdf
+23. : songs-scan/hoe_leit_dit/hoe_leit_dit-oud.pdf
+24. : songs-scan/o_little_town/o_little_town-armstrong-can.pdf

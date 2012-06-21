@@ -1,7 +1,7 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-nummer = "22."
+nummer = "22. "
 
 \include "o_tannenbaum-dewagtere-source.ly"
 

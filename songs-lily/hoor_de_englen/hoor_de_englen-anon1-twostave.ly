@@ -3,7 +3,7 @@
 
 \include "hoor_de_englen-anon1-source.ly"
 
-nummer = "19."
+nummer = "19. "
 
 \header {
   title = \markup {\nummer "Hoor de eng’len zingen d’eer"}

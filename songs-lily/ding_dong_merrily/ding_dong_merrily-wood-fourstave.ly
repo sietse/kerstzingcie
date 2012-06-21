@@ -3,7 +3,7 @@
 
 \include "ding_dong_merrily-wood-source.ly"
 
-nummer = "08."
+nummer = "08. "
 
 \header {
   title = \markup {\nummer "" Ding, Dong, Merrily on High}

@@ -3,7 +3,7 @@
 
 \include "es_ist_ein-anon1-source.ly"
 
-nummer = "02."
+nummer = "02. "
 
 \header {
   title = \markup {\nummer "Es ist ein Ros entsprungen"}

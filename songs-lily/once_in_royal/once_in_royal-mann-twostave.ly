@@ -3,7 +3,7 @@
 
 \include "once_in_royal-mann-source.ly"
 
-nummer = "07."
+nummer = "07. "
 
 \header {
   title = \markup {\nummer "Once in Royal David’s City"}
