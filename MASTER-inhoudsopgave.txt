@@ -9,7 +9,7 @@
 07. : songs-lily/once_in_royal/once_in_royal-mann-twostave.pdf
 08. : songs-lily/ding_dong_merrily/ding_dong_merrily-wood-fourstave.pdf
 09. : songs-lily/coventry_carol/coventry_carol-shaw-twostave.pdf
-9¾. : songs-scan/the_first_nowell/the_first_nowell-scan.pdf
+9¾. : songs-lily/the_first_nowell/the_first_nowell-stainer-twostave.pdf
 10. : songs-scan/jingle_bells/jingle_bells-oud.pdf
 11. : songs-scan/o_kindeke_klein/o_kindeke_klein-bach-oud.pdf
 11. : songs-scan/o_kindeke_klein/o_little_one-oud.pdf
