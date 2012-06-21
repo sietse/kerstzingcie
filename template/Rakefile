@@ -22,24 +22,27 @@ def sourcefile(filename)
     return root + '-source.ly'
 end
 
-# A rule for each PDF or MIDI file in OUTPUT_FILES
-OUTPUT_FILES.each do |f|
-    # Check for output that we don't know how to produce
-    if not File.exist?(f.ext('ly')) then
-        raise "==== #{f} is listed in OUTPUT_FILES,\n" +
-              "     but #{f.ext('ly')} does not exist."
-    end
-    if not File.exist?(sourcefile(f)) then
-        raise "==== #{f} is listed in OUTPUT_FILES,\n" +
-              "     but #{sourcefile(f)} does not exist"
-    end
+# Unless we are still in templating mode, start creating tasks.
+if not `ls`.match('XXX') then
+    # A rule for each PDF or MIDI file in OUTPUT_FILES
+    OUTPUT_FILES.each do |f|
+        # Check for output that we don't know how to produce
+        if not File.exist?(f.ext('ly')) then
+            raise "==== #{f} is listed in OUTPUT_FILES,\n" +
+                  "     but #{f.ext('ly')} does not exist."
+        end
+        if not File.exist?(sourcefile(f)) then
+            raise "==== #{f} is listed in OUTPUT_FILES,\n" +
+                  "     but #{sourcefile(f)} does not exist"
+        end
 
-    file f => [f.ext('ly'), sourcefile(f)] do
-        puts "---- Compiling #{f}"
-        system("lilypond #{f.ext('ly')}")
-        if f =~ /pdf$/ then
-            puts "---- Deleting #{f.ext('ps')}"
-            rm(f.ext('ps'))
+        file f => [f.ext('ly'), sourcefile(f)] do
+            puts "---- Compiling #{f}"
+            system("lilypond #{f.ext('ly')}")
+            if f =~ /pdf$/ then
+                puts "---- Deleting #{f.ext('ps')}"
+                rm(f.ext('ps'))
+            end
         end
     end
 end
