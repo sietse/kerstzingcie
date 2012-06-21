@@ -75,3 +75,20 @@ To briefly change the associated voice:
        \set associatedVoice = "two" sins 
        \set associatedVoice = "one" and
        sor -- rows grow
+
+To raise or lower lyrics:
+
+    dropLyrics =
+    {
+        \override LyricText #'extra-offset = #'(0 . -2)
+        \override LyricHyphen #'extra-offset = #'(0 . -2)
+        \override LyricExtender #'extra-offset = #'(0 . -2)
+    }
+
+    raiseLyrics =
+    {
+        \revert LyricText #'extra-offset
+        \revert LyricHyphen #'extra-offset
+        \revert LyricExtender #'extra-offset
+    }
+
