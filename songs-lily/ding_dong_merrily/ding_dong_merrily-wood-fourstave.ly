@@ -3,14 +3,14 @@
 
 \include "ding_dong_merrily-wood-source.ly"
 
-nummer = "08."
+nummer = "08. "
 
 \header {
   title = \markup {\nummer "" Ding, Dong, Merrily on High}
   composer = "16th-century French dance tune"
   arranger = "Arranged by Charles Wood"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-12"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }

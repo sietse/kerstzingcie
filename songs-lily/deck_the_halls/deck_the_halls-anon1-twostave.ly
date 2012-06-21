@@ -3,13 +3,13 @@
 
 \include "deck_the_halls-anon1-source.ly"
 
-nummer = "17."
+nummer = "17. "
 
 \header {
   title = \markup {\nummer "Deck the Halls"}
   arranger = "Welsh traditional"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-31"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }

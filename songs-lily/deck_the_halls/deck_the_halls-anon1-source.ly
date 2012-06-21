@@ -4,7 +4,7 @@
 
 soprano = {
   \autoBeamOff
-  \clef "treble" \key f \major \time 4/4 | % 1
+  \key f \major \time 4/4 | % 1
   \tag #'score { \tempo 2=116 }
   \tag #'midi { \tempo 4.=116 }
   c''4. bes'8 a'4 g'4 | % 2
@@ -21,13 +21,25 @@ soprano = {
   e''4 d''4 c''2 | % 13
   c''4. bes'8 a'4 g'4 | % 14
   f'4 g'4 a'4 f'4 | % 15
-  <g' bes'>8 <d'' f''>8 <bes' d''>8 <g' bes'>8 a'4. g'8 | % 16
+  < 
+    g' \tweak #'font-size #-3 bes'
+  >8 
+  <
+    d'' \tweak #'font-size #-3 f''
+  >8 
+  <
+    bes' \tweak #'font-size #-3 d''
+  >8 
+  <
+    g' \tweak #'font-size #-3 bes'
+  >8 
+  a'4. g'8 | % 16
   f'4 e'4 f'2 \bar "|."
 }
 
 alto = {
   \autoBeamOff
-  \clef "treble" \key f \major \time 4/4 | % 1
+  \key f \major \time 4/4 | % 1
   a'4. g'8 f'4 e'4 | % 2
   f'4 e'4 f'4 f'4 | % 3
   d'8 d'8 d'8 d'8 f'4. d'8 | % 4
@@ -88,11 +100,19 @@ bass = {
   c4 c4 f2 \bar "|."
 }
 
+    italic = { % italic
+      \override Lyrics.LyricText #'font-shape = #'italic
+    }
+
+    normal = { % text face
+      \revert Lyrics.LyricText #'font-shape
+    }
+
 verseOne = \lyricmode {
-  Deck the halls with boughts of hol -- ly, 
+  Deck the halls with boughs of hol -- ly, 
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 
   \skip4 \skip4 \skip4
-  "’t Is" the sea -- son to be jo -- ly, 
+  "’t Is" the sea -- son to be jol -- ly, 
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 
   \skip4 \skip4 \skip4
   Don we now our gay ap -- pa -- rel, 
@@ -103,13 +123,19 @@ verseOne = \lyricmode {
 
 verseTwo = \lyricmode {
   See the bla -- zing Yule be -- fore us, 
-  Fa la la la la, fa la, la, la, 
+  \italic Fa la la la la, fa la, la, la, \normal
   Strike the harp and join the cho -- rus, 
-  Fa la la la la, __ fa __ la, la, la, 
+  \italic Fa la la la la, __ fa __ la, la, la, \normal
   Fol -- low me in mer -- ry mea -- sure, 
-  Fa la, la, la, la, la, la, 
+  \italic 
+    \once \override LyricText #'self-alignment-X = #-1
+      \markup{ Fa\draw-line #'(2 . 0) }  
+    la, 
+    \once \override LyricText #'self-alignment-X = #-1
+      \markup{ la \draw-line #'(2 . 0) }  
+    la, la, la, la, \normal
   While I tell of Yule -- tide trea -- sure, 
-  Fa la la la la, __ fa __ la, la, la. 
+  \italic Fa la la la la, __ fa __ la, la, la. \normal
 }
 
 verseThree = \lyricmode {
@@ -121,7 +147,7 @@ verseThree = \lyricmode {
   \skip4 \skip4 \skip4
   Sing we jo -- yous all to -- ge -- ther, 
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 
-  Heed -- less off the wind and wea -- ther, 
+  Heed -- less of the wind and wea -- ther, 
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 
   \skip4 \skip4 \skip4
 }

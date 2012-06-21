@@ -3,7 +3,7 @@
 
 \include "away_in_a-willcocks-source.ly"
 
-nummer = "04."
+nummer = "04. "
 
 \header {
   title = \markup {\nummer "Away in a Manger"}
@@ -14,6 +14,21 @@ nummer = "04."
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
+
+% This useful function kills extenders that are too short to be useful
+% Combine this with \override LyricExtender #'minimum-length = #0 for
+% beautiful results: an extender if there is space, no extender if there
+% is not.
+#(define (conditional-kill-lyric-extender-callback . args)
+   (lambda (grob)
+    (let* ((minimum-length
+            (if (null? args)
+             (ly:grob-property grob 'minimum-length 0)
+             (car args)))
+           (X-extent (ly:stencil-extent (ly:grob-property grob 'stencil empty-stencil) X))
+           (length (- (cdr X-extent) (car X-extent))))
+     (if (> minimum-length length)
+      (ly:grob-suicide! grob)))))
 
 % Make everything a bit smaller. 
 % The normal size of the music font is 20, but that gets things *really*
@@ -52,14 +67,19 @@ nummer = "04."
       \consists "Ambitus_engraver"
     }
     % space-saving tweaks
-   %\context { \Staff
-   %  \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
-   %}
-   \context { \Lyrics
-     \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
-   }
-   \context { \Lyrics
-     \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
-   }
+    %\context { \Staff
+    %  \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
+    %}
+    \context { \Lyrics
+      \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
+    }
+    \context { \Lyrics
+      \override LyricExtender #'minimum-length = #0
+      \override LyricExtender #'after-line-breaking = %
+         #(conditional-kill-lyric-extender-callback 1)
+    }
   }
 }

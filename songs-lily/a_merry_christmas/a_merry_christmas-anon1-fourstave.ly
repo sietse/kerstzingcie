@@ -3,7 +3,7 @@
 
 \include "a_merry_christmas-anon1-source.ly"
 
-nummer = "20."
+nummer = "20. "
 
 \header {
   copyright = "1935 Oxford university press"

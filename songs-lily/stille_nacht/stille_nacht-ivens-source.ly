@@ -130,12 +130,12 @@ bass = {
 verseOne = \lyricmode {
   % Skip 7 notes
   \repeat unfold 7 { \skip 1 }
-  Al -- les schläft,
+  Al -- les schläft, __
   ein -- sam 
     % 'wacht' should line up to its note with its left edge, instead of
     % with its middle.
     \once \override LyricText #'self-alignment-X = #-1
-    wacht
+    wacht __
   nur das trau -- te hoch --
   hei -- li -- ge Paar,
   hol -- der Kna -- be im 
@@ -151,16 +151,16 @@ verseOne = \lyricmode {
 verseTwo = \lyricmode {
   Stil -- le Nacht,
   Hei -- li -- ge Nacht.
-  Hir -- ten erst 
+  Hir -- ten erst __
   Kund ge -- 
     \once \override LyricText #'self-alignment-X = #-1
-    macht
+    macht __
   durch der En -- _ gel 
   Hal -- le -- lu -- ja,
   tönt es laut __ _ von 
   fern __ _ und 
     \once \override LyricText #'self-alignment-X = #-1
-    nah,
+    nah, __
   Christ der Ret -- ter ist
   da, __
   Christ __ der Ret -- ter ist
@@ -173,13 +173,13 @@ verseThree = \lyricmode {
   Got -- tes Sohn, __
   o wie 
     \once \override LyricText #'self-alignment-X = #-1
-    lacht
+    lacht __
   Lieb aus dei -- _ nem
-  Gött -- li -- chen mund,
+  Gött -- li -- chen Mund,
   da uns schlägt __ _ die 
   ret -- ten -- de 
     \once \override LyricText #'self-alignment-X = #-1
-    Stund,
+    Stund, __
   Christ, in dei -- ner Ge -- 
   burt, __
   Christ __ in dei -- ner Ge --

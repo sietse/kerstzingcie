@@ -104,49 +104,49 @@ verseOne = {
   \set stanza = \markup { \dynamic "pp" "1. " }
   \lyricmode {
     A -- way in a __ man -- ger, 
-    no__ crib for a bed, the __ 
+    no __ crib for a bed, __ the __ 
 
     lit -- tle Lord Je -- sus laid __ 
-    down his sweet head. The 
+    down his sweet head. The __
 
-    stars in the __ bright sky shone 
-    down where he lay. The __ 
+    stars __ in __ the __ bright __ sky __ shone __
+    down where __ he lay. __ The __ 
     
     lit -- tle Lord Je -- sus a --
-    sleep on the hay. 
+    sleep on __ the __ hay. 
   }
 }
 
 verseTwo = {
   \set stanza = \markup { \dynamic "p" "2. " }
   \lyricmode {  
-    The cat -- tle are __ low -- ing, the __ 
-    ba -- by a -- wakes, but __ 
+    The __ cat -- tle are __ low -- ing, the __ 
+    ba -- by a -- wakes, __ but __ 
 
     lit -- tle Lord Je -- sus no __ 
-    cry -- ing he makes. I 
+    cry -- ing he makes. I __
     
-    love thee Lord __ Je -- sus! Look 
-    down from the sky. And __ 
+    love __ thee __ Lord __ Je -- sus! __ Look __
+    down from __ the sky. __ And __
 
     stay by my side un -- til __ 
-    morn -- ing is nigh. 
+    morn -- ing __ is __ nigh. 
   }
 }
 
 verseThree = {
   \set stanza = \markup { \dynamic "pp" "3. " }
   \lyricmode {
-    Be near me, Lord __ Je -- sus; I __ 
-    ask thee to stay close __ 
+    Be __ near me, Lord __ Je -- sus; I __ 
+    ask thee to stay __ close __ 
 
     by me for e -- ver and __ 
-    love me, I pray. Bless 
+    love me, I pray. Bless __
     
-    all the dear __ chil -- dren in 
-    thy ten -- der care. And __ 
+    all __ the __ dear __ chil -- dren __ in __
+    thy __ ten -- der care. __ And __ 
 
     fit us for hea -- ven, to __
-    live with thee there.
+    live with __ thee __ there.
   }
 }

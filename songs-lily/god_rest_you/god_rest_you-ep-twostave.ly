@@ -3,14 +3,14 @@
 
 \include "god_rest_you-ep-source.ly"
 
-nummer = "05."
+nummer = "05. "
 
 \header {
   title = \markup {\nummer "God Rest You Merry, Gentlemen"}
   composer = "English traditional carol tune"
   arranger = "Arranged by E.P."
   tagline =  \markup { \center-column {
-    "Versie 2011-11-02"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }

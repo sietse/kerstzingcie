@@ -117,7 +117,7 @@ verseOne = \lyricmode {
   pre -- pare __ him __ room, __
   And heav’n and na -- ture __ sing,
   And heav’n and na -- ture __ sing,
-  And hea -- ven, and hea __ ven, 
+  And hea -- ven, and hea -- ven, 
   and na -- ture __ sing,
 }
 
@@ -152,7 +152,7 @@ verseFour = \lyricmode {
   His right -- eous -- ness, __
   And won -- ders of His __ love,
   And won -- ders of His __ love,
-  And won __ _ -ders, won __ _ -ders, 
+  And won __ _ "- ders," won __ _ "- ders," 
     of His __ love.
 }
 

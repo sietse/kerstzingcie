@@ -3,14 +3,14 @@
 
 \include "rudolph_the_red-rondel-source.ly"
 
-nummer = "01."
+nummer = "01. "
 
 \header {
   title = \markup { \nummer "Rudolph the Red-Nosed Reindeer" }
   composer = "Jonny Marks" 
   arranger = "Arranged by M. Rondel"
   tagline =  \markup { \center-column {
-    "Versie 2011-09-30"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }

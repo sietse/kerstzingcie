@@ -37,7 +37,7 @@ alto = \relative c' {
   b4 a b8 e |
   d4 g fis |
   g a g |
-  g fis g |
+  g( fis) g |
   g fis e |
   d fis e |
   g4. a8 fis4 |
@@ -81,29 +81,29 @@ tenor = \relative c {
 bass = \tenor
 
 verseOne = \lyricmode {
-  Re4 -- joice and be mer -- ry in songs and in mirth!
+  Re4 -- joice and be __ mer -- ry in songs and in mirth!
   O praise our Re -- deem -- er, all mor -- tals on earth!
   For this is the birth -- day of Je -- sus our King,
-  Who brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing!
+  Who __ brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing!
 }
 
 verseTwo = \lyricmode {
-  A4 hea -- ven -- ly vi -- sion ap -- peared in the sky,
+  A4 __ hea -- ven -- ly __ vi -- sion ap -- peared in the sky,
   Vast num -- bers of an -- gels the shep -- herds did spy,
   Pro -- clai -- ming the birth -- day of Je -- sus our King,
-  Who brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
+  Who __ brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
 }
 
 verseThree = \lyricmode {
   Like4 -- wise a bright star in the sky did ap -- pear,
   Which led the wise men from the east to draw near;
   They found the Mes -- si -- ah, sweet Je -- sus our King,
-  Who brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
+  Who __ brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
 }
 
 verseFour = \lyricmode {
-  And4 when they were come, they their trea -- sures un -- fold,
+  And4 __ when they were __ come, they their trea -- sures un -- fold,
   And un -- to him of -- fered myrrh, in -- cense, and gold.
   So bles -- sed for e -- ver be Je -- sus our King,
-  Who brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
+  Who __ brought us sal4 -- va4 -- tion;4 his prai -- ses we’ll sing.
 }

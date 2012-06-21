@@ -3,7 +3,7 @@
 
 \include "hark_the_herald-anon1-source.ly"
 
-nummer = "19."
+nummer = "19. "
 
 \header {
   title = \markup {\nummer "Hark! the herald-angels sing"}
@@ -13,11 +13,27 @@ nummer = "19."
   } }
   composer = "J.L.F. Mendelssohn Bartholdy (1809–1847)"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-20"
+    "Versie 2012-06-20"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
 
+% This useful function kills extenders that are too short to be useful
+% Combine this with \override LyricExtender #'minimum-length = #0 for
+% beautiful results: an extender if there is space, no extender if there
+% is not.
+#(define (conditional-kill-lyric-extender-callback . args)
+   (lambda (grob)
+    (let* ((minimum-length
+            (if (null? args)
+             (ly:grob-property grob 'minimum-length 0)
+             (car args)))
+           (X-extent (ly:stencil-extent (ly:grob-property grob 'stencil empty-stencil) X))
+           (length (- (cdr X-extent) (car X-extent))))
+     (if (> minimum-length length)
+      (ly:grob-suicide! grob)))))
+
+% Fit the systems on one page
 #(set-global-staff-size 18)
 
 \score {
@@ -48,6 +64,11 @@ nummer = "19."
     % We can haz ambitus to display pitch range?
     \context { \Voice 
       \consists "Ambitus_engraver"
+    }
+    \context { \Lyrics
+      \override LyricExtender #'minimum-length = #0
+      \override LyricExtender #'after-line-breaking = %
+         #(conditional-kill-lyric-extender-callback 0.8)
     }
   }
 }

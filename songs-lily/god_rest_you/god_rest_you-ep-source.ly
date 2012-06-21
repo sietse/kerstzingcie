@@ -116,6 +116,14 @@ bass = {
     e2.\bar "|."
 }
 
+    italic = { % italic
+      \override Lyrics.LyricText #'font-shape = #'italic
+    }
+
+    normal = { % text face
+      \revert Lyrics.LyricText #'font-shape
+    }
+
 verseOne = \lyricmode {
   God rest ye mer -- ry, gen -- tle -- men,
   let no -- thing you dis -- may,
@@ -130,7 +138,7 @@ verseTwo = \lyricmode {
   this bles -- sed babe was born, 
   and laid with -- in a man -- ger 
   up -- on this bles -- sed morn, 
-  the which his mo -- ther "Ma     " -- _ ry 
+  the which his mo -- ther Ma -- _ ry 
   no -- thing did take in scorn;
 }
 
@@ -141,9 +149,11 @@ verseThree = \lyricmode {
   brought ti -- dings of the same, 
   how that in Beth -- le -- hem was born
   the son of God by name;
+  \italic
   O __ ti -- dings of com -- fort and joy,
   com -- fort and joy,
   O __ ti -- dings of com -- fort and joy.
+  \normal
 }
 
 verseFour = \lyricmode {

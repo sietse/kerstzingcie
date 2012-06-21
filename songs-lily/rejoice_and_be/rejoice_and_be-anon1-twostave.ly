@@ -3,7 +3,7 @@
 
 \include "rejoice_and_be-anon1-source.ly"
 
-nummer = "4π."
+nummer = "4π. "
 
 \header {
   title = \markup { \nummer "Rejoice and be Merry" }
@@ -15,6 +15,20 @@ nummer = "4π."
   poet = "Traditional Dorset"
 }
 
+% This useful function kills extenders that are too short to be useful
+% Combine this with \override LyricExtender #'minimum-length = #0 for
+% beautiful results: an extender if there is space, no extender if there
+% is not.
+#(define (conditional-kill-lyric-extender-callback . args)
+   (lambda (grob)
+    (let* ((minimum-length
+            (if (null? args)
+             (ly:grob-property grob 'minimum-length 0)
+             (car args)))
+           (X-extent (ly:stencil-extent (ly:grob-property grob 'stencil empty-stencil) X))
+           (length (- (cdr X-extent) (car X-extent))))
+     (if (> minimum-length length)
+      (ly:grob-suicide! grob)))))
 
 \score {
   \new ChoirStaff <<
@@ -41,6 +55,12 @@ nummer = "4π."
     % We can haz ambitus to display pitch range?
     \context { \Voice 
       \consists "Ambitus_engraver"
+    }
+    % Beautiful extender lines
+    \context { \Lyrics
+      %\override LyricExtender #'minimum-length = #0
+      %\override LyricExtender #'after-line-breaking = %
+         %#(conditional-kill-lyric-extender-callback 0.1)
     }
   }
 }
