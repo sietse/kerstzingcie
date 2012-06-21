@@ -1,82 +1,119 @@
-# ## Constants and methods
+## This file contains four sections. 
+##
+## * The first section defines the constants we will be needing. 
+## * The second section contains the `midis` task, which creates the
+##    midi zipfiles. 
+## * The third section contains the `update_line_numbers` task, which
+##   ensures that the song numbers in `MASTER-inhoudsopgave.txt` are
+##   present in the songs' .ly files. 
+## * The last section contains the `pdfs` task, which (1) collects the
+##   song pdfs into a zipfile, and (2) concatenates them into a
+##   songbook.
 
-# (1) Create a method to get the `'path/song-arranger'` root from a derived
-# filename. From this you can make `'path/song-arranger-source.ly'`,
-# `'path/song-arranger-midi-tenor.midi'`, etc.
+## -----------------------------------------------------------------
 
-class String
-    def lroot
-        path, filename = self.scan(/(.*\/)(.*)/)[0]
-        if filename.split('-').length != 3
-            puts "*** Error in '" + filename + "'" +
-                "\n*** Filename should be of the form" +
-                " 'song-arranger-layout.pdf'"
-        end
-        path + filename.split('-')[0,2].join('-')
-    end
-end
+## ## Section 1: defining some constants.
 
-# (2) The file `MASTER-inhoudsopgave.txt` contains the songs and their index
-# numbers. The variable `MASTER` stores this as an array of triples
-# `[song_pdf, number, position]`.
+## We collect the output in a directory called 'output'. Appropriate.
 
-tmp = []
+directory "output"
+OUTDIR = "output"
+
+## These are the output files we will be creating. If you want a
+## different naming scheme (2012 --> 2013, say), all you need to change
+## is this block.
+
+OUTFILE = {
+    'pdfzip'  => 'kerst-2012-pdfs.zip',
+    'pdfbook' => 'kerst-2012-book.pdf',
+    'soprano' => 'kerst-2012-midis-soprano.zip',
+    'alto'    => 'kerst-2012-midis-alto.zip',
+    'tenor'   => 'kerst-2012-midis-tenor.zip',
+    'bass'    => 'kerst-2012-midis-bass.zip',
+    'tutti'   => 'kerst-2012-midis-tutti.zip'
+}
+
+## `VOICES`: for when we want to do something for each voice.
+
+VOICES = ['soprano', 'alto', 'tenor', 'bass', 'tutti']
+
+## The file `MASTER-inhoudsopgave.txt` contains a list of the pdfs we
+## we want in our songbook, and how they should be numbered. The
+## variable `MASTER` stores this as an array of 
+## triples `[song_pdf, number, position]`.
+
+tmp = [] # can't grow a constant incrementally, so we collect in `tmp`.
 open('MASTER-inhoudsopgave.txt').each_with_index do |line, i| 
     if not line =~ /^#/
         line = line.gsub!(/\n/, '')
-        tmp << [line.split(': ')[1], line.split(': ')[0], i]
+        tmp << [
+            line.split(': ')[1], 
+            line.split(': ')[0], 
+            i
+        ]
     end
 end
 MASTER = tmp
 
-# (3) The zips are put in 'kerstsite/muziek'. Better create that
-# directory.
+## -----------------------------------------------------------------
 
-directory 'kerstsite/muziek'
+## ## Section 2: the `midis` task
 
-# ---------------------------------------------------------------------
+desc "update midi files and create a zipfile for every voice"
+task :midis => ["output"] do
+    ## Run `rake midi` in each directory in songs-lily
+    cd('songs-lily')
+    FileList['*'].each do |dir|
+        cd(dir)
+        system("rake midi")
+        cd("..")
+    end
+    cd("..")
+    puts("==== Done creating all midi files ====")
 
-# ## Making the PDFS
+    ## Create a midi zipfile for each voice folder in `all-midis`
+    # `zip` only updates archives additively, but we sometimes remove
+    # songs, so we have to build the zipfile afresh each time.
+    puts("==== Creating midi zipfiles ====")
+    cd("all-midis")
+    VOICES.each do |voice_i|
+        zipfile_voice_i = "../#{OUTDIR}/#{OUTFILE[voice_i]}"
+        rm_f(zipfile_voice_i)
+        system %{
+            zip ../#{OUTDIR}/#{OUTFILE[voice_i]} #{voice_i}/*
+        }
+    end
+    puts("==== Done creating midi zipfiles ====")
+end
 
-# 1. Transfer the correct title numbers from `MASTER` to the
-#    `layout.ly` files.
-# 2. The PDFs in songs-scan need no rule; the PDFs in `songs-lily` do.
-# 3. Concatenate the PDFs with pdftk to make a songbook file.
-# 4. Zip 'em up.
+## --------------------------------------------------------------------
 
-# `SONGPDFS` is an array of the PDF targets --- basically the first
-# column of the MASTER array.
+## ## Section 3: Update title numbers
 
-SONGPDFS = MASTER.transpose[0]
-
-# ### 1. Insert song numbers
-# 
-# Update the title of each song so that its song number matches the song
-# number specified in `MASTER-inhoudsopgave.txt`. This task is *always*
-# invoked --- one could also simply not wrap it in a task, but that
-# somehow feels dirty.
-
+desc "update songs' title numbers using MASTER-inhoudsopgave.txt"
 task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
-    puts "---- Updating file numbers ----"
-    # For each song ...
+    puts "==== Updating file numbers ===="
+    ## For each song ...
     MASTER.each do |filename, nummer, position| # position not used
-
-        # ... that is a Lilypond song ...
         filename = filename.ext('ly')
+
+        ## ... that is a Lilypond song ...
         if (filename =~ /^songs-lily/) != nil
 
-            # ... see how the title is numbered ...
+            ## ... iterate until reaching the line defining `number` ...
             lilyfile = open(filename)
             line = lilyfile.readline
-            while (line =~ /nummer = "/) == nil
+            while (line =~ /^ *nummer = "/) == nil
                 line = lilyfile.readline
             end
+
+            ## ... see what that title number is ...
             nummer_oud = line.gsub!(
                 /^ *nummer = "/, ''
-            ).scan(/^[0-9π¾]*\./)[0]
-            # ... and change that number if needed.
-            if nummer_oud.eql?(nummer)
-            else
+            ).scan(/^[0-9π¾]*\. */)[0]
+
+            ## ... and change that number if needed.
+            if not nummer_oud.eql?(nummer) then
                 puts "Changing '#{nummer_oud}' to '#{nummer}' " +
                     "in #{filename}"
                 system %{
@@ -85,177 +122,59 @@ task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
             end
         end
     end
-    puts "---- Done updating file numbers ----"
+    puts "==== Done updating file numbers ===="
 end
-Rake::Task["update_title_numbers"].invoke()
 
-# ### 2. The PDF rules
-# 
-# Each `song-arr-layout.pdf` depends on 
-# `song-arr-layout.ly` and `song-arr-source.ly`
-SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
-    file song_i => [
-        song_i.ext('ly'),
-        song_i.lroot + '-source.ly'
-    ] do
-        puts "---- Making #{song_i} ----"
-        system %{
-            lilypond --output #{song_i.gsub(/\.[a-z]*$/, '')} #{song_i.ext('ly')}
-        }
-        puts "---- Removing #{song_i.ext('ps')} ----"
-        system %{
-            rm #{song_i.ext('ps')}
-        }
+## --------------------------------------------------------------------
+
+## ## Section 4: The `pdfs` task
+
+## `SONGPDFS` is an array of the PDF targets --- basically the first
+## column of the MASTER array.
+
+SONGPDFS = MASTER.transpose[0]
+
+## The `pdfs` task creates the songbook and the zipfile.
+desc "update PDF files and put them in a zipfile"
+task :pdfs => [:update_title_numbers, "output"] do
+    ## This task first descends into every directory in songs-lily and
+    ## invokes `rake pdf`.
+    cd('songs-lily')
+    FileList['*'].each do |dir|
+        cd(dir)
+        system("rake pdf")
+        cd("..")
     end
-end
+    cd("..")
+    puts "==== Done updating all PDF files ====" 
 
-# ### 3. The songbook PDF
-#
-file 'kerstsite/muziek/kerst-2011-bladmuziek.pdf' => SONGPDFS + 
-    ['kerstsite/muziek'] do
-    puts "---- Creating kerst-2011-bladmuziek.pdf ----"
+    ## Next the task creates a zipfile containing every pdf in
+    ## `MASTER-inhoudsopgave.txt`.
+    puts "==== Creating #{OUTFILE['pdfzip']} ===="
+    # We have to delete the old one first, in case it contains obsolete
+    # stuff.
     system %{
-        pdftk #{MASTER.sort_by { |x| x[2] }.transpose[0].join(' ')} \
-            cat output kerstsite/muziek/kerst-2011-bladmuziek.pdf  &&
-        echo '---- Done creating kerst-2011-bladmuziek.pdf ----'   ||
-        echo '---- Failed creating kerst-2011-bladmuziek.pdf ----'
+        rm #{OUTDIR}/#{OUTFILE['pdfzip']}
     }
-end
-
-# ### 4. Zip the PDFs.
-# 
-# Straightforward. Main note: `zip` only updates archives additively,
-# but we sometimes remove songs, so we have to build the zipfile 
-# afresh each time.
-
-file 'kerstsite/muziek/kerst-2011-bladmuziek.zip' => SONGPDFS + 
-    ['kerstsite/muziek'] +
-    ['kerstsite/muziek/kerst-2011-bladmuziek.pdf'] do
-    puts "---- Removing old bladmuziek zipfile ----"
-    system %{
-        rm kerstsite/muziek/kerst-2011-bladmuziek.zip
-    }
-    puts "---- Creating bladmuziek zipfile ----"
     system %{
         zip --junk-paths \
-            kerstsite/muziek/kerst-2011-bladmuziek.zip #{SONGPDFS.join(' ')} \
-            kerstsite/muziek/kerst-2011-bladmuziek.pdf
+            #{OUTDIR}/#{OUTFILE['pdfzip']} \
+            #{SONGPDFS.join(' ')}
     }
-    puts '---- Done creating bladmuziek zip ----'
-end
-
-# ---------------------------------------------------------------------
-
-# ## Making the MIDI files
-# 
-# 1. Compose `SONGMIDIS`, a list of the MIDI filenames we will be making.
-# 2. Tell Rake how to compile each of those MIDIs.
-# 3. For each voice, create a zipfile of those midis.
-
-
-# ### 1. Compose a list of MIDI filenames
-# 
-# `SONGMIDIS` is a 1D array with five midis for each lilypond song:
-# 'path/song-arr-midi-soprano.midi' ... 'path/song-arr-midi-tutti.midi'
-
-VOICES = ['soprano', 'alto', 'tenor', 'bass', 'tutti']
-tmp = []
-SONGPDFS.select {|x| x =~ /^songs-lily/ }.each do |song_i|
-    VOICES.each do |voice_i| 
-        tmp << song_i.lroot + '-midi-' + voice_i + '.midi'
-    end
-end
-
-SONGMIDIS = tmp
-
-
-# ### 2. A rule for each MIDI file ### 
-# 
-# Each `song-arr-midi-voice.midi` depends on `song-arr-midi-voice.ly`
-# and `song-arr-source.ly`
-
-SONGPDFS.select { |x| x =~ /^songs-lily/ }.each do |song_i|
-    VOICES.each do |voice_i|
-        midi_target = song_i.lroot + '-midi-' + voice_i + '.midi'
-        file midi_target => [
-            song_i.lroot + '-source.ly',
-            midi_target.ext('ly')
-        ] do
-            puts "---- Making #{midi_target} ----"
-            system %{
-                lilypond --output #{midi_target.gsub(/\.[a-z]*$/, '')} #{midi_target.ext('ly')}
-            }
-        end
-    end
+    puts "==== Done creating #{OUTFILE['pdfzip']} ===="
 end
 
 
-# ### 3. Zip up the MIDI files per voice
+## --------------------------------------------------------------------
 
-VOICES.each do |voice_i|
-    zipfile_voice_i = "kerstsite/muziek/kerst-2011-midis-#{voice_i}.zip"
-    songmidis_of_voice_i = SONGMIDIS.select { |x| x =~ /#{voice_i}/ }
+## ## Section 5: miscellanea
 
-    file zipfile_voice_i => songmidis_of_voice_i +
-        ['kerstsite/muziek'] do
-        puts "---- Deleting old #{voice_i} midi zipfile ----"
-        system %{
-            rm #{zipfile_voice_i}
-        }
-        puts "---- Creating #{voice_i} midi zipfile ----"
-        system %{
-            zip --junk-paths #{zipfile_voice_i} #{songmidis_of_voice_i.join(' ')}
-        }
-        puts "---- Done creating #{zipfile_voice_i} ----"
-    end
+file "docs/Rakefile.html" => "Rakefile" do
+    system "pycco --force-language=ruby Rakefile"
 end
 
+desc "create the documentation"
+task :docs => ["docs/Rakefile.html"] do end
 
-# ---------------------------------------------------------------------
-
-# ## Create some user-friendly tasks
-
-# ### PDF tasks
-desc "Make all song PDF files"
-task :pdfs => SONGPDFS do
-    puts "---- Done making all PDF files ----"
-end
-
-desc "Make the songbook: a PDF with all songs in order"
-task :bladmuziek_pdf => 
-    'kerstsite/muziek/kerst-2011-bladmuziek.pdf' do 
-end
-
-desc "Zip of all PDFs"
-task :bladmuziek_zip => 
-    'kerstsite/muziek/kerst-2011-bladmuziek.zip' do 
-end
-
-# ### MIDI tasks
-desc "Make all MIDI files"
-task :midis => SONGMIDIS do
-    puts "---- Done making all MIDI files ----"
-end
-
-# create :soprano, :alto, :tenor, :bass, and :tutti tasks
-VOICES.each do |voice_i|
-    zipfile_voice_i = "kerstsite/muziek/kerst-2011-midis-#{voice_i}.zip"
-    desc "Make MIDI zipfile for #{voice_i}"
-    task voice_i.to_sym => zipfile_voice_i do end
-end
-
-desc "Make MIDI zipfile for every voice"
-task :midizips => [:soprano, :alto, :tenor, :bass, :tutti] do
-    puts "---- Done creating all midi zips ----"
-end
-
-desc "Make all everything"
-task :all => [:midizips, :bladmuziek_zip] do end
-
-
-desc "Test task. Currently does nothing."
-task :test do
-    "for song_i in SONGPDFS.select {|x| x =~ /^songs-lily/ } do
-        puts song_i.lroot + '-source.ly'
-    end"
-end
+desc "rake docs + rake pdfs + rake midis"
+task :all => [:docs, :pdfs, :midis] do end
