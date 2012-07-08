@@ -10,7 +10,7 @@
 08. : songs-lily/ding_dong_merrily/ding_dong_merrily-wood-fourstave.pdf
 09. : songs-lily/coventry_carol/coventry_carol-shaw-twostave.pdf
 9¾. : songs-lily/the_first_nowell/the_first_nowell-stainer-twostave.pdf
-10. : songs-scan/jingle_bells/jingle_bells-oud.pdf
+10. : songs-lily/jingle_bells/jingle_bells-karpiniec-threestave.pdf
 11. : songs-scan/o_kindeke_klein/o_kindeke_klein-bach-oud.pdf
 11. : songs-scan/o_kindeke_klein/o_little_one-oud.pdf
 12. : songs-scan/o_come_all/o_come_all-wade-oud.pdf
