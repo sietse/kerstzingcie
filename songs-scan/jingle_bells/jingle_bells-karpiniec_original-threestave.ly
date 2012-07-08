@@ -1,17 +1,15 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "jingle_bells-karpiniec-source.ly"
-
-nummer = "10. "
+\include "jingle_bells-karpiniec_original-source.ly"
 
 \header {
-  title = \markup {\nummer "Jingle Bells"}
+  title = \markup {"Jingle Bells"}
   composer = "James Lord Pierpont"
   arranger = "Arranged by Stefan Karpiniec"
   tagline =  \markup { \center-column {
-    "Versie 2012-06-22"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Version 2012-06-22"
+    "Typeset with Lilypond"
   } }
 }
 

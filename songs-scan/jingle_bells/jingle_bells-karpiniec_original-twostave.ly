@@ -1,16 +1,15 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "jingle_bells-karpiniec-source.ly"
+\include "jingle_bells-karpiniec_original-source.ly"
 
-nummer = "10. "
+nummer = "99." % FIXME
 
 \header {
-  title = \markup {\nummer "Jingle Bells"}
-  composer = "J.S. Pierpont"
-  arranger = "Stefan Karpiniec"
+  title = \markup {\nummer ""}
+  arranger = "" % FIXME
   tagline =  \markup { \center-column {
-    "Versie 2012-06-21"
+    "Versie 2011-09-07"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -32,9 +31,6 @@ nummer = "10. "
 
 \score {
   \new ChoirStaff <<
-
-    \new Lyrics = "lSoprano" {}
-
     \new Staff = "upper" <<
       \clef "treble"
       \new Voice = "vSoprano" { 
@@ -44,10 +40,7 @@ nummer = "10. "
       \new Voice = "vAlto" { \voiceTwo \alto }
     >>
 
-    \context Lyrics = "lSoprano" \lyricsto "vSoprano" {
-      \refrainSkip \verseOneSop
-    }
-    \new Lyrics \lyricsto "vAlto" \verseOneRest
+    \new Lyrics \lyricsto "vSoprano" \verseOne
 
     \new Staff = "lower" <<
       \clef "bass"

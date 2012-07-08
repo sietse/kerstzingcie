@@ -1,11 +1,16 @@
 OUTPUT_FILES = [
     "jingle_bells-karpiniec-threestave.pdf",
-    "jingle_bells-karpiniec-twostave.pdf",
     "jingle_bells-karpiniec-midi-soprano.midi",
     "jingle_bells-karpiniec-midi-alto.midi",
     "jingle_bells-karpiniec-midi-tenor.midi",
     "jingle_bells-karpiniec-midi-bass.midi",
     "jingle_bells-karpiniec-midi-tutti.midi",
+    "jingle_bells-karpiniec_original-threestave.pdf",
+    "jingle_bells-karpiniec_original-midi-soprano.midi",
+    "jingle_bells-karpiniec_original-midi-alto.midi",
+    "jingle_bells-karpiniec_original-midi-tenor.midi",
+    "jingle_bells-karpiniec_original-midi-bass.midi",
+    "jingle_bells-karpiniec_original-midi-tutti.midi",
 ]
 
 # name of current directory. Useful for reporting
@@ -35,7 +40,6 @@ if not `ls`.match('XXX') then
             puts "---- Compiling #{f}"
             system("lilypond #{f.ext('ly')}")
             if f =~ /pdf$/ then
-                puts "---- Deleting #{f.ext('ps')}"
                 rm(f.ext('ps'))
             end
         end
@@ -75,7 +79,6 @@ end
 desc "Compile PDF files and copy them to ../../all-pdfs"
 task :pdf => OUTPUT_FILES.grep(/\.pdf$/) + ["../../all-pdfs/"] do
     puts "---- Done compiling PDFs in #{HERE}"
-    puts "---- Updating ../../all-pdfs"
     FileList["*.pdf"].each do |source|
         targetdir = "../../all-pdfs/"
         if not uptodate?(targetdir + source, source) then

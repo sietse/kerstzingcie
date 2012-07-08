@@ -1,16 +1,15 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-\include "jingle_bells-karpiniec-source.ly"
+\include "jingle_bells-karpiniec_original-source.ly"
 
-nummer = "10. "
+nummer = "99." % FIXME
 
 \header {
-  title = \markup {\nummer "Jingle Bells"}
-  composer = "James Lord Pierpont"
-  arranger = "Arranged by Stefan Karpiniec"
+  title = \markup {\nummer ""}
+  arranger = "" % FIXME
   tagline =  \markup { \center-column {
-    "Versie 2012-06-22"
+    "Versie 2011-09-07"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -31,49 +30,39 @@ nummer = "10. "
       (ly:grob-suicide! grob)))))
 
 % Make everything a bit smaller. 
+% The normal size of the music font is 20, but that gets things *really*
+% jammed together.
 #(set-global-staff-size 18)
-
-% Ragged bottom, please --- page 1, at least, looks silly spaced out.
-\paper {
-  ragged-bottom = ##t
-}
 
 \score {
   \new ChoirStaff <<
-
-    \new Staff = "soprano" <<
+    \new Staff = "sSoprano" << 
       \clef "treble"
       \new Voice = "vSoprano" { \soprano }
     >>
+    \new Lyrics \lyricsto "vSoprano" \verseOneSoprano
 
-    \new Lyrics \lyricsto "vSoprano" { \verseOneSop }
-    \new Lyrics \lyricsto "vSoprano" { \verseTwoSop }
-    \new Lyrics \lyricsto "vSoprano" { \verseThreeSop }
-    \new Lyrics \lyricsto "vSoprano" { \verseFourSop }
-
-    \new Staff = "alto" <<
+    \new Staff = "sAlto" << 
       \clef "treble"
       \new Voice = "vAlto" { \alto }
     >>
+    \new Lyrics \lyricsto "vAlto" \verseOneAlto
 
-    \new Lyrics \lyricsto "vAlto" \verseOneRest
-    \new Lyrics \lyricsto "vAlto" \verseTwoRest
-    \new Lyrics \lyricsto "vAlto" \verseThreeRest
-    \new Lyrics \lyricsto "vAlto" \verseFourRest
-
-    \new Staff = "lower" <<
-      \clef "bass"
-      \new Voice = "vTenor" { 
-        \override Ambitus #'X-offset = #2.0
-        \voiceOne \tenor 
-      }
-      \new Voice = "vBass" { \voiceTwo \bass }
+    \new Staff = "sTenor" << 
+      \clef "treble_8"
+      \new Voice = "vTenor" { \tenor }
     >>
-    \new Lyrics \lyricsto "vBass" \refrainBass
+    \new Lyrics \lyricsto "vTenor" \verseOneTenor
+
+    \new Staff = "sBass" << 
+      \clef "bass"
+      \new Voice = "vBass" { \bass }
+    >>
+    \new Lyrics \lyricsto "vBass" \verseOneBass
   >>
   \layout { 
     % We can haz ambitus to display pitch range?
-    \context { \Voice 
+    \context { \Staff 
       \consists "Ambitus_engraver"
     }
     % Beautiful extender lines
@@ -82,7 +71,7 @@ nummer = "10. "
       \override LyricExtender #'after-line-breaking = %
          #(conditional-kill-lyric-extender-callback 1)
     }
-    %space-saving tweaks
+    % space-saving tweaks
     %\context { \Staff
       %\override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
     %}

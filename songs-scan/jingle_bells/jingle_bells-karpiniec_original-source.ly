@@ -72,7 +72,7 @@ soprano = \relative c'' {
   e8 c'8 b8 a8 |
   d8 d8 d8 d8 |
   e8 d8 c8 a8
-  g4 c4^\markup{\halign #2.1 \italic D.C. \italic al \italic fine } |
+  g4 d4^\markup{\halign #2.1 \italic D.C. \italic al \italic fine } |
 }
 
 alto = \relative c'' {
@@ -82,16 +82,19 @@ alto = \relative c'' {
   \key g \major
   \time 2/4
 
+  % jingle bells, jingle bells, jingle all the way
   g8 g8 g4 |
   g8 g8 g4 |
   g8 d8 e8. fis16 |
   g4 r4 |
 
+  % oh what fun it is to ride in a one-horse open sleigh
   g8 g8 g8. g16 |
   g8 g8 g8 g16 g16 |
   g8 g8 g8 g8 |
   fis4. r8 |
 
+  % jingle bells, jingle bells, jingle all the way
   g8 g8 g4 |
   g8 g8 g4 |
   g8 d8 e8. fis16 |
@@ -100,7 +103,7 @@ alto = \relative c'' {
   % Oh what fun it | is to ride in a | one-horse open sleigh |
   g8 g8 g8. g16 |
   g8 g8 g8 g16 g16 |
-  g8 g8 fis8 fis8 |
+  fis8 fis8 fis8 fis8 |
   g4.
   \once \override NoteHead #'font-size = #-4
   \once \override Stem #'length = #0.5
@@ -109,7 +112,7 @@ alto = \relative c'' {
   \bar "||"
 
   % Dashing through the snow in a 
-  d8 g8 a8 g8 |
+  d8 b'8 a8 g8 |
   d4.( d16 ~ d16)
   \pageBreak
 
@@ -159,7 +162,7 @@ tenor = \relative c' {
   % one-horse open | sleigh
   e8 e8 e8. e16 |
   d8 d8 d8 d16 d16 |
-  e8 e8 e8 e8 |
+  e8 e8 e8 cis8 |
   d4. r8 |
 
   % Jingle bells, | jingle bells, |
@@ -173,7 +176,7 @@ tenor = \relative c' {
   % one-horse open | sleigh
   e8 e8 e8. e16 |
   d8 d8 d8 d16 d16 |
-  b8 b8 c8 c8 |
+  c8 c8 c8 c8 |
   b4.
   \once \override NoteHead #'font-size = #-4
   \once \override Stem #'font-size = #-4
@@ -182,17 +185,17 @@ tenor = \relative c' {
 
   % Dashing through the % snow in a
   % one-horse open % sleigh
-  b8 d8 d8 c8 |
+  b8 d8 d8 b8 |
   b4.( b16 ~ b16) |
   b8 d8 d8 d8 |
   g,4. ~ g8 |
 
 
-  % through the fields we | go
+  % o’er the fields we | go
   % laughing all the | way
   g8 g8 g8 g8 |
-  g4. ~ g8 |
-  d'8 d8 d8 d8 |
+  a4. ~ a8 |
+  d8 d8 d8 d8 |
   d4. ~ d8 |
 
   % Bells on bobtail | ring
@@ -207,7 +210,7 @@ tenor = \relative c' {
   g8 g8 c8 c8 |
   b8 b8 b8 b8 |
   c8 c8 c8 c8 |
-  b4 d4 |
+  b4 a4 |
 }
 
 bass = \relative c' {
@@ -252,41 +255,27 @@ bass = \relative c' {
   % one-horse open % sleigh
   g8 g8 fis8 g8 |
   g4.\( g16~g16\)
-  g8 g,8 a8 b8 |
+  g8 g8 fis8 b,8 |
   c4. ~ c8
 
   % through the fields we | go
-  % laughing all the | way
+  % laughing all the | way Ha! ha! (ha!)
   c8 c8 e8 e8 |
   d4. ~ d8 |
   d'8 d,8 e8 fis8 |
-  g8
     \autoBeamOff
-      fis8^._\markup{\halign #1.7 
-        \smaller way 
-        \smaller Ha! \smaller ha! \smaller ha!
-      }
+  g8
+      fis8^.
       e8^.
       d8^.
     \autoBeamOn
 
   % Bells on bobtail | ring
   g8 g8 fis8 g8 |
-  << 
-    { g2 }
-    { 
-      s4 s8 
-      \override NoteHead #'font-size = #-4
-      \override Stem #'font-size = #-4
-      \override Stem #'length = #3
-      \tieUp
-      g,16 ~ g16
-      \revert NoteHead #'font-size
-      \revert Stem #'font-size
-      \revert Stem #'length
-    } >>
+  g4.\( g16 ~ g16\)
+
   % making spirits | bright; what
-  g=,8 g8 a8 b8 |
+  g8 g8 fis8 b,8 |
   c4. ~ c8
 
   % fun it is to | ride and sing a
@@ -360,6 +349,10 @@ refrainBass = {
   \repeat unfold 8 { s8 }
   \lyricmode {
     all the way, the way!
+  }
+  \repeat unfold 36 { s8 }
+  \lyricmode {
+    Ha! ha! "(ha!)"
   }
 }
 
