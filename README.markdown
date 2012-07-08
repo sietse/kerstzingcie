@@ -60,6 +60,10 @@ To re-align a syllable:
       Nacht,
     Hei -- li -- ge
 
+To re-align a text mark:
+
+    fis8^._\markup{\halign #2 }
+
 
 To add a custom-length horizontal line at the end of a syllable
 
@@ -92,3 +96,8 @@ To raise or lower lyrics:
         \revert LyricExtender #'extra-offset
     }
 
+To print a smaller note
+
+  \once \override NoteHead #'font-size = #-4
+  \once \override Stem #'font-size = #-4
+  \once \override Stem #'length = #5
