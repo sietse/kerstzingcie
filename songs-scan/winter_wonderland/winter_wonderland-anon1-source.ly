@@ -2,8 +2,8 @@
 
 \version "2.12.3"
 
-mbreak = \break
-%mbreak = {}
+%mbreak = \break
+mbreak = {}
 
 soprano = \relative c' {
   \time 4/4
@@ -39,12 +39,13 @@ soprano = \relative c' {
   \mbreak
   R1 R1 R1 R1
 
-  %Here in the o -- pen we're                 %                  [1]    [2]       
+  %Here in the o -- pen we’re                 %                  [1]    [2]       
   %wal -- kin’ and ho -- pin’.                % sop: dd1 dd2 dd3 dd4 :| dd4 |: dd1
   %Ding -- a -- ding, (4x)                    % ten: r   r   r   r      rin    the
   \mbreak
   g='8 g8 g8 c8 ~ c8 c4 c8 |
-  f,8 f8 f8 bes8 ~ bes8 bes4.
+  f,8 f8 f8 bes8 ~ bes8 bes4. |
+  \break
   \set Score.repeatCommands = #'(                     start-repeat)
     r8 g4 g8 g4 r4 |
     r8 g4 g8 g4 r4 |
@@ -109,6 +110,7 @@ soprano = \relative c' {
   g2 f2 |
   g8 g8 g8 g8 f8 f8 f8 f8 |
   es1 |
+  \bar "||"
 
   \mbreak
   R1 R1 R1 R1
@@ -127,7 +129,119 @@ soprano = \relative c' {
 alto = \relative c' {
 }
 
-tenor = \relative c' {
+tenor = \relative c {
+  \time 4/4
+  \key es \major
+  R1 R1 R1
+
+
+  % Two hearts are thril -- ling in
+  % spite of the chill in the wea -- ther,
+  % ooh ooh
+  R1 |
+  g'8 g8 g8 c8 ~ c8 c4 c8 |
+  es8 d8 c8 bes8 ~ bes8 bes4 bes8 |
+  bes4 g2. | 
+  a2 a2
+
+  % Love knows no sea -- son, 
+  % love knows no clime,
+  % ro -- mance can blos -- som
+  % a -- ny old time.
+  es8 es8 es8 f8 ~ f8 f4. |
+  g8 g8 g8 as8 ~ as2 |
+  g8 g8 g8 g8 ~ g8 g4. |
+  bes8 bes8 bes8 a8 ~ a2 |
+
+  % Here in the o -- pen we’re
+  % wal -- kin’ and ho -- pin’.
+  bes8 bes8 bes8 bes8 ~ bes8 as4 g8 |
+  as8 as8 as8 as8 ~ as8 as4.
+  \set Score.repeatCommands = #'(                     start-repeat)
+    R1 R1 R1
+  \set Score.repeatCommands = #'((volta "1"))
+    R1
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+  % Sleigh -- bells
+    r2 r4 bes=8 bes8
+  \set Score.repeatCommands = #'(           (volta #f)  start-repeat)
+
+  % ring, are you 
+  % liste -- ning in the 
+  % lane snow is 
+  % gliste -- ning; A
+  bes2. bes8 bes8 |
+  g4 bes2 bes8 bes8 |
+  bes2. bes8 bes8 |
+  as4 bes2 r8 bes8 |
+
+  % beau -- ti -- ful sight, we’re
+  % hap -- py to -- night,
+  % wal -- king in a win -- ter won -- der -- 
+  % land. Gone a --
+  d8 d8 d8 c8 ~ c4 r8 c8 |
+  bes8 bes8 bes8 as8 ~ as2 |
+  as8 as8 as8 as8   as8 as8 as8 as8 |
+  \set Score.repeatCommands = #'((volta "1"))
+    g2. bes8 bes8 |
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+    g2. r4 |
+  \set Score.repeatCommands = #'(           (volta #f))
+  % land. % repeat
+
+  % Doo doo doo doo
+  % doo doo doo doo
+  % doo doo doo doo
+  g4 g4 a4 a4 |
+  b4 b4 a4 g4 |
+  g4 g4 a4 a4 |
+    
+  % doo doo doo doo
+  % He’ll say: Are you mar -- ried? We'll say
+  % No, man! But 
+  % you can do the job when you’re in 
+  b4 b4 a4 g4 |
+  f8 f8 d'8 d8  g,8 g8 es'8 es8 |
+  d4 bes2 r8 c8 |
+  d8 d8 g,8 g8   c8 c8 f,8 f8 |
+
+  % town.
+  % La -- ter on
+  % we’ll con -- spi -- re,
+  % as we dream
+  % by the fi -- re, to
+  bes2. r4 |
+  r4 bes8 bes8 bes2 ~ |
+  bes4 bes8 bes8 g4 bes4 ~ |
+  bes4 bes8 bes8 bes2 ~ |
+  bes4 bes8 bes8 as4 bes8 bes8 |
+
+  % face un -- a -- fraid
+  % the plans that we’ve made,
+  % wal -- king in a win -- ter won -- der --
+  % land.
+  d8 d8 d8 c8 ~ c4. c8 |
+  bes8 bes8 bes8 as8 ~ as2 |
+  as8 as8 as8 as8  as8 as8 as8 as8
+  g1
+
+  % Love knows no sea -- son,
+  % love knows no clime,
+  % ro -- mance can blos -- som
+  % a -- ny old time.
+  es8 es8 es8 f8 ~ f8 f4. |
+  g8 g8 g8 as8 ~ as2 |
+  g8 g8 g8 g8 ~ g8  g4. |
+  bes8 bes8 bes8 a8 ~ a2 |
+
+  % Here in the o -- pen we’re
+  % wal -- kin’ and ho -- pin’. 
+  % To --
+  % ge -- ther __ 
+  bes8 bes8 bes8 bes8 ~ bes8 as4 g8 |
+  as8 as8 as8 as8 ~ as8 as4. |
+  r2 r4 r8 bes8 |
+  bes4 bes2. |
 }
 
 bass = \relative c {
@@ -141,7 +255,7 @@ verseOneSoprano = \lyricmode {
   down through the night.
   Ooh, ooh.
 
-  Here in the o -- pen we're
+  Here in the o -- pen we’re
   wal -- kin’ and ho -- pin’.
   Ding -- a -- ding,
   ding -- a -- ding,
@@ -182,8 +296,8 @@ verseOneSoprano = \lyricmode {
   land.
 
   Here in the o -- pen we’re
-  wal -- kin’ and ho -- pin’. To --
-  ge -- ther __
+  wal -- kin’ and ho -- pin’, to --
+  ge -- ther. __
 }
 
 verseOneAlto = \lyricmode {
@@ -194,16 +308,18 @@ verseOneAlto = \lyricmode {
   down through the night.
   Ooh, ooh.
 
-  Ro -- mance can blos -- som
+  ro -- mance can blos -- som
   a -- ny old time.
 
-  Here in the o -- pen we're
+  Here in the o -- pen we’re
   wal -- kin’ and ho -- pin’.
   Ding -- a -- ding,
   ding -- a -- ding,
   ding -- a -- ding,
   ding -- a -- ding,
 
+  ding -- a -- ding, % repeat
+
   ding -- a -- ding,
   ding -- a -- ding,
   ding -- a -- ding,
@@ -215,32 +331,90 @@ verseOneAlto = \lyricmode {
   wal -- king in a win -- ter won -- der --
   land.
 
-  In the mea -- dow we can build a
-  snow -- man,
-  then pre -- tend that he is Par -- son
+  land. % repeat
 
-  Brown.
   Doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
   doo doo doo doo
   doo doo
 
-  doo. La -- ter
-  on we’ll con --
-  spi -- re as we
-  dream by the
-  fi -- re,
-
+  "doo (doo)" 
   Ooh ooh
+  ooh ooh
+  ooh ooh
+  ooh ooh
+
+  ooh ooh
   ooh ooh
   wal -- king in a win -- ter won -- der --
   land.
 
+  ro -- mance can blos -- som
+  a -- ny old time.
+
   Here in the o -- pen we’re
-  wal -- kin’ and ho -- pin’. To --
-  ge -- ther __
+  wal -- kin’ and ho -- pin’, to --
+  ge -- ther. __
 }
 
 verseOneTenor = \lyricmode {
+  Two hearts are thril -- ling in
+  spite of the chill in the wea -- ther,
+
+  ooh ooh
+
+  Love knows no sea -- son, 
+  love knows no clime,
+  ro -- mance can blos -- som
+  a -- ny old time.
+
+  Here in the o -- pen we’re
+  wal -- kin’ and ho -- pin’.
+  Sleigh -- bells
+
+  ring, are you 
+  liste -- ning in the 
+  lane snow is 
+  gliste -- ning; A
+
+  beau -- ti -- ful sight, we’re
+  hap -- py to -- night,
+  wal -- king in a win -- ter won -- der -- 
+  land. Gone a --
+
+  land. % repeat
+
+  Doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+
+  doo doo doo doo
+  He’ll say: Are you mar -- ried? We’ll say
+  No, man! But 
+  you can do the job when you’re in 
+
+  town.
+  La -- ter on
+  we’ll con -- spi -- re,
+  as we dream
+  by the fi -- re, to
+
+  face un -- a -- fraid
+  the plans that we’ve made,
+  wal -- king in a win -- ter won -- der --
+  land.
+
+  Love knows no sea -- son,
+  love knows no clime,
+  ro -- mance can blos -- som
+  a -- ny old time.
+
+  Here in the o -- pen we’re
+  wal -- kin’ and ho -- pin’, to --
+  ge -- ther. __ 
 }
 
 verseOneBass = \lyricmode {
