@@ -6,7 +6,7 @@
 nummer = "21." % FIXME
 
 \header {
-  title = \markup {\nummer ""}
+  title = \markup {\nummer "Winter Wonderland"}
   arranger = "" % FIXME
   tagline =  \markup { \center-column {
     "Versie 2012-07-08"
