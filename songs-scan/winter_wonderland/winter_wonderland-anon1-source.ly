@@ -417,5 +417,17 @@ verseOneTenor = \lyricmode {
   ge -- ther. __ 
 }
 
+verseTwoTenor = {
+  \repeat unfold 47 { \skip4 }
+  \lyricmode {
+    way is the 
+    blue -- bird, here to 
+    stay is a 
+    new bird; he
+    sings a love song, as
+    we go a -- long
+  }
+}
+
 verseOneBass = \lyricmode {
 }

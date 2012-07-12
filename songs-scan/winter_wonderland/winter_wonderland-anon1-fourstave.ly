@@ -53,6 +53,7 @@ nummer = "21." % FIXME
       \new Voice = "vTenor" { \tenor }
     >>
     \new Lyrics \lyricsto "vTenor" \verseOneTenor
+    \new Lyrics \lyricsto "vTenor" \verseTwoTenor
 
     \new Staff = "sBass" << 
       \clef "bass"
