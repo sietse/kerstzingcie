@@ -2,8 +2,8 @@
 
 \version "2.12.3"
 
-%mbreak = \break
-mbreak = {}
+mbreak = \break
+%mbreak = {}
 
 soprano = \relative c' {
   \time 4/4
@@ -126,7 +126,129 @@ soprano = \relative c' {
 
 }
 
+% The altos' ‘ding-a-ding’ is repeated a lot. But it's a bit bulky to
+% write, so we stick it in a variable and write \altoDing.
+altoDing = {
+  r8
+  << 
+    { \voiceOne es4 es8 es4 }
+    \new Voice
+    { \voiceTwo c4 c8 c4 }
+  >>
+  r4
+}
+
 alto = \relative c' {
+  \time 4/4
+  \key es \major
+
+  %O -- ver the ground lies a
+  %man -- tle of white, a
+  %hea -- ven of dia -- monds shines
+  es8 es8 es8 f8 ~ f8 f4 f8 |
+  es8 es8 es8 f8 ~ f4. f8 |
+  es8 es8 es8 es8 ~ es8 es4 es8 |
+
+  %down through the night.
+  %Ooh, ooh.
+  es8 es8 es8 d8 ~ d2 |
+  R1 R1 R1 |
+  <<
+    { \voiceOne
+        es2 d2 |
+    }
+    \new Voice
+    { \voiceTwo
+      c2 ces2
+    }
+  >> \oneVoice
+
+  %ro -- mance can blos -- som
+  %a -- ny old time.
+  R1 R1
+  bes8 bes8 bes8 c8 ~ c8 c4. |
+  c8 c8 c8 es8 ~ es2 |
+
+  %Here in the o -- pen we’re
+  %wal -- kin’ and ho -- pin’.
+  %Ding -- a -- ding,
+  %ding -- a -- ding,
+  %ding -- a -- ding,
+  %ding -- a -- ding,
+  es8 es8 es8 es8 ~ es8 es4 es8 |
+  es8 es8 es8 es8 ~ es8 d4. |
+  \set Score.repeatCommands = #'(                     start-repeat)
+    \repeat unfold 3 { \altoDing }
+  \set Score.repeatCommands = #'((volta "1"))
+    \altoDing
+  % ding -- a -- ding, % repeat
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+    \altoDing
+
+  % ding -- a -- ding, (4x)
+  \set Score.repeatCommands = #'(           (volta #f)  start-repeat)
+    \repeat unfold 4 { \altoDing }
+
+  % ding -- a -- ding,
+  % ding -- a -- ding,
+  % wal -- king in a win -- ter won -- der -- land.
+    \altoDing
+    \altoDing
+    << 
+      { \voiceOne 
+        es8 es8 es8 es8 d8 d8 d8 d8 | 
+  \set Score.repeatCommands = #'((volta "1"))
+        c2.
+      }
+      \new Voice
+      { \voiceTwo 
+        c8 c8 c8 c8 c8 c8 c8 c8 | 
+        bes2.
+      }
+    >> \oneVoice
+    r4
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+
+  %ding -- a -- ding,
+    << 
+      { \voiceOne c2. }
+      \new Voice
+      { \voiceTwo bes2. }
+    >> \oneVoice
+    r4
+  \set Score.repeatCommands = #'(           (volta #f))
+  %ding -- a -- ding,
+
+  %wal -- king in a win -- ter won -- der --
+  %land.
+
+  %land. % repeat
+
+  %Doo doo doo doo
+  %doo doo doo doo
+  %doo doo doo doo
+  %doo doo doo doo
+  %doo doo doo doo
+  %doo doo doo doo
+  %doo doo
+
+  %"doo (doo)" 
+  %Ooh ooh
+  %ooh ooh
+  %ooh ooh
+  %ooh ooh
+
+  %ooh ooh
+  %ooh ooh
+  %wal -- king in a win -- ter won -- der --
+  %land.
+
+  %ro -- mance can blos -- som
+  %a -- ny old time.
+
+  %Here in the o -- pen we’re
+  %wal -- kin’ and ho -- pin’, to --
+  %ge -- ther. __
 }
 
 tenor = \relative c {
@@ -142,7 +264,7 @@ tenor = \relative c {
   g'8 g8 g8 c8 ~ c8 c4 c8 |
   es8 d8 c8 bes8 ~ bes8 bes4 bes8 |
   bes4 g2. | 
-  a2 a2
+  as2 as2
 
   % Love knows no sea -- son, 
   % love knows no clime,
