@@ -1,7 +1,8 @@
 OUTPUT_FILES = [
     "winter_wonderland-anon1-fourstave.pdf",
     "winter_wonderland-anon1-midi-soprano.midi",
-    "winter_wonderland-anon1-midi-alto.midi",
+    "winter_wonderland-anon1-midi-alto_upper.midi",
+    "winter_wonderland-anon1-midi-alto_lower.midi",
     "winter_wonderland-anon1-midi-tenor.midi",
     "winter_wonderland-anon1-midi-bass.midi",
     "winter_wonderland-anon1-midi-tutti.midi",
@@ -91,8 +92,9 @@ task :midi => OUTPUT_FILES.grep(/\.midi$/) + MIDI_DIRS do
     puts "---- Updating ../../all-midis..."
     ['soprano', 'alto', 'tenor', 'bass', 'tutti'].each do |voice_i|
         targetdir = "../../all-midis/#{voice_i}/"
-        source = OUTPUT_FILES.grep(/#{voice_i}\.midi/)
+        source = OUTPUT_FILES.grep(/#{voice_i}.*\.midi$/)
         source.each do |source_i|
+            p source_i
             if not uptodate?(targetdir + source_i, source_i) then
                 cp(source_i, targetdir)
             end

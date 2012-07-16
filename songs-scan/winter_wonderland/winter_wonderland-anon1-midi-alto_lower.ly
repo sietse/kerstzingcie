@@ -9,9 +9,9 @@
     \new Voice = "vAltoUpper" { 
       \set midiInstrument = #"glockenspiel" \altoUpper }
     \new Voice = "vAltoLower" { 
-      \set midiInstrument = #"glockenspiel" \altoLower }
+      \set midiInstrument = #"cello" \altoLowerMidi }
     \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" \tenor }
-    \new Voice = "vBass" { \set midiInstrument = #"cello" \bass }
+    \new Voice = "vBass" { \set midiInstrument = #"glockenspiel" \bass }
   >>
   \midi {
     \context { \Staff \remove "Staff_performer" }

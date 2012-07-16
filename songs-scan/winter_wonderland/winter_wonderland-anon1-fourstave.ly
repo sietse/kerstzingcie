@@ -44,9 +44,10 @@ nummer = "21." % FIXME
 
     \new Staff = "sAlto" << 
       \clef "treble"
-      \new Voice = "vAlto" { \alto }
+      \new Voice = "vAltoUpper" { \altoUpper }
+      \new Voice = "vAltoLower" { \altoLower }
     >>
-    \new Lyrics \lyricsto "vAlto" \verseOneAlto
+    \new Lyrics \lyricsto "vAltoUpper" \verseOneAlto
 
     \new Staff = "sTenor" << 
       \clef "treble_8"

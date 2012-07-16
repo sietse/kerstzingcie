@@ -126,25 +126,27 @@ soprano = \relative c' {
 
 }
 
-% The altos' ‘ding-a-ding’ is repeated a lot. But it's a bit bulky to
-% write, so we stick it in a variable and write \altoDing.
-altoDing = {
-  r8
-  << 
-    { \voiceOne es4 es8 es4 }
-    \new Voice
-    { \voiceTwo c4 c8 c4 }
-  >>
-  r4
+
+altoDingUpper = {
+  \oneVoice r8
+  \voiceOne es4 es8 es4
+  \oneVoice r4
+}
+  
+altoDingLower = {
+  \oneVoice s8
+  \voiceTwo c4 c8 c4
+  \oneVoice s4
 }
 
-alto = \relative c' {
+altoOneUni = \relative c' {
   \time 4/4
   \key es \major
 
   %O -- ver the ground lies a
   %man -- tle of white, a
   %hea -- ven of dia -- monds shines
+  \oneVoice
   es8 es8 es8 f8 ~ f8 f4 f8 |
   es8 es8 es8 f8 ~ f4. f8 |
   es8 es8 es8 es8 ~ es8 es4 es8 |
@@ -153,102 +155,175 @@ alto = \relative c' {
   %Ooh, ooh.
   es8 es8 es8 d8 ~ d2 |
   R1 R1 R1 |
-  <<
-    { \voiceOne
-        es2 d2 |
-    }
-    \new Voice
-    { \voiceTwo
-      c2 ces2
-    }
-  >> \oneVoice
+}
+
+altoOneSkip = \relative c' {
+  \repeat unfold 7 { s1 }
+}
+
+altoTwoUpper = \relative c' {
+  \voiceOne 
+  es2 d2
+}
+altoTwoLower = \relative c' {
+  \voiceTwo
+  c2 ces2
+}
+altoThreeUni = \relative c' {
+  \oneVoice
+  R1 R1 
 
   %ro -- mance can blos -- som
   %a -- ny old time.
-  R1 R1
   bes8 bes8 bes8 c8 ~ c8 c4. |
   c8 c8 c8 es8 ~ es2 |
 
   %Here in the o -- pen we’re
   %wal -- kin’ and ho -- pin’.
-  %Ding -- a -- ding,
-  %ding -- a -- ding,
-  %ding -- a -- ding,
-  %ding -- a -- ding,
   es8 es8 es8 es8 ~ es8 es4 es8 |
   es8 es8 es8 es8 ~ es8 d4. |
+}
+
+altoThreeSkip = { \repeat unfold 6 { s1 } }
+
+altoFourUpper = \relative c' {
   \set Score.repeatCommands = #'(                     start-repeat)
-    \repeat unfold 3 { \altoDing }
+    \repeat unfold 3 { \altoDingUpper }
   \set Score.repeatCommands = #'((volta "1"))
-    \altoDing
-  % ding -- a -- ding, % repeat
+    \altoDingUpper
   \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
-    \altoDing
-
-  % ding -- a -- ding, (4x)
+    \altoDingUpper
   \set Score.repeatCommands = #'(           (volta #f)  start-repeat)
-    \repeat unfold 4 { \altoDing }
-
-  % ding -- a -- ding,
-  % ding -- a -- ding,
-  % wal -- king in a win -- ter won -- der -- land.
-    \altoDing
-    \altoDing
-    << 
-      { \voiceOne 
-        es8 es8 es8 es8 d8 d8 d8 d8 | 
+    \repeat unfold 6 { \altoDingUpper }
+  \voiceOne
+    % Wal -- king in a win -- ter won -- der -- land
+    es8 es8 es8 es8 d8 d8 d8 d8 | 
   \set Score.repeatCommands = #'((volta "1"))
-        c2.
-      }
-      \new Voice
-      { \voiceTwo 
-        c8 c8 c8 c8 c8 c8 c8 c8 | 
-        bes2.
-      }
-    >> \oneVoice
+    c2. 
+  \oneVoice
     r4
   \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
-
-  %ding -- a -- ding,
-    << 
-      { \voiceOne c2. }
-      \new Voice
-      { \voiceTwo bes2. }
-    >> \oneVoice
+  \voiceOne
+    c2. 
+  \oneVoice
     r4
   \set Score.repeatCommands = #'(           (volta #f))
-  %ding -- a -- ding,
+  \voiceOne
+    d4 d4 e4 e4 |
+    fis4 fis4 e4 d4 |
+    d4 d4 e4 e4
+    fis4 fis4 e4 d4 |
+    f4 f4 g4 g4 |
+    a4 a4 f4 f4 |
+    g2 f2 |
+    f2.
+  \oneVoice
+    r4
+  \voiceOne
+    f2 es2 |
+    f2 es2 |
+    g2 f2 |
+    g2 f2 |
+    f2 es2 |
+    es2 d2 |
+    es8 es8 es8 es8 d8 d8 d8 d8 |
+    c1 |
+}
 
-  %wal -- king in a win -- ter won -- der --
-  %land.
+altoFourLower = \relative c' {
+  \set Score.repeatCommands = #'(                     start-repeat)
+    \repeat unfold 3 { \altoDingLower }
+  \set Score.repeatCommands = #'((volta "1"))
+    \altoDingLower
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+    \altoDingLower
+  \set Score.repeatCommands = #'(           (volta #f)  start-repeat)
+    \repeat unfold 6 { \altoDingLower }
+  \voiceTwo
+    % Wal -- king in a win -- ter won -- der -- land
+    c8 c8 c8 c8 c8 c8 c8 c8 | 
+  \set Score.repeatCommands = #'((volta "1"))
+    bes2. 
+  \oneVoice
+    s4
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+  \voiceTwo
+    bes2. 
+  \oneVoice
+    s4
+  \set Score.repeatCommands = #'(           (volta #f))
+  \voiceTwo
+    b4 b4 c4 c4 |
+    d4 d4 c4 b4 |
+    b4 b4 c4 c4 |
+    d4 d4 c4 b4 |
+    d4 d4 es4 es4 |
+    f4 f4 d4 d4 |
+    es2 es2 |
+    es2 d4
+    s4 |
+    d2 c2 |
+    d2 c2 |
+    es2 d2 |
+    es2 d2 |
+    d2 c2 |
+    c2 c2 |
+    c8 c8 c8 c8  c8 c8 c8 c8 |
+    bes1 |
+}
 
-  %land. % repeat
+altoFiveUni = \relative c' {
+  \oneVoice
+  R1 R1 
+  % FIXME dotted notes have two dots. Attempt at minimal reproduction in
+  % proj/try-lilypond also has two voices, dotted note in one of them,
+  % and \oneVoice in both of them, and does not display this problem; so
+  % copy this file over, chop it down to size, and see where the problem
+  % is.
+  bes8 bes8 bes8 c8 ~ c8 c4. |
+  c8 c8 c8 es8 ~ es2 |
+  es8 es8 es8 es8 ~ es8 es4 es8 |
+  es8 es8 es8 es8 ~ es8 d4. |
+  r4 r8 
+}
 
-  %Doo doo doo doo
-  %doo doo doo doo
-  %doo doo doo doo
-  %doo doo doo doo
-  %doo doo doo doo
-  %doo doo doo doo
-  %doo doo
+altoFiveSkip = {
+  \oneVoice
+  s1 s1
+  s1
+  s1
+  s1
+  s1
+  s4 s8
+}
 
-  %"doo (doo)" 
-  %Ooh ooh
-  %ooh ooh
-  %ooh ooh
-  %ooh ooh
+altoSixUpper = \relative c' {
+  \voiceOne
+  g'8 g4 es4 ~ |
+  es4 f2.
+}
+altoSixLower = \relative c' {
+  \voiceTwo
+  g'8 g4 es4 ~ |
+  es4 c2.
+}
 
-  %ooh ooh
-  %ooh ooh
-  %wal -- king in a win -- ter won -- der --
-  %land.
+altoUpper = { 
+  \altoOneUni \altoTwoUpper 
+  \altoThreeUni \altoFourUpper
+  \altoFiveUni \altoSixUpper
+}
 
-  %ro -- mance can blos -- som
-  %a -- ny old time.
+altoLower = { 
+  \altoOneSkip \altoTwoLower 
+  \altoThreeSkip \altoFourLower
+  \altoFiveSkip \altoSixLower
+}
 
-  %Here in the o -- pen we’re
-  %wal -- kin’ and ho -- pin’, to --
-  %ge -- ther. __
+altoLowerMidi = {
+  \altoOneUni \altoTwoLower 
+  \altoThreeUni \altoFourLower
+  \altoFiveUni \altoSixLower
 }
 
 tenor = \relative c {
@@ -367,6 +442,13 @@ tenor = \relative c {
 }
 
 bass = \relative c {
+  \key es \major
+  R1 R1 R1
+  R1
+  es8 es8 es8 e8 ~ e8 e4 e8 | 
+  f8 f8 f8 f8 ~ f8 es4 d8 |
+  es4 g2. |
+  f2 bes,2
 }
 
 verseOneSoprano = \lyricmode {
