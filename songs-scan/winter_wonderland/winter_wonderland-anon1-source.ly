@@ -2,8 +2,8 @@
 
 \version "2.12.3"
 
-mbreak = \break
-%mbreak = {}
+%mbreak = \break
+mbreak = {}
 
 soprano = \relative c' {
   \time 4/4
@@ -449,6 +449,67 @@ bass = \relative c {
   f8 f8 f8 f8 ~ f8 es4 d8 |
   es4 g2. |
   f2 bes,2
+
+  es8 es8 es8 es8 ~ es8 es4. |
+  es8 es8 es8 es8 ~ es2 |
+  es8 es8 es8 es8 ~ es8 es4( d8) |
+  c8 c8 c8 f,8 ~ f2 |
+
+  bes8 bes8 bes8 as8 ~ as8 as4 as8 |
+  bes8 bes8 bes8 bes8 ~ bes8 bes4.|
+  \set Score.repeatCommands = #'(                     start-repeat)
+  es4 r4 bes4 r4 |
+  es4 r4 bes4 r4 |
+  f'4 r4 bes,4 r4 |
+  \set Score.repeatCommands = #'((volta "1"))
+  f'4 r4 bes,4 r4 |
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+  f'4 r4 bes,4 r4 |
+  \set Score.repeatCommands = #'(           (volta #f)  start-repeat)
+
+  es4 r4 bes4 r4 |
+  es4 r4 bes4 r4 |
+  f'4 r4 bes,4 r4 |
+  f'4 r4 bes,4 r4 |
+
+  f'4 r4 bes,4 r4 |
+  f'4 r4 bes,4 r4 |
+  f'8 f8 f8 f8  bes,8 bes8 bes8 bes8 |
+  \set Score.repeatCommands = #'((volta "1"))
+    es2. r4
+  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
+    es2. r4
+  \set Score.repeatCommands = #'(           (volta #f))
+
+  g,4 g4 d'4 d4
+  g4 fis4 e4 d4 |
+  g,4 g4 d'4 d4 |
+
+  g4 fis4 e4 d4 |
+  bes4 bes4 f'4 f4 |
+  bes,4 bes4 d4 es4 |
+  f4 f4 f,4 f4 |
+
+  bes2. r4 |
+  es4 r4 bes4 r4 |
+  es4 r4 bes4 r4 |
+  f'4 r4 bes,4 r4 |
+  f'4 r4 bes,4 r4 |
+
+  f'4 r4 bes,4 r4 |
+  f'4 r4 bes,4 r4 |
+  f'8 f8 f8 f8  bes,8 bes8 bes8 bes8 |
+  es2. r4 |
+
+  es8 es8 es8 es8 ~ es8 es4. |
+  es8 es8 es8 es8 ~ es2 |
+  es8 es8 es8 es8 ~ es8 es4( d8) |
+  c8 c8 c8 f,8 ~ f2 |
+
+  bes8 bes8 bes8 as8 ~ as8 as4 as8 |
+  bes8 bes8 bes8 bes8 ~ bes8 bes4. |
+  r2 r4 r8 bes'8 |
+  bes4 d,2. |
 }
 
 verseOneSoprano = \lyricmode {
@@ -634,4 +695,64 @@ verseTwoTenor = {
 }
 
 verseOneBass = \lyricmode {
+  Two hearts are thril -- ling in
+  spite of the chill in the wea -- ther,
+
+  ooh ooh
+
+  Love knows no sea -- son, 
+  love knows no clime,
+  ro -- mance can blos -- som
+  a -- ny old time.
+
+  Here in the o -- pen we’re
+  wal -- kin’ and ho -- pin’.
+
+  Ding ding
+  ding ding
+  ding ding
+  ding ding
+  ding ding
+
+  ding ding
+  ding ding
+  ding ding
+  ding ding
+
+  ding ding
+  ding ding
+  wal -- king in a win -- ter won -- der -- 
+  land.
+
+  land. % repeat
+
+  Doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+
+  doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+  doo doo doo doo
+
+  doo.
+
+  Ding ding
+  ding ding
+  ding ding
+  ding ding
+
+  ding ding
+  ding ding
+  wal -- king in a win -- ter won -- der -- 
+  land.
+
+  Love knows no sea -- son,
+  love knows no clime,
+  ro -- mance can blos -- som
+  a -- ny old time.
+
+  Here in the o -- pen we’re
+  wal -- kin’ and ho -- pin’, to --
+  ge -- ther. __ 
 }

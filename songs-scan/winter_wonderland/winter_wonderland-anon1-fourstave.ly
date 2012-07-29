@@ -1,6 +1,9 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
+% FIXME one with global-staff-size 17; one with v. tight spacing
+% FIXME page numbers centered.
+
 \include "winter_wonderland-anon1-source.ly"
 
 nummer = "21." % FIXME
@@ -74,9 +77,9 @@ nummer = "21." % FIXME
          #(conditional-kill-lyric-extender-callback 1)
     }
     % space-saving tweaks
-    %\context { \Staff
-      %\override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
-    %}
+    \context { \Staff
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
+    }
     \context { \Lyrics
       \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
     }
