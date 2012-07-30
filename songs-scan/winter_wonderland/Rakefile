@@ -1,5 +1,6 @@
 OUTPUT_FILES = [
-    "winter_wonderland-anon1-fourstave.pdf",
+    "winter_wonderland-anon1-fourstave-size17.pdf",
+    "winter_wonderland-anon1-fourstave-size18.pdf",
     "winter_wonderland-anon1-midi-soprano.midi",
     "winter_wonderland-anon1-midi-alto_upper.midi",
     "winter_wonderland-anon1-midi-alto_lower.midi",

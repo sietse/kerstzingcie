@@ -509,7 +509,7 @@ bass = \relative c {
   bes8 bes8 bes8 as8 ~ as8 as4 as8 |
   bes8 bes8 bes8 bes8 ~ bes8 bes4. |
   r2 r4 r8 bes'8 |
-  bes4 d,2. |
+  bes4 es,2. |
 }
 
 verseOneSoprano = \lyricmode {
