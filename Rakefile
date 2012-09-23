@@ -79,6 +79,7 @@ task :midis => ["output"] do
     VOICES.each do |voice_i|
         zipfile_voice_i = "../#{OUTDIR}/#{OUTFILE[voice_i]}"
         rm_f(zipfile_voice_i)
+        # %{...} is a string with any quotes inside it escaped
         system %{
             zip ../#{OUTDIR}/#{OUTFILE[voice_i]} #{voice_i}/*
         }
