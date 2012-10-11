@@ -2,7 +2,7 @@
 
 \version "2.12.3"
 
-mbreak = {\bar "||" \break}
+mbreak = {\break}
 
 sopmain = {
   \tag #'partial { \partial 2 c='2 | }
@@ -19,6 +19,7 @@ soprano = \relative c' {
   % still we see thee
   % lie.
   \keepWithTag #'partial { \sopmain }
+  \bar "||"
   \mbreak
 
   % Above thy deep and
@@ -26,6 +27,7 @@ soprano = \relative c' {
   % silent stars go
   % by
   \keepWithTag #'partial { \sopmain }
+  \bar "||"
   \mbreak
 
   % Yet in thy dark streets
@@ -38,6 +40,7 @@ soprano = \relative c' {
   f2 a2 g2 f2
   % light
   c1^\markup { \italic {undotted}}
+  \bar "||"
   \mbreak
 
   % The 
@@ -46,6 +49,7 @@ soprano = \relative c' {
   % met in thee tonight
   c1
   \removeWithTag #'partial { \sopmain }
+  \bar ":."
   \mbreak
 
   \pageBreak
@@ -102,8 +106,10 @@ tenor = \relative c' {
   \mbreak
 
   f2( g2)
-  % FIXME wrong notes?
-  \removeWithTag #'partial { \tenormain }
+  a2 bes c bes |
+  c2\( f,2\) g2 \bar "||" f2 |
+  bes2 c4( a4) c2 c4( bes4) |
+  a1.
   \mbreak
 }
 
@@ -133,8 +139,10 @@ bass = \relative c {
   \mbreak
 
   d2( e2)
-  % FIXME wrong notes
-  \removeWithTag #'partial { \bassmain }
+  f=2 bes a g |
+  f\( d\) c \bar "||" d |
+  g, a4( d4) c2 c2 |
+  f1.
   \mbreak
 }
 
@@ -148,7 +156,7 @@ descantskip = {
 descantdescant = \relative c' {
   \key f \major
   \partial 2
-  c2 |
+  c2^\markup { \smallCaps{descant}} |
   f2 f4( g4) a2 bes2 |
   c2 f2 e2 d2 |
   d2 c2 g2 c2 |
@@ -174,7 +182,7 @@ descantdescant = \relative c' {
   c2 d2 es2 f2 |
   d2 a4( bes4) c2 c2 |
   c1. 
-  \bar "||" \mbreak
+  \bar "|." \mbreak
 }
 
 sopranodescant = \relative c' {
@@ -202,7 +210,7 @@ sopranodescant = \relative c' {
   f2 f2 f2 g2 |
   a4( g4) a4( bes4) c2 a2 |
   bes2 a4( f4) g2 g2 |
-  f1. \bar "||"
+  f1. \bar "|."
 }
 
 altodescant = \relative c' {

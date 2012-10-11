@@ -3,7 +3,7 @@
 
 \include "o_little_town-anon1-source.ly"
 
-nummer = "99." % FIXME
+nummer = "24."
 
 \header {
   title = \markup {\nummer "O little town of Bethlehem"}
@@ -59,7 +59,7 @@ nummer = "99." % FIXME
         \new Voice = "vAlto" { \voiceTwo \alto \altodescant }
       >>
 
-      \new Lyrics \lyricsto "vSoprano" { \verseOne \verseFour }
+      \new Lyrics \lyricsto "vSoprano" { \verseOne }
       \new Lyrics \lyricsto "vSoprano" \verseTwo
       \new Lyrics \lyricsto "vSoprano" \verseThree
 
