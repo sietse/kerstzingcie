@@ -5,16 +5,22 @@
 
 \score {
   \new Staff <<
-    \new Voice = "vSoprano" { \set midiInstrument = #"glockenspiel" \soprano }
-    \new Voice = "vAlto" { \set midiInstrument = #"glockenspiel" \alto }
-    \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" \tenor }
-    \new Voice = "vBass" { \set midiInstrument = #"cello" \bass }
+    \new Voice = "vDescant" { \set midiInstrument = #"glockenspiel" 
+      \descantskip \descantdescant }
+    \new Voice = "vSoprano" { \set midiInstrument = #"glockenspiel"
+      \soprano \sopranodescant }
+    \new Voice = "vAlto" { \set midiInstrument = #"glockenspiel" 
+      \alto \altodescant }
+    \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" 
+      \tenor \tenordescant }
+    \new Voice = "vBass" { \set midiInstrument = #"cello" 
+      \bass \bassdescant }
   >>
   \midi {
     \context { \Staff \remove "Staff_performer" }
     \context { \Voice 
       \consists "Staff_performer" 
     }
-    \context { \Score tempoWholesPerMinute = #(ly:make-moment 120 4) }
+    \context { \Score tempoWholesPerMinute = #(ly:make-moment 220 4) }
   }
 }

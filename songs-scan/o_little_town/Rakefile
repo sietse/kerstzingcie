@@ -1,5 +1,6 @@
 OUTPUT_FILES = [
     "o_little_town-anon1-twostave.pdf",
+    "o_little_town-anon1-midi-descant.midi",
     "o_little_town-anon1-midi-soprano.midi",
     "o_little_town-anon1-midi-alto.midi",
     "o_little_town-anon1-midi-tenor.midi",
@@ -97,6 +98,12 @@ task :midi => OUTPUT_FILES.grep(/\.midi$/) + MIDI_DIRS do
                 cp(source_i, targetdir)
             end
         end
+    end
+    # Handle the descant manually
+    targetdir = "../../all-midis/soprano/"
+    filename = "o_little_town-anon1-midi-descant.midi"
+    if not uptodate?(targetdir + filename, filename) then
+        cp(filename, targetdir)
     end
     puts "---- Done updating ../../all-midis."
 end

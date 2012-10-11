@@ -7,15 +7,21 @@ nummer = "99." % FIXME
 
 \header {
   title = \markup {\nummer "O little town of Bethlehem"}
-  arranger = \markup { \right-column {
+  composer = \markup { \right-column {
     \line { English traditional melody }
     \line { arranged by }
     \line { R. VAUGHAN WILLIAMS (1872-1958) }
     \line { and (V. 4) THOMAS ARMSTRONG (\italic{b.} 1898) }
   }}
   tagline =  \markup { \center-column {
-    "Versie 2011-09-07"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Versie 2012-10-11, Collegium Musicum Kerstzingcie 2011"
+    "Descant from the Royal School of Church Music."
+    "Arrangement from the English Hymnal, via the Oxford University Press."
+  }}
+  poet = \markup { \left-column {
+    "Words by"
+    "PHILLIPS BROOKS"
+    "(1835–93)"
   }}
 }
 
@@ -35,28 +41,46 @@ nummer = "99." % FIXME
       (ly:grob-suicide! grob)))))
 
 \score {
-  \new ChoirStaff <<
-    \new Staff = "upper" <<
+  <<
+    \new Staff = "descant" {
       \clef "treble"
-      \new Voice = "vSoprano" { 
-        \override Ambitus #'X-offset = #2.0
-        \voiceOne \soprano 
+      \new Voice = "vDescant" {
+        \descantskip \descantdescant
       }
-      \new Voice = "vAlto" { \voiceTwo \alto }
-    >>
+    }
+    \new Lyrics \lyricsto "vDescant" \verseFour
+    \new ChoirStaff <<
+      \new Staff = "upper" <<
+        \clef "treble"
+        \new Voice = "vSoprano" { 
+          \override Ambitus #'X-offset = #2.0
+          \voiceOne \soprano \sopranodescant
+        }
+        \new Voice = "vAlto" { \voiceTwo \alto \altodescant }
+      >>
 
-    \new Lyrics \lyricsto "vSoprano" \verseOne
+      \new Lyrics \lyricsto "vSoprano" { \verseOne \verseFour }
+      \new Lyrics \lyricsto "vSoprano" \verseTwo
+      \new Lyrics \lyricsto "vSoprano" \verseThree
 
-    \new Staff = "lower" <<
-      \clef "bass"
-      \new Voice = "vTenor" { 
-        \override Ambitus #'X-offset = #2.0
-        \voiceOne \tenor 
-      }
-      \new Voice = "vBass" { \voiceTwo \bass }
+      \new Staff = "lower" <<
+        \clef "bass"
+        \new Voice = "vTenor" { 
+          \override Ambitus #'X-offset = #2.0
+          \voiceOne \tenor \tenordescant
+        }
+        \new Voice = "vBass" { \voiceTwo \bass \bassdescant }
+      >>
     >>
   >>
+
   \layout { 
+    \context { 
+      \RemoveEmptyStaffContext 
+      % To use the setting globally, uncomment the following
+      % line:
+      \override VerticalAxisGroup #'remove-first = ##t
+    }
     % We can haz ambitus to display pitch range?
     \context { \Voice 
       \consists "Ambitus_engraver"
@@ -68,14 +92,14 @@ nummer = "99." % FIXME
          #(conditional-kill-lyric-extender-callback 1)
     }
     % space-saving tweaks
-    %\context { \Staff
-      %\override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
-    %}
-    %\context { \Lyrics
-      %\override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
-    %}
-    %\context { \Lyrics
-      %\override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
-    %}
+    \context { \Staff
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
+    }
+    \context { \Lyrics
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
+    }
   }
 }
