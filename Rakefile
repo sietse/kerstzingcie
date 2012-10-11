@@ -1,4 +1,4 @@
-## This file contains four sections. 
+## This file contains five sections. 
 ##
 ## * The first section defines the constants we will be needing. 
 ## * The second section contains the `midis` task, which creates the
@@ -6,9 +6,10 @@
 ## * The third section contains the `update_line_numbers` task, which
 ##   ensures that the song numbers in `MASTER-inhoudsopgave.txt` are
 ##   present in the songs' .ly files. 
-## * The last section contains the `pdfs` task, which (1) collects the
+## * The fourth section contains the `pdfs` task, which (1) collects the
 ##   song pdfs into a zipfile, and (2) concatenates them into a
 ##   songbook.
+## * The fifth section contains miscellanea.
 
 ## -----------------------------------------------------------------
 
@@ -24,8 +25,8 @@ OUTDIR = "output"
 ## is this block.
 
 OUTFILE = {
-    'pdfzip'  => 'kerst-2012-pdfs.zip',
-    'pdfbook' => 'kerst-2012-book.pdf',
+    'pdfzip'  => 'kerst-2012-bladmuziek.zip',
+    'pdfbook' => 'kerst-2012-bladmuziek.pdf',
     'soprano' => 'kerst-2012-midis-soprano.zip',
     'alto'    => 'kerst-2012-midis-alto.zip',
     'tenor'   => 'kerst-2012-midis-tenor.zip',
@@ -60,7 +61,7 @@ MASTER = tmp
 ## ## Section 2: the `midis` task
 
 desc "update midi files and create a zipfile for every voice"
-task :midis => ["output"] do
+task :midis => [OUTDIR] do
     ## Run `rake midi` in each directory in songs-lily
     cd('songs-lily')
     FileList['*'].each do |dir|
@@ -137,7 +138,7 @@ SONGPDFS = MASTER.transpose[0]
 
 ## The `pdfs` task creates the songbook and the zipfile.
 desc "update PDF files and put them in a zipfile"
-task :pdfs => [:update_title_numbers, "output"] do
+task :pdfs => [:update_title_numbers, OUTDIR] do
     ## This task first descends into every directory in songs-lily and
     ## invokes `rake pdf`.
     cd('songs-lily')
@@ -163,6 +164,17 @@ task :pdfs => [:update_title_numbers, "output"] do
             #{SONGPDFS.join(' ')}
     }
     puts "==== Done creating #{OUTFILE['pdfzip']} ===="
+
+    # pdftk is not working on my computer, en ook niet op de
+    # hok-computer. Dan maar m.b.v. ConTeXt mkii.
+    puts "==== Creating #{OUTFILE['pdfbook']} ===="
+    sh %{
+        texexec --result=#{OUTDIR}/#{OUTFILE['pdfbook']} \
+                --pdfcopy #{SONGPDFS.join(' ')}
+    }
+    sh %{
+        rm #{OUTDIR}/#{OUTFILE['pdfbook'].ext('log')}
+    }
 end
 
 
@@ -176,6 +188,16 @@ end
 
 desc "create the documentation"
 task :docs => ["docs/Rakefile.html"] do end
+
+desc "Copy zips from #{OUTDIR}/ to kerstsite/muziek/"
+#task :website => [:pdfs, :midis] do 
+task :website do
+    OUTFILE.each_value do |file|
+        source = "#{OUTDIR}/#{file}"
+        target = "kerstsite/muziek/#{file}"
+        cp(source, target)
+    end
+end
 
 desc "rake docs + rake pdfs + rake midis"
 task :all => [:docs, :pdfs, :midis] do end

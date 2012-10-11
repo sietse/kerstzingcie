@@ -17,7 +17,7 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-0'>#</a>
       </div>
-      <p>This file contains four sections. </p>
+      <p>This file contains five sections. </p>
 <ul>
 <li>The first section defines the constants we will be needing. </li>
 <li>The second section contains the <code>midis</code> task, which creates the
@@ -25,9 +25,10 @@
 <li>The third section contains the <code>update_line_numbers</code> task, which
   ensures that the song numbers in <code>MASTER-inhoudsopgave.txt</code> are
   present in the songs' .ly files. </li>
-<li>The last section contains the <code>pdfs</code> task, which (1) collects the
+<li>The fourth section contains the <code>pdfs</code> task, which (1) collects the
   song pdfs into a zipfile, and (2) concatenates them into a
   songbook.</li>
+<li>The fifth section contains miscellanea.</li>
 </ul>
     </div>
     <div class='code'>
@@ -83,8 +84,8 @@ is this block.</p>
     </div>
     <div class='code'>
       <div class="highlight"><pre><span class="no">OUTFILE</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;pdfzip&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-pdfs.zip&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;pdfbook&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-book.pdf&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pdfzip&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-bladmuziek.zip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pdfbook&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-bladmuziek.pdf&#39;</span><span class="p">,</span>
     <span class="s1">&#39;soprano&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-midis-soprano.zip&#39;</span><span class="p">,</span>
     <span class="s1">&#39;alto&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-midis-alto.zip&#39;</span><span class="p">,</span>
     <span class="s1">&#39;tenor&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;kerst-2012-midis-tenor.zip&#39;</span><span class="p">,</span>
@@ -153,7 +154,7 @@ triples <code>[song_pdf, number, position]</code>.</p>
     </div>
     <div class='code'>
       <div class="highlight"><pre><span class="n">desc</span> <span class="s2">&quot;update midi files and create a zipfile for every voice&quot;</span>
-<span class="n">task</span> <span class="ss">:midis</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;output&quot;</span><span class="o">]</span> <span class="k">do</span></pre></div>
+<span class="n">task</span> <span class="ss">:midis</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="no">OUTDIR</span><span class="o">]</span> <span class="k">do</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -191,6 +192,7 @@ triples <code>[song_pdf, number, position]</code>.</p>
     <span class="no">VOICES</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">voice_i</span><span class="o">|</span>
         <span class="n">zipfile_voice_i</span> <span class="o">=</span> <span class="s2">&quot;../</span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="n">voice_i</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">rm_f</span><span class="p">(</span><span class="n">zipfile_voice_i</span><span class="p">)</span>
+        <span class="c1"># %{...} is a string with any quotes inside it escaped</span>
         <span class="nb">system</span> <span class="sx">%{</span>
 <span class="sx">            zip ../</span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="sx">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="n">voice_i</span><span class="o">]</span><span class="si">}</span><span class="sx"> </span><span class="si">#{</span><span class="n">voice_i</span><span class="si">}</span><span class="sx">/*</span>
 <span class="sx">        }</span>
@@ -349,7 +351,7 @@ column of the MASTER array.</p>
     </div>
     <div class='code'>
       <div class="highlight"><pre><span class="n">desc</span> <span class="s2">&quot;update PDF files and put them in a zipfile&quot;</span>
-<span class="n">task</span> <span class="ss">:pdfs</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:update_title_numbers</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="o">]</span> <span class="k">do</span></pre></div>
+<span class="n">task</span> <span class="ss">:pdfs</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:update_title_numbers</span><span class="p">,</span> <span class="no">OUTDIR</span><span class="o">]</span> <span class="k">do</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -390,10 +392,21 @@ invokes <code>rake pdf</code>.</p>
 <span class="sx">    }</span>
     <span class="nb">system</span> <span class="sx">%{</span>
 <span class="sx">        zip --junk-paths \</span>
-<span class="sx">            </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="sx">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfzip&#39;</span><span class="o">]</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">            </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="sx">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfzip&#39;</span><span class="o">]</span><span class="si">}</span><span class="sx"> \</span>
 <span class="sx">            </span><span class="si">#{</span><span class="no">SONGPDFS</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
 <span class="sx">    }</span>
     <span class="nb">puts</span> <span class="s2">&quot;==== Done creating </span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfzip&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2"> ====&quot;</span>
+
+    <span class="c1"># pdftk is not working on my computer, en ook niet op de</span>
+    <span class="c1"># hok-computer. Dan maar m.b.v. ConTeXt mkii.</span>
+    <span class="nb">puts</span> <span class="s2">&quot;==== Creating </span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfbook&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2"> ====&quot;</span>
+    <span class="n">sh</span> <span class="sx">%{</span>
+<span class="sx">        texexec --result=</span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="sx">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfbook&#39;</span><span class="o">]</span><span class="si">}</span><span class="sx"> \</span>
+<span class="sx">                --pdfcopy </span><span class="si">#{</span><span class="no">SONGPDFS</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">    }</span>
+    <span class="n">sh</span> <span class="sx">%{</span>
+<span class="sx">        rm </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="sx">/</span><span class="si">#{</span><span class="no">OUTFILE</span><span class="o">[</span><span class="s1">&#39;pdfbook&#39;</span><span class="o">].</span><span class="n">ext</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span><span class="si">}</span><span class="sx"></span>
+<span class="sx">    }</span>
 <span class="k">end</span></pre></div>
     </div>
   </div>
@@ -424,6 +437,16 @@ invokes <code>rake pdf</code>.</p>
 
 <span class="n">desc</span> <span class="s2">&quot;create the documentation&quot;</span>
 <span class="n">task</span> <span class="ss">:docs</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;docs/Rakefile.html&quot;</span><span class="o">]</span> <span class="k">do</span> <span class="k">end</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Copy zips from </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/ to kerstsite/muziek/&quot;</span>
+<span class="c1">#task :website =&gt; [:pdfs, :midis] do </span>
+<span class="n">task</span> <span class="ss">:website</span> <span class="k">do</span>
+    <span class="no">OUTFILE</span><span class="o">.</span><span class="n">each_value</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;kerstsite/muziek/</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">cp</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
 
 <span class="n">desc</span> <span class="s2">&quot;rake docs + rake pdfs + rake midis&quot;</span>
 <span class="n">task</span> <span class="ss">:all</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:docs</span><span class="p">,</span> <span class="ss">:pdfs</span><span class="p">,</span> <span class="ss">:midis</span><span class="o">]</span> <span class="k">do</span> <span class="k">end</span>
