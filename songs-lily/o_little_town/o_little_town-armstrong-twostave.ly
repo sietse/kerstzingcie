@@ -3,7 +3,7 @@
 
 \include "o_little_town-anon1-source.ly"
 
-nummer = "24."
+nummer = "24. "
 
 \header {
   title = \markup {\nummer "O little town of Bethlehem"}
