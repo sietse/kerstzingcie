@@ -20,7 +20,7 @@
 15. : songs-scan/on_christmas_night/on_christmas_night-williams-oud.pdf
 16. : songs-scan/entre_le_boeuf/entre_le_boeuf-wakelkamp.pdf
 17. : songs-lily/deck_the_halls/deck_the_halls-anon1-twostave.pdf
-18. : songs-lily/stille_nacht/stille_nacht-ivens-fourstave.pdf
+18. : songs-lily/stille_nacht/stille_nacht-ivens-tweetalig-twostave.pdf
 19. : songs-lily/hoor_de_englen/hark_the_herald-anon1-twostave.pdf
 19. : songs-lily/hoor_de_englen/hoor_de_englen-anon1-twostave.pdf
 20. : songs-lily/a_merry_christmas/a_merry_christmas-anon1-fourstave.pdf

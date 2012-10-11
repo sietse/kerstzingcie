@@ -186,10 +186,73 @@ verseThree = \lyricmode {
   burt.
 }
 
+bold = { % italic
+  \override Lyrics.LyricText #'font-series = #'bold
+}
+
+
+verseOneNL = \lyricmode {
+  Stil -- le nacht, hei -- li -- ge nacht.
+  Dav -- ids zoon, __
+  lang ver -- 
+    \once \override LyricText #'self-alignment-X = #-1
+    wacht, __
+  die mil -- joe -- nen eens 
+  za -- li -- gen zal,
+  wordt ge -- bo -- ren in 
+  Beth -- le -- hems 
+    \once \override LyricText #'self-alignment-X = #-1
+    stal. __
+  Hij, der schep -- se -- len 
+  Heer, __
+  Hij, __ der schep -- se -- len 
+  Heer.
+}
+
+verseTwoNL = \lyricmode {
+  Hulp -- loos kind, "hei_" -- _ lig kind,
+  dat zo trouw __ 
+  zon -- daars 
+    \once \override LyricText #'self-alignment-X = #-1
+    mint. __
+  Ook voor mij hebt g’u
+  rijk -- dom ont -- zegd,
+  wordt g’op stro en in 
+  doe -- ken ge -- 
+    \once \override LyricText #'self-alignment-X = #-1
+    legd. __
+  Leer m’u dan -- ken daar -- 
+  voor, __
+  "leer mij" u dan -- ken daar -- 
+  voor.
+}
+
+verseThreeNL = \lyricmode {
+  Stil -- le nacht, hei -- li -- ge nacht,
+  Vreed’ en heil __
+  wordt ge -- 
+    \once \override LyricText #'self-alignment-X = #-1
+    bracht, __
+  aan een we -- reld, ver -- 
+  lo -- ren in schuld.
+  Gods be -- lof -- te wordt 
+  heer -- lijk ver --
+    \once \override LyricText #'self-alignment-X = #-1
+    vuld.
+  A -- men! Go -- de zij eer,
+  A -- men! Go -- de zij eer.
+}
+
 % The basses briefly do their own thing at the start. Let's give them
 % their own line of lyrics.
 verseOneBass = \lyricmode {
   Stil -- le Nacht,
   Hei -- li -- ge Nacht.
   "(Al" -- les "schläft,)"
+}
+
+verseOneBassNL = \lyricmode {
+  Stil -- le nacht,
+  hei -- li -- ge nacht.
+  Da -- vids zoon,
 }

@@ -1,6 +1,9 @@
 OUTPUT_FILES = [
-    "stille_nacht-ivens-twostave.pdf",
-    "stille_nacht-ivens-fourstave.pdf",
+    "stille_nacht-ivens-tweetalig-twostave.pdf",
+    "stille_nacht-ivens-NL-twostave.pdf",
+    "stille_nacht-ivens-DE-twostave.pdf",
+    "stille_nacht-ivens-NL-fourstave.pdf",
+    "stille_nacht-ivens-DE-fourstave.pdf",
     "stille_nacht-ivens-midi-soprano.midi",
     "stille_nacht-ivens-midi-alto.midi",
     "stille_nacht-ivens-midi-tenor.midi",
