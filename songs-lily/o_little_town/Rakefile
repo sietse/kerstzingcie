@@ -1,17 +1,17 @@
 OUTPUT_FILES = [
-    "o_little_town-anon1-twostave.pdf",
-    "o_little_town-anon1-midi-descant.midi",
-    "o_little_town-anon1-midi-soprano.midi",
-    "o_little_town-anon1-midi-alto.midi",
-    "o_little_town-anon1-midi-tenor.midi",
-    "o_little_town-anon1-midi-bass.midi",
-    "o_little_town-anon1-midi-tutti.midi",
+    "o_little_town-armstrong-twostave.pdf",
+    "o_little_town-armstrong-midi-descant.midi",
+    "o_little_town-armstrong-midi-soprano.midi",
+    "o_little_town-armstrong-midi-alto.midi",
+    "o_little_town-armstrong-midi-tenor.midi",
+    "o_little_town-armstrong-midi-bass.midi",
+    "o_little_town-armstrong-midi-tutti.midi",
 ]
 
 # name of current directory. Useful for reporting
 HERE = File.basename(Dir.getwd)
 
-# A function to obtain o_little_town-anon1
+# A function to obtain o_little_town-armstrong
 def sourcefile(filename)
     root = filename.split('-')[0,2].join('-') 
     return root + '-source.ly'
@@ -101,7 +101,7 @@ task :midi => OUTPUT_FILES.grep(/\.midi$/) + MIDI_DIRS do
     end
     # Handle the descant manually
     targetdir = "../../all-midis/soprano/"
-    filename = "o_little_town-anon1-midi-descant.midi"
+    filename = "o_little_town-armstrong-midi-descant.midi"
     if not uptodate?(targetdir + filename, filename) then
         cp(filename, targetdir)
     end
