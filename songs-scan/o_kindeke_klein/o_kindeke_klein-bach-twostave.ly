@@ -3,14 +3,14 @@
 
 \include "o_kindeke_klein-bach-source.ly"
 
-nummer = "99." % FIXME
+nummer = "11. " % FIXME
 
 \header {
-  title = \markup {\nummer ""}
-  arranger = "" % FIXME
+  title = \markup {\nummer "O kindeke klein"}
+  arranger = "Arr. J.S. Bach" % FIXME
   tagline =  \markup { \center-column {
-    "Versie 2011-09-07"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Versie 2012-10-12"
+    "Collegium Musicum Kerstzingcie 2012"
   } }
 }
 
