@@ -1,13 +1,36 @@
 ## TODO
 
-God rest you: add piano and f to 3 (From god our heav'nly) c.q. 4 (fear
+God rest you
+* add piano and f to 3 (From god our heav'nly) c.q. 4 (fear
 not, then said).
 
-Rejoice and be merry:
+Rejoice and be merry
 * single 'who brought us salvation' line
 
-Ich steh' an deiner Krippen:
+Ich steh' an deiner Krippen
 * shorten mein (extender lines hack?)
+
+God rest you
+* triool
+
+Stille Nacht
+* weghalen tweede p en pp
+
+Coventry Carol
+* more linebreaks
+  * 'by by lul - \r'
+  * 'may we do \r'
+  * 'ling for \r'
+* dynamics
+* add da capo? "after third verse, sing refrain again"
+
+* All songs:
+
+   \context {
+     \Lyrics
+     % relative change to font: one size smaller
+     \override LyricText #'font-size = #-1
+   }
 
 ## Creating a new song directory
 
