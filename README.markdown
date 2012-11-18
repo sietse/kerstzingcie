@@ -32,16 +32,18 @@ Coventry Carol
      \override LyricText #'font-size = #-1
    }
 
+
 ## Creating a new song directory
 
-1. Maak een map aan met de titel van het liedje, zonder spaties erin.
-2. Kopiëer alle bestanden in de `templates/` map naar de nieuwe map.
-3. Verander in de Rakefile `SONG_ARR` in het gewenste lied-arrangement
-   voorvoegsel.
-4. Run `rake init` in de map in kwestie.
+1. Make a new directory with the title of the song. No spaces.
+2. Copy all files in the templates/ folder to the new folder.
+3. Open the newly-copied Rakefile and change `SONG_ARR` to the desired
+   `song-arranger` identifier.
+4. Run `rake init` to replace XXX with the appropriate value in all
+   files and filenames.
 
 
-## Compilation:
+## Compilation
 
 De noten en de text, en alléén de noten en de tekst, zitten in
 `song-arranger-source.ly`. Daarnaast is er een lilypond-bestand dat het
@@ -67,8 +69,6 @@ doe als volgt:
 * `rake docs`     -- maak de documentatie
 * `rake all`
 * `rake website`
-
-## Automatic compilation using Rakefile
 
 ## Lilypond tricks
 
