@@ -2,6 +2,7 @@
 
 soprano = \relative c'' {
   \clef "treble" \key g \minor \time 3/2 | % 1
+  \phrasingSlurDashed
   g2 g2 fis2 | % 2
   g1 bes2 | % 3
   a4 a4 a2 g2 | % 4
@@ -19,8 +20,8 @@ soprano = \relative c'' {
     c2 a1 | % 14
     g1 d'2 | % 15
     c1 bes2 | % 16
-    a2 ( a2 ) bes2 | % 17
-    a2 ( a2 ) g2 | % 18
+    a2 \( a2 \) bes2 | % 17
+    a2 \( a2 \) g2 | % 18
     fis1. | % 19
     g2 fis2 g2 | \barNumberCheck #20
     c2 a1 | % 21
@@ -29,6 +30,7 @@ soprano = \relative c'' {
 
 alto = \relative c' {
   \clef "treble" \key g \minor \time 3/2 | % 1
+  \phrasingSlurDashed
   d2 d2 d2 | % 2
   d1 g2 | % 3
   f4 f4 f2 d2 | % 4
@@ -46,8 +48,8 @@ alto = \relative c' {
       g1 fis2 | % 14
       g1 f2 | % 15
       a1 g2 | % 16
-      f2 ( f2 ) d2 | % 17
-      f2 ( f2 ) c2 | % 18
+      f2 \( f2 \) d2 | % 17
+      f2 \( f2 \) c2 | % 18
       d1. | % 19
       d2 d2 d2 | \barNumberCheck #20
       g1 fis2 | % 21
@@ -57,6 +59,7 @@ alto = \relative c' {
 
 tenor = \relative c' {
   \clef "bass" \key g \minor \time 3/2 bes2 bes2 a2 | % 2
+  \phrasingSlurDashed
   bes1 es2 | % 3
   c4 c4 c2 bes2 | % 4
   a1. | % 5
@@ -72,8 +75,8 @@ tenor = \relative c' {
     es2 d1 | % 14
     d1 d2 | % 15
     f1 d2 | % 16
-    d2 ( d2 ) bes2 | % 17
-    c2 ( c2 ) g2 | % 18
+    d2 \( d2 \) bes2 | % 17
+    c2 \( c2 \) g2 | % 18
     a1. | % 19
     bes2 a2 bes2 | \barNumberCheck #20
     es2 d1 | % 21
@@ -82,6 +85,7 @@ tenor = \relative c' {
 
 bass = \relative c' {
   \clef "bass" \key g \minor \time 3/2 g2 g2 d2 | % 2
+  \phrasingSlurDashed
   g1 es2 | % 3
   f4 f4 f2 g2 | % 4
   d1. | % 5
@@ -97,8 +101,8 @@ bass = \relative c' {
     c2 d1 | % 14
     g1 bes2 | % 15
     f1 g2 | % 16
-    d2 ( d2 ) g2 | % 17
-    f2 ( f2 ) e2 | % 18
+    d2 \( d2 \) g2 | % 17
+    f2 \( f2 \) e2 | % 18
     d1. | % 19
     g2 d2 g2 | \barNumberCheck #20
     c,2 d1 | % 21
@@ -110,20 +114,20 @@ verseOne = \lyricmode {
   \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 
-  \markup{\dynamic f \bold{1.} O} sis -- ters too, 
+  \markup{\dynamic p \bold{1.} O} sis -- ters too, 
   How may we do for to pre -- serve this day 
-  this poor young -- ling, __ 
-  for whom do sing,
+  this poor young -- ling, __ _
+  for whom we do sing,
   by, by, lul -- ly lul -- lay? 
 }
 verseTwo = \lyricmode {
   \markup{\dynamic pp Lul} -- ly, lul -- la, 
   thou lit -- tle ti -- ny child, 
   by, by, lul -- ly lul -- lay. 
-  \markup{\dynamic p \bold {2.} He} -- rod, the king, 
+  \markup{\dynamic f \bold {2.} He} -- rod, the king, 
   in his rag -- ing, 
   char -- ged he hath this day 
-  his men of might, __ in his __ own sight, 
+  his men of might, _ in his __ _ own sight, 
   all young chil -- dren to slay. 
 }
 
@@ -135,6 +139,6 @@ verseThree = \lyricmode {
   poor child for thee! 
   and ev -- er morn and day 
   for thy part -- ing, 
-  then say __ nor sing, 
+  nei -- ther say __ _ nor sing, 
   by, by, lul -- ly lul -- lay! 
 }

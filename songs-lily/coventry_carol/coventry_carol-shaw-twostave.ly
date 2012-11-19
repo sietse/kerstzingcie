@@ -9,8 +9,8 @@ nummer = "09. "
   title = \markup { \nummer "Coventry Carol" }
   arranger = "Arranged by Martin Shaw"
   tagline =  \markup { \center-column {
-    "Versie 2011-10-07"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Versie 2012-11-19"
+    "Collegium Musicum Kerstzingcie"
   } }
 }
 
