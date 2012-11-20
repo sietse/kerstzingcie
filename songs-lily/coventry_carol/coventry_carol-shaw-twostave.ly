@@ -7,6 +7,7 @@ nummer = "09. "
 
 \header {
   title = \markup { \nummer "Coventry Carol" }
+  composer = "16th century"
   arranger = "Arranged by Martin Shaw"
   tagline =  \markup { \center-column {
     "Versie 2012-11-19"

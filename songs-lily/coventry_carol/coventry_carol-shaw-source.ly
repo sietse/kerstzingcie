@@ -107,6 +107,10 @@ bass = \relative c' {
     g2 d2 g2 | \barNumberCheck #20
     c,2 d1 | % 21
     g1. 
+    \once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
+    \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+    \once \override Score.RehearsalMark #'direction = #DOWN
+    \mark \markup{ \smaller \italic "After third verse, repeat refrain" }
   }
 }
 
