@@ -225,7 +225,9 @@ verseOne = \lyricmode {
     well 
     the __ an -- gels did say
   was to cer -- tain poor shep -- herds in fields as they lay;
-  in __ fields __ where _ 
+  in __ fields __ 
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    where _ 
     \once \override LyricText #'self-alignment-X = #-1
     they__ 
     lay __ kee -- ping their sheep,
@@ -234,7 +236,8 @@ verseOne = \lyricmode {
 verseTwo = \lyricmode {
   \set stanza = "2. "
   They | look -- èd __ | up and __ | saw __ _ a | star
-  shi -- ning | in __ _ the | east, __ _ be -- | yond __ _ them far;
+  \once \override LyricText #'X-extent = #'(0 . 1)
+  shining _ | in __ _ the | east, __ _ be -- | yond __ _ them far;
   and __ | to __ the __ _ | 
     \once \override LyricText #'self-alignment-X = #-1
     earth 
@@ -255,13 +258,14 @@ verseTwo = \lyricmode {
     well! __
   Born is the King __ of Is -- ra -- el. \normal
 }
+
 verseThree = \lyricmode {
   \set stanza = "3. "
   And 
   by __ the __ | % 1
   light __ of __ | % 2
   that __ _ same  | % 3
-  star three __ _ | % 4
+  star three _ | % 4
 
   wise __ _ men | % 5
   came __ _ from | % 6
@@ -292,8 +296,12 @@ verseFour = \lyricmode {
   to __ _ our |
   hea -- ven -- ly |
   Lord that |
-  hath __ made __ _ |
-  heav’n __ and __ |
+  hath __ 
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    made __ _ |
+  \once \override LyricText #'self-alignment-X = #-1
+  heav’n __ 
+    and __ |
   earth __ _ of __ |
   nought and __ _ |
   with __ _ his |

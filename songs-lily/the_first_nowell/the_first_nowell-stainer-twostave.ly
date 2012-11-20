@@ -13,7 +13,7 @@ varnummer = \markup {
   arranger = "Arranged by John Stainer (1840 - 1901)"
   tagline =  \markup { \center-column {
     "Versie 2012-06-18"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Collegium Musicum Kerstzingcie 2012"
   } }
 }
 
