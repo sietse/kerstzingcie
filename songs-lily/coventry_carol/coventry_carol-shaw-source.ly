@@ -8,6 +8,7 @@ soprano = \relative c'' {
   a4 a4 a2 g2 | % 4
   fis1. | % 5
   g2 a2 bes2 | % 6
+  \break
   c2 a1 | % 7
   b1. \repeat volta 3 {
     | % 8
@@ -16,11 +17,13 @@ soprano = \relative c'' {
     g1 bes2 | \barNumberCheck #10
     a1 g2 | % 11
     fis1. | % 12
+    \break
     g2 a2 bes2 | % 13
     c2 a1 | % 14
     g1 d'2 | % 15
     c1 bes2 | % 16
     a2 \( a2 \) bes2 | % 17
+    \break
     a2 \( a2 \) g2 | % 18
     fis1. | % 19
     g2 fis2 g2 | \barNumberCheck #20
@@ -119,7 +122,9 @@ verseOne = \lyricmode {
   \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4 \skip4
   \skip4 \skip4 \skip4 
   \markup{\dynamic p \bold{1.} O} sis -- ters too, 
-  How may we do for to pre -- serve this day 
+  how may we do for to pre -- serve 
+    \once \override LyricText #'X-extent = #'(0 . 2)
+    this day 
   this poor young -- ling, __ _
   for whom we do sing,
   by, by, lul -- ly lul -- lay? 
@@ -130,7 +135,9 @@ verseTwo = \lyricmode {
   by, by, lul -- ly lul -- lay. 
   \markup{\dynamic f \bold {2.} He} -- rod, the king, 
   in his rag -- ing, 
-  char -- ged he hath this day 
+  char -- ged he hath 
+    \once \override LyricText #'X-extent = #'(0 . 2)
+    this day 
   his men of might, _ in his __ _ own sight, 
   all young chil -- dren to slay. 
 }
@@ -141,7 +148,9 @@ verseThree = \lyricmode {
   \skip4 \skip4 \skip4 
   \markup{\dynamic pp \bold{3.} That} woe is me, 
   poor child for thee! 
-  and ev -- er morn and day 
+  and ev -- er morn 
+    \once \override LyricText #'X-extent = #'(0 . 2)
+    and day 
   for thy part -- ing, 
   nei -- ther say __ _ nor sing, 
   by, by, lul -- ly lul -- lay! 

@@ -10,7 +10,7 @@ nummer = "09. "
   composer = "16th century"
   arranger = "Arranged by Martin Shaw"
   tagline =  \markup { \center-column {
-    "Versie 2012-11-19"
+    "Versie 2012-11-20"
     "Collegium Musicum Kerstzingcie"
   } }
 }
