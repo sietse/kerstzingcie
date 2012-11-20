@@ -93,15 +93,88 @@ bass = \relative g {
     \bar "|."
 }
 
-verseOne = \lyricmode {
+dropLyrics = {
+    \override LyricText #'extra-offset = #'(0 . -1)
+    \override LyricHyphen #'extra-offset = #'(0 . -1)
+    \override LyricExtender #'extra-offset = #'(0 . -1)
+}
+
+raiseLyrics = {
+    \revert LyricText #'extra-offset
+    \revert LyricHyphen #'extra-offset
+    \revert LyricExtender #'extra-offset
+}
+
+verseOneSoprano = \lyricmode {
+  Ich steh’ an dei -- ner Krip -- pen hier, 
+  o __ Je -- su -- lein,
+  mein Le -- ben,
+  \dropLyrics
+  Nimm hin! Es ist mein 
+      \once \override LyricText #'X-extent = #'(0 . 1)
+      Geist und Sinn, 
+  Herz, __ 
+  \raiseLyrics
+    Seel’ und __ Mut, nimm al -- les hin, 
+  und lass dir’s wohl -- ge -- fal -- len.
+}
+
+verseOneAlto = \lyricmode {
+  Ich steh’ an dei -- ner Krip -- pen hier, 
+  o __ Je -- su -- lein,
+  mein __ Le -- ben,
+  \dropLyrics
+  Nimm hin! Es __ ist __ 
+      \once \override LyricText #'X-extent = #'(0 . 1)
+      mein 
+      Geist und Sinn, 
+  Herz, __ 
+  \raiseLyrics
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    Seel’ " und"
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    Mut, " nimm " al -- les hin, 
+  und lass dir’s 
+  wohl -- ge -- fal -- len.
+}
+
+verseOneTenor = \lyricmode {
   Ich steh’ an dei -- ner Krip -- pen __ hier, 
   o __ Je -- su -- lein,
   mein __ Le -- ben,
-  Nimm hin! Es __ ist __ mein __ Geist __ und Sinn, 
-  Herz, __ Seel’ __ und Mut, __
-  nimm al -- les __ hin, 
+  \dropLyrics
+  Nimm hin! Es __ ist __ 
+      \once \override LyricText #'X-extent = #'(0 . 1)
+      mein 
+      \once \override LyricText #'X-extent = #'(0 . 1)
+      Geist und Sinn, 
+  Herz, __ 
+  \raiseLyrics
+    Seel’ und __
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    Mut, " nimm" al -- les __ hin, 
+  und lass dir’s 
+    \once \override LyricText #'X-extent = #'(0 . 1)
+  wohl "- ge" -- fal -- len.
+}
+
+verseOneBass = \lyricmode {
+  Ich steh’ an dei -- ner Krip -- pen __ hier, 
+  o __ Je -- su -- lein,
+  mein __ Le -- ben,
+  \dropLyrics
+  Nimm hin! Es __ ist __ 
+      mein 
+      \once \override LyricText #'X-extent = #'(0 . 1)
+      Geist und Sinn, 
+  Herz, __ 
+  \raiseLyrics
+    Seel’ und __
+    \once \override LyricText #'X-extent = #'(0 . 1)
+    Mut, nimm al -- les __ hin, 
   und lass dir’s wohl -- ge -- fal -- len.
 }
+
 
 verseTwo = \lyricmode {
   Ich kom -- me, bring’ und schen -- ke __ dir,
