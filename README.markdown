@@ -7,9 +7,6 @@ not, then said).
 Rejoice and be merry
 * single 'who brought us salvation' line
 
-Ich steh' an deiner Krippen
-* shorten mein (extender lines hack?)
-
 God rest you
 * triool
 
@@ -21,8 +18,6 @@ Coventry Carol
   * 'by by lul - \r'
   * 'may we do \r'
   * 'ling for \r'
-* dynamics
-* add da capo? "after third verse, sing refrain again"
 
 * All songs:
 
@@ -106,6 +101,18 @@ To re-align a syllable:
       \once \override LyricText #'self-alignment-X = #-1
       Nacht,
     Hei -- li -- ge
+
+To change a syllable length:
+
+    \once \override LyricText #'X-extent = #'(0 . 1)
+
+When one syllable is sung on two notes with `_`, the syllable text will
+push the second note to the right instead of being placed evenly under
+the two notes. So we force Lilypond to pretend the syllable is really
+short, instead. Unfortunately, this means that the extender line will
+start too early, but such is life.
+
+
 
 To re-align a text mark:
 
