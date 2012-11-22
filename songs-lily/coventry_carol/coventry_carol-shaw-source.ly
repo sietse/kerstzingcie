@@ -150,7 +150,7 @@ verseThree = \lyricmode {
   poor child for thee! 
   and ev -- er morn 
     \once \override LyricText #'X-extent = #'(0 . 2)
-    and day 
+    and day;
   for thy part -- ing, 
   nei -- ther say __ _ nor sing, 
   by, by, lul -- ly lul -- lay! 
