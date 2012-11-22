@@ -3,7 +3,7 @@ syntax: glob
 all-pdfs/*
 all-midis/*
 
-kerstsite/*
+website/*
 gdocs/*
 
 .rake_tasks~

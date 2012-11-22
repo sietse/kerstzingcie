@@ -189,12 +189,12 @@ end
 desc "create the documentation"
 task :docs => ["docs/Rakefile.html"] do end
 
-desc "Copy zips from #{OUTDIR}/ to kerstsite/muziek/"
+desc "Copy zips from #{OUTDIR}/ to website/muziek/"
 #task :website => [:pdfs, :midis] do 
 task :website do
     OUTFILE.each_value do |file|
         source = "#{OUTDIR}/#{file}"
-        target = "kerstsite/muziek/#{file}"
+        target = "website/muziek/#{file}"
         cp(source, target)
     end
 end
