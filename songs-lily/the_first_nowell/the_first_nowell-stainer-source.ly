@@ -63,7 +63,7 @@ alto = \relative c' {
 
   % The first Nowell the angels did say
   \partial 4 d4 |
-  cis2 d4 |
+  a2 d4 |
   e2 e4 |
   a4\( a4\) g4 |
   fis2
