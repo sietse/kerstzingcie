@@ -3,7 +3,7 @@
 
 \include "hark_the_herald-anon1-source.ly"
 
-nummer = "19. "
+nummer = "19a. "
 
 \header {
   title = \markup {\nummer "Hark! the herald-angels sing"}
