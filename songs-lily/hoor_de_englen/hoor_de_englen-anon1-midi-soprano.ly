@@ -4,8 +4,8 @@
 
 \score {
   \new Staff <<
-    \new Voice = "vSoprano" { \set midiInstrument = #"glockenspiel" \soprano }
-    \new Voice = "vAlto" { \set midiInstrument = #"cello" \alto }
+    \new Voice = "vSoprano" { \set midiInstrument = #"cello" \soprano }
+    \new Voice = "vAlto" { \set midiInstrument = #"glockenspiel" \alto }
     \new Voice = "vTenor" { \set midiInstrument = #"glockenspiel" \tenor }
     \new Voice = "vBass" { \set midiInstrument = #"glockenspiel" \bass }
   >>
@@ -14,6 +14,6 @@
     \context { \Voice 
       \consists "Staff_performer" 
     }
-    \context { \Score tempoWholesPerMinute = #(ly:make-moment 120 4) }
+    \context { \Score tempoWholesPerMinute = \miditempo }
   }
 }

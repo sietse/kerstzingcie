@@ -1,11 +1,11 @@
 OUTPUT_FILES = [
-    "hark_the_herald-anon1-twostave.pdf",
-    "hark_the_herald-anon1-midi-soprano.midi",
-    "hark_the_herald-anon1-midi-alto.midi",
-    "hark_the_herald-anon1-midi-tenor.midi",
-    "hark_the_herald-anon1-midi-bass.midi",
-    "hark_the_herald-anon1-midi-tutti.midi",
     "hoor_de_englen-anon1-twostave.pdf",
+    "hark_the_herald-anon1-twostave.pdf",
+    "hoor_de_englen-anon1-midi-soprano.midi",
+    "hoor_de_englen-anon1-midi-alto.midi",
+    "hoor_de_englen-anon1-midi-tenor.midi",
+    "hoor_de_englen-anon1-midi-bass.midi",
+    "hoor_de_englen-anon1-midi-tutti.midi",
 ]
 
 # name of current directory. Useful for reporting
