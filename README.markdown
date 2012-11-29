@@ -14,10 +14,13 @@ Stille Nacht
 * weghalen tweede p en pp
 
 Coventry Carol
-* more linebreaks
-  * 'by by lul - \r'
-  * 'may we do \r'
-  * 'ling for \r'
+* In verse 2 add small mf before "all young children to slay" 
+
+The First Nowell
+* measure 19, bass, break beam between "well, / No"
+
+Deck the Halls
+--> Should be called Deck the Hall
 
 * All songs:
 
