@@ -2,7 +2,9 @@
 
 \version "2.12.3"
 
-soprano = \relative g' {
+miditempo = #(ly:make-moment 100 4)
+
+sopranoVerse = \relative g' {
     \clef "treble" 
     \key g \major 
     \time 4/4 
@@ -14,6 +16,8 @@ soprano = \relative g' {
       b4 c4 d4 c8 ( [ b8 ) ] | % 4
       a8 ( [ g8 ] a4 ) g4 
     }
+}
+sopranoChorus = \relative b' {
     b4 
     b4 a4 g4 fis4 | % 7
     g8 ( [ a8 ) ] b4 a4 \breathe a4 | % 8
@@ -22,8 +26,11 @@ soprano = \relative g' {
     b4 c4 d4 c8 ( [ b8 ) ] | % 11
     a8 ( [ g8 ] a4 ) g4 \bar "|."
 }
+soprano = { \sopranoVerse \sopranoChorus }
+sopranoMidi = { \sopranoVerse \sopranoVerse \sopranoChorus }
 
-alto = \relative d' {
+
+altoVerse = \relative d' {
     \clef "treble" 
     \key g \major 
     \time 4/4 
@@ -37,6 +44,8 @@ alto = \relative d' {
           a16[( g16]) fis4 g4 | % 4
         g4 ( fis4 ) d4 
     }
+}
+altoChorus = \relative g' {
     g4 
     g4. fis8 fis8[( e8]) e8[( dis8]) | % 7
     e4 d4 d4 \breathe d4 | % 8
@@ -45,8 +54,10 @@ alto = \relative d' {
     e4 e4 d8 ( [ e16 fis16 ) ] g4 | % 11
     g4 ( fis4 ) d4 \bar "|."
 }
+alto = { \altoVerse \altoChorus }
+altoMidi = { \altoVerse \altoVerse \altoChorus }
 
-tenor = \relative b {
+tenorVerse = \relative b {
     \clef "treble_8" 
     \key g \major 
     \time 4/4 
@@ -56,7 +67,10 @@ tenor = \relative b {
         b4 e4 e8 ( [ d8 ) ] d4 | % 2
         e8 ( [ c8 ) ] a8 ( [ d8 ) ] d4 \breathe e4 | % 3
         d4 g,8 ( [ a8 ) ] b8 ( [ c8 ) ] d4 | % 4
-        d4 ( c8 [ b8 ) ] b4 }
+        d4 ( c8 [ b8 ) ] b4 
+    }
+}
+tenorChorus = \relative d' {
     d4 
     d4 d8 ( [ c8 ) ] b8 ( [ c8 ) ] fis,8 ( [ b8 ) ] | % 7
     b8 ( [ a8 ) ] a8 ( [ g8 ) ] fis4 \breathe fis4 | % 8
@@ -65,8 +79,11 @@ tenor = \relative b {
     g4. a8 b8 ( [ c8 ) ] d4 | % 11
     d4 ( c8 [ b8 ) ] b4 \bar "|."
 }
+tenor = { \tenorVerse \tenorChorus }
+tenorMidi = { \tenorVerse \tenorVerse \tenorChorus }
 
-bass = \relative g {
+
+bassVerse = \relative g {
     \clef "bass" 
     \key g \major 
     \time 4/4 
@@ -76,7 +93,10 @@ bass = \relative g {
         e4. d8 c4. b8 | % 2
         c8 ( [ a8 ) ] d4 g,4 \breathe c4 | % 3
         g'8 ( [ fis8 ) ] e4 b'8 ( [ a8 ) ] g4 | % 4
-        d'4 ( d,4 ) g4 }
+        d'4 ( d,4 ) g4 
+    }
+}
+bassChorus = \relative g {
     g8 ( [ a8 ) ] 
     b8 ( [ c8 ) ] d4 g,8 ( [ a8 ) ] b4 | % 7
     e,8 ( [ fis8 ) ] g4 d4 \breathe d'8[( c8)] | % 8
@@ -92,6 +112,8 @@ bass = \relative g {
 
     \bar "|."
 }
+bass = { \bassVerse \bassChorus }
+bassMidi = { \bassVerse \bassVerse \bassChorus }
 
 dropLyrics = {
     \override LyricText #'extra-offset = #'(0 . -1)
