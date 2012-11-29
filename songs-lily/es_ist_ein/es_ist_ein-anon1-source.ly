@@ -1,6 +1,8 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
+miditempo = #(ly:make-moment 120 4)
+
 soprano = {
   \clef "treble" 
   \key f \major 

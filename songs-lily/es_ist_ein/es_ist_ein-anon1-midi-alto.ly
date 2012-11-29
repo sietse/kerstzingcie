@@ -14,6 +14,6 @@
     \context { \Voice 
       \consists "Staff_performer" 
     }
-    \context { \Score tempoWholesPerMinute = #(ly:make-moment 120 4) }
+    \context { \Score tempoWholesPerMinute = \miditempo }
   }
 }
