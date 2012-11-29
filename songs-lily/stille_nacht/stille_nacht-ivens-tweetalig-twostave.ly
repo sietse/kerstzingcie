@@ -8,8 +8,8 @@ nummer = "18. "
   composer = "Franz Gruber (1787-1863)"
   arranger = "Arranged by Jo Ivens"
   tagline =  \markup { \center-column {
-    "Versie 2011-09-07"
-    "Collegium Musicum Kerstzingcie 2011"
+    "Versie 2012-11-29"
+    "Collegium Musicum Kerstzingcie 2012"
   } }
 }
 
@@ -52,6 +52,11 @@ nummer = "18. "
     \context { \Staff 
       % place dynamics closer to staff
       \override VerticalAxisGroup #'minimum-Y-extent = #'(-2 . 2)
+    }
+    \context {
+      \Lyrics
+      % relative change to font: one size smaller
+      \override LyricText #'font-size = #-1
     }
     \context { \Lyrics 
       % place lyrics closer to staff

@@ -54,6 +54,8 @@ nummer = "18."
       % place lyrics closer to staff
       \override VerticalAxisGroup #'Y-extent = #'(-0.1 . 0.1)
       \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 0)
+      % relative change to font: one size smaller
+      \override LyricText #'font-size = #-1
     }
     \context {
       \ChoirStaff

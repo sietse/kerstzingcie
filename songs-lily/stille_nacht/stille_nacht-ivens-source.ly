@@ -9,6 +9,8 @@
 % fourth removed from the preceding one. If you're jumping a quint or
 % more, use ' or , to adjust the note's octave upwards/downwards.)
 
+miditempo = #(ly:make-moment 120 8)
+
 soprano = { 
   \time 6/8 
   \key bes \major 
@@ -102,7 +104,7 @@ tenor = {
 bass = {
   \key bes \major 
   \clef bass
-  r4 r8 f8.( ees16) f8 |
+  r4 r8 f8.( g16) f8 |
   d4( bes,8) bes,8. d16 bes,8 |
   f8 f8 f8 f4. |
   bes,4 c8 bes,8( c8 d8) |
@@ -176,7 +178,9 @@ verseThree = \lyricmode {
     lacht __
   Lieb aus dei -- _ nem
   Gött -- li -- chen Mund,
-  da uns schlägt __ _ die 
+  da uns 
+    \once \override LyricText #'X-extent = #'(1 . 6.4)
+    "schlägt" __ _ die 
   ret -- ten -- de 
     \once \override LyricText #'self-alignment-X = #-1
     Stund, __
