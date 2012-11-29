@@ -2,6 +2,8 @@
 
 \version "2.12.3"
 
+miditempo = #(ly:make-moment 120 4)
+
 soprano = \relative c'' {
   \key g \major
   \time 2/4
@@ -109,7 +111,7 @@ alto = \relative c'' {
   \bar "||"
 
   % Dashing through the snow in a 
-  d8 g8 a8 g8 |
+  d8 b'8 a8 g8 |
   d4.( d16 ~ d16)
   \pageBreak
 

@@ -2,6 +2,8 @@
 
 \version "2.12.3"
 
+miditempo = #(ly:make-moment 120 4)
+
 soprano = \relative c'' {
   \key g \major
   \time 2/4
