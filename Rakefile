@@ -3,7 +3,7 @@
 ## * The first section defines the constants we will be needing. 
 ## * The second section contains the `midis` task, which creates the
 ##    midi zipfiles. 
-## * The third section contains the `update_line_numbers` task, which
+## * The third section contains the `update_title_numbers` task, which
 ##   ensures that the song numbers in `MASTER-inhoudsopgave.txt` are
 ##   present in the songs' .ly files. 
 ## * The fourth section contains the `pdfs` task, which (1) collects the
@@ -94,7 +94,7 @@ end
 
 desc "update songs' title numbers using MASTER-inhoudsopgave.txt"
 task :update_title_numbers => ['MASTER-inhoudsopgave.txt'] do
-    puts "==== Updating file numbers ===="
+    puts "==== Updating title numbers ===="
     ## For each song ...
     MASTER.each do |filename, nummer, position| # position not used
         filename = filename.ext('ly')
