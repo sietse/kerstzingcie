@@ -22,7 +22,7 @@
 <li>The first section defines the constants we will be needing. </li>
 <li>The second section contains the <code>midis</code> task, which creates the
    midi zipfiles. </li>
-<li>The third section contains the <code>update_line_numbers</code> task, which
+<li>The third section contains the <code>update_title_numbers</code> task, which
   ensures that the song numbers in <code>MASTER-inhoudsopgave.txt</code> are
   present in the songs' .ly files. </li>
 <li>The fourth section contains the <code>pdfs</code> task, which (1) collects the
@@ -224,7 +224,7 @@ triples <code>[song_pdf, number, position]</code>.</p>
     <div class='code'>
       <div class="highlight"><pre><span class="n">desc</span> <span class="s2">&quot;update songs&#39; title numbers using MASTER-inhoudsopgave.txt&quot;</span>
 <span class="n">task</span> <span class="ss">:update_title_numbers</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;MASTER-inhoudsopgave.txt&#39;</span><span class="o">]</span> <span class="k">do</span>
-    <span class="nb">puts</span> <span class="s2">&quot;==== Updating file numbers ====&quot;</span></pre></div>
+    <span class="nb">puts</span> <span class="s2">&quot;==== Updating title numbers ====&quot;</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -438,12 +438,12 @@ invokes <code>rake pdf</code>.</p>
 <span class="n">desc</span> <span class="s2">&quot;create the documentation&quot;</span>
 <span class="n">task</span> <span class="ss">:docs</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;docs/Rakefile.html&quot;</span><span class="o">]</span> <span class="k">do</span> <span class="k">end</span>
 
-<span class="n">desc</span> <span class="s2">&quot;Copy zips from </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/ to kerstsite/muziek/&quot;</span>
+<span class="n">desc</span> <span class="s2">&quot;Copy zips from </span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/ to website/muziek/&quot;</span>
 <span class="c1">#task :website =&gt; [:pdfs, :midis] do </span>
 <span class="n">task</span> <span class="ss">:website</span> <span class="k">do</span>
     <span class="no">OUTFILE</span><span class="o">.</span><span class="n">each_value</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
         <span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">OUTDIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;kerstsite/muziek/</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;website/muziek/</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">cp</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
     <span class="k">end</span>
 <span class="k">end</span>
