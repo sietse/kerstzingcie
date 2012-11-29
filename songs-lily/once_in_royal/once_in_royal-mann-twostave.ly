@@ -10,7 +10,7 @@ nummer = "07. "
   poet = "Words by C.F. Alexander"
   arranger = "Arranged by A.H. Mann"
   tagline =  \markup { \center-column {
-    "Versie 2011-11-12"
+    "Versie 2012-11-29"
     "Collegium Musicum Kerstzingcie 2011"
   } }
 }
@@ -27,12 +27,28 @@ nummer = "07. "
     >>
 
     \new Lyrics \lyricsto "vAlto" \verseOne
-    \new Lyrics \lyricsto "vAlto" \verseOneRepeat
+    % A bit of extra space after the repeat lyrics
+    \new Lyrics \with {
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1.2 . 1)
+    }
+    \lyricsto "vAlto" \verseOneRepeat
+
     \new Lyrics \lyricsto "vAlto" \verseTwo
-    \new Lyrics \lyricsto "vAlto" \verseTwoRepeat
+    \new Lyrics \with {
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1.2 . 1)
+    }
+    \lyricsto "vAlto" \verseTwoRepeat
+
     \new Lyrics \lyricsto "vAlto" \verseFour
-    \new Lyrics \lyricsto "vAlto" \verseFourRepeat
+    \new Lyrics \with {
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1.2 . 1)
+    }
+    \lyricsto "vAlto" \verseFourRepeat
+
     \new Lyrics \lyricsto "vAlto" \verseFive
+    \new Lyrics \with {
+      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1.2 . 1)
+    }
     \new Lyrics \lyricsto "vAlto" \verseFiveRepeat
 
     \new Staff = "lower" <<

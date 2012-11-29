@@ -1,7 +1,9 @@
 % vim: set fileformat=dos:
 \version "2.12.3"
 
-soprano = \relative d' {
+miditempo = #(ly:make-moment 63 4)
+
+sopranoVerse = \relative d' {
   \autoBeamOff
   \clef "treble" 
   \key g \major 
@@ -15,14 +17,18 @@ soprano = \relative d' {
     d4. b8 b8[ a8] g8[ fis8] | % 4
     g2 
   }
+}
+sopranoChorus = \relative e' {
   e'4 e4 | % 6
   d4. g,8 c4 c4 | % 7
   b4 ~ b4 e4 e4 | % 8
   d4. b8 b8[ a8] g8[ fis8] | % 9
   g4 ~ g4 \bar "|."
 }
+soprano = { \sopranoVerse \sopranoChorus }
+sopranoMidi = { \sopranoVerse \sopranoVerse \sopranoChorus }
 
-alto = \relative d' {
+altoVerse = \relative d' {
   \autoBeamOff
   \clef "treble" 
   \key g \major 
@@ -34,6 +40,8 @@ alto = \relative d' {
     d4 d4 e4 d4 | % 4
     d2 
   }
+}
+altoChorus = \relative e' {
   e8[ fis8] g8[ a8] | % 6
   d,4 d4 e4 fis4 | % 7
   g4( fis4) e8[ fis8] g8[ a8] | % 8
@@ -43,8 +51,10 @@ alto = \relative d' {
   d,8[( fis8 g8]) g8 e4 d4 | % 9
   d4 ~ d4 \bar "|."
 }
+alto = { \altoVerse \altoChorus }
+altoMidi = { \altoVerse \altoVerse \altoChorus }
 
-tenor = \relative b {
+tenorVerse = \relative b {
   \autoBeamOff
   \clef "bass" \key g \major \time 4/4 \partial 2 \repeat volta 2 {
     b4 c4 | % 1
@@ -53,6 +63,8 @@ tenor = \relative b {
     a4 b8[ d8] d8[ c8] b8[ a8] | % 4
     b2 
   }
+}
+tenorChorus = \relative g {
   g4 c4 | % 6
   b4 b4 c4 d4 | % 7
   d4 ~ d4 c4 c4 | % 8
@@ -60,8 +72,10 @@ tenor = \relative b {
   \tieNeutral
   <g b>4 ~ <g b>4 \bar "|."
 }
+tenor = { \tenorVerse \tenorChorus }
+tenorMidi = { \tenorVerse \tenorVerse \tenorChorus }
 
-bass = \relative b {
+bassVerse = \relative c' {
   \autoBeamOff
   \clef "bass" 
   \key g \major 
@@ -73,18 +87,36 @@ bass = \relative b {
     fis4 g4 c,4 d4 | % 4
     g2 
   }
+}
+bassChorus = \relative c' {
   c,8[ d8] e8[ fis8] | % 6
   g4 b4 a4 d,4 | % 7
   g4 ~ g4 c,8[ d8] e8[ fis8] | % 8
   g8[ a8 b8] g8 c,4 d4 | % 9
   g,4 ~ g4 \bar "|."
 }
+bass = { \bassVerse \bassChorus }
+bassMidi = { \bassVerse \bassVerse \bassChorus }
+
+dropLyrics = {
+    \override LyricText #'extra-offset = #'(0 . -2)
+    \override LyricHyphen #'extra-offset = #'(0 . -2)
+    \override LyricExtender #'extra-offset = #'(0 . -2)
+}
+raiseLyrics = {
+    \revert LyricText #'extra-offset
+    \revert LyricHyphen #'extra-offset
+    \revert LyricExtender #'extra-offset
+}
 
 verseOne = \lyricmode {
   \set stanza = #"1. "
   Once in roy -- al Da -- vid’s ci -- ty 
   stood a low -- ly cat -- tle shed, 
-  Ma -- ry was that mo -- ther mild, __
+  \dropLyrics
+  Ma -- ry was that mo -- ther 
+  \raiseLyrics
+  mild, __
   Je -- sus Christ __ her lit -- tle child.
 }
 
@@ -97,7 +129,9 @@ verseTwo = \lyricmode {
   \set stanza = #"2. "
   He  came down to earth from hea -- ven
   who is God and Lord of all,
+  \dropLyrics
   With the poor and mean and 
+  \raiseLyrics
     \set ignoreMelismata = ##t 
       low -- ly
     \unset ignoreMelismata
@@ -116,7 +150,9 @@ verseFour = \lyricmode {
   \set stanza = #"4. "
   For he is our child -- hood’s pat -- tern,
   day by day like us he grew,
+  \dropLyrics
   and he fee -- leth for our 
+  \raiseLyrics
     \set ignoreMelismata = ##t 
       sad -- ness,
     \unset ignoreMelismata
@@ -135,7 +171,10 @@ verseFive = \lyricmode {
   \set stanza = #"5. "
   And our eyes at last shall see him,
   through his own re -- deem -- ing love
-  and he leads his chil -- dren on __
+  \dropLyrics
+  and he leads his chil -- dren 
+  \raiseLyrics
+  on __
   to the place __ where he is gone.
 }
 
