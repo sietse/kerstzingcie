@@ -2,11 +2,13 @@
 
 \version "2.12.3"
 
+% miditempo = #(ly:make-moment 348 8)
+
+miditempo = #(ly:make-moment 160 4)
+
 soprano = {
   \autoBeamOff
   \key f \major \time 4/4 | % 1
-  \tag #'score { \tempo 2=116 }
-  \tag #'midi { \tempo 4.=116 }
   c''4. bes'8 a'4 g'4 | % 2
   f'4 g'4 a'4 f'4 | % 3
   g'8 a'8 bes'8 g'8 a'4. g'8 | % 4
@@ -39,7 +41,8 @@ soprano = {
 
 alto = {
   \autoBeamOff
-  \key f \major \time 4/4 | % 1
+  % \key f \major 
+  \time 4/4 | % 1
   a'4. g'8 f'4 e'4 | % 2
   f'4 e'4 f'4 f'4 | % 3
   d'8 d'8 d'8 d'8 f'4. d'8 | % 4

@@ -20,7 +20,7 @@ nummer = "17. "
       \clef "treble"
       \new Voice = "vSoprano" { 
         \override Ambitus #'X-offset = #2.0
-        \voiceOne \keepWithTag #'score \soprano 
+        \voiceOne \soprano 
       }
       \new Voice = "vAlto" { \voiceTwo \alto }
     >>
