@@ -2,6 +2,8 @@
 
 \version "2.12.3"
 
+miditempo = #(ly:make-moment 120 4)
+
 mbreak = \break
 
 soprano = \relative c' {
@@ -187,7 +189,7 @@ bass = \relative c {
     a4 |
   d2 b4 |
   fis'2 d4 |
-  g4.( a8) b8( cis8) |
+  g4.( a8) \noBeam b8( cis8) |
   d2( cis4) |
 
   % Born is the King of Israel.
