@@ -5,6 +5,8 @@
 %mbreak = \break
 mbreak = {}
 
+miditempo = #(ly:make-moment 120 4)
+
 soprano = \relative c' {
   \time 4/4
   \key es \major
