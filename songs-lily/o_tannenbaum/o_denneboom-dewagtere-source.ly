@@ -1,3 +1,5 @@
+miditempo = #(ly:make-moment 100 4)
+
 soprano = \relative c' {
   \key g \major
   \time 3/4

@@ -3,7 +3,7 @@
 
 nummer = "22. "
 
-\include "o_tannenbaum-dewagtere-source.ly"
+\include "o_denneboom-dewagtere-source.ly"
 
 \header {
   title = \markup {\nummer "O Dennenboom"}

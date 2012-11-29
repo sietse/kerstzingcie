@@ -1,6 +1,6 @@
 \version "2.12.3"
 
-\include "o_tannenbaum-dewagtere-source.ly"
+\include "o_denneboom-dewagtere-source.ly"
 
 \score {
   \new Staff <<
@@ -14,6 +14,6 @@
     \context { \Voice 
       \consists "Staff_performer" 
     }
-    \context { \Score tempoWholesPerMinute = #(ly:make-moment 120 4) }
+    \context { \Score tempoWholesPerMinute = \miditempo }
   }
 }

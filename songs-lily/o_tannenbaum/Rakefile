@@ -1,11 +1,11 @@
 OUTPUT_FILES = [
-    "o_tannenbaum-dewagtere-twostave.pdf",
-    "o_tannenbaum-dewagtere-fourstave.pdf",
-    "o_tannenbaum-dewagtere-midi-soprano.midi",
-    "o_tannenbaum-dewagtere-midi-alto.midi",
-    "o_tannenbaum-dewagtere-midi-tenor.midi",
-    "o_tannenbaum-dewagtere-midi-bass.midi",
-    "o_tannenbaum-dewagtere-midi-tutti.midi",
+    "o_denneboom-dewagtere-twostave.pdf",
+    "o_denneboom-dewagtere-fourstave.pdf",
+    "o_denneboom-dewagtere-midi-soprano.midi",
+    "o_denneboom-dewagtere-midi-alto.midi",
+    "o_denneboom-dewagtere-midi-tenor.midi",
+    "o_denneboom-dewagtere-midi-bass.midi",
+    "o_denneboom-dewagtere-midi-tutti.midi",
 ]
 
 # name of current directory. Useful for reporting
